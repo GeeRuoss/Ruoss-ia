@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Counters from '../components/Counters.astro';
+import ContactCta from '../components/ContactCta.astro';
+import Logo from '../components/Logo.astro';
+import { IMG, STUDIO_PARTNERS } from '../data/site';
+---
+
+<Layout
+  title="Notre Studio | Agence Design Verbier & Graphiste Valais | Ruoss!"
+  description="Ruoss! Communication, studio de design fondé à Verbier. Graphiste et designer Guillermo Ruoss, spécialiste branding, logos et sites web en Valais."
+  path="/studio"
+>
+  <article class="page">
+    <h1 class="display studio-title">Studio.</h1>
+
+    <div class="studio-about">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        A propos
+      </p>
+      <p class="studio-about-text lead">
+        Chez Ruoss! Communication, nous concevons des identités et des outils de communication ancrés dans le réel,
+        pensés pour durer et faire sens. <span class="muted">Le studio est fondé et dirigé par Guillermo Ruoss
+        autodidacte, qui développe son approche à travers des projets mêlant design, contexte et usage.</span>
+      </p>
+      <figure class="studio-founder">
+        <figcaption class="small muted">Aucun processus inutile, seulement des solutions efficaces, adaptées à vos besoins.</figcaption>
+        <img src={IMG.founder} alt="Guillermo Ruoss" width="213" height="319" loading="lazy" />
+      </figure>
+    </div>
+
+    <img class="studio-hero reveal" src={IMG.studioParaglide} alt="Parapente au-dessus des montagnes de Verbier" loading="lazy" />
+
+    <div class="studio-counters section">
+      <Counters />
+    </div>
+
+    <div class="studio-archives">
+      <div class="studio-mark"><Logo width={54} /></div>
+      <div>
+        <p class="lead">
+          Trois affiches réalisées par le studio ont été sélectionnées pour intégrer les archives de la Confédération,
+          témoignant d'un travail graphique inscrit dans le paysage visuel suisse. Autour de cette direction créative,
+          nous collaborons avec un réseau de partenaires spécialisés afin d'offrir à nos clients des services complets,
+          professionnels et accessibles.
+        </p>
+        <p class="small muted studio-archives-more">
+          Cette organisation souple permet de garantir une grande qualité d'exécution tout en conservant un
+          interlocuteur unique, une approche humaine et une réelle facilité de collaboration. Ruoss! Communication
+          accompagne marques, institutions et indépendants dans la création de solutions visuelles claires, durables et
+          adaptées à leurs besoins.
+        </p>
+      </div>
+    </div>
+
+    <div class="studio-partners section">
+      <div class="studio-partners-head">
+        <p class="eyebrow">
+          <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+          Quelques parenaires
+        </p>
+        <p class="muted">(2021-26©)</p>
+      </div>
+      <ul class="studio-partners-grid">
+        {STUDIO_PARTNERS.map((logo) => (
+          <li class="reveal"><img src={logo} alt="Logo partenaire" loading="lazy" /></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="studio-inspi">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        Nos inspirations
+      </p>
+      <div>
+        <p class="lead">
+          Notre travail est influencé par les montagnes et leur lumière. <span class="muted">Des couleurs claires,
+          parfois vives, façonnées par les saisons, l'altitude et les contrastes naturels.</span> Cet environnement
+          direct nous pousse vers des identités lisibles, des logos fonctionnels et modernes, pensés pour durer plutôt
+          que pour suivre des effets de mode.
+        </p>
+        <p class="small muted studio-inspi-more">
+          Des contrastes francs entre roche, ciel et neige. Ces paysages influencent directement notre travail : des
+          palettes simples, des formes lisibles, une recherche d'équilibre plutôt que d'effet. Un langage visuel inspiré
+          par un environnement exigeant, précis et authentique.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <ContactCta />
+</Layout>
+
+<style>
+  .studio-title {
+    font-size: clamp(48px, 8vw, 112px);
+    padding-block: clamp(24px, 5vw, 72px) clamp(24px, 4vw, 64px);
+  }
+  .studio-about {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: clamp(24px, 4vw, 72px);
+    align-items: start;
+    padding-bottom: clamp(40px, 5vw, 72px);
+  }
+  .studio-about-text {
+    max-width: 620px;
+  }
+  .studio-founder {
+    display: grid;
+    gap: 12px;
+    justify-items: start;
+  }
+  .studio-founder img {
+    width: 110px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .studio-hero {
+    width: 100%;
+    border-radius: var(--r-card);
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+  }
+  .studio-archives {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(32px, 8vw, 140px);
+    align-items: start;
+    padding-bottom: clamp(24px, 3vw, 40px);
+  }
+  .studio-archives .lead {
+    max-width: 720px;
+  }
+  .studio-archives-more {
+    margin-top: 24px;
+    max-width: 560px;
+  }
+  .studio-partners-head {
+    display: flex;
+    align-items: center;
+    gap: clamp(48px, 10vw, 160px);
+    margin-bottom: 28px;
+  }
+  .studio-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+  .studio-partners-grid li {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: clip;
+  }
+  .studio-inspi {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: clamp(24px, 4vw, 72px);
+    padding-bottom: clamp(40px, 5vw, 72px);
+  }
+  .studio-inspi .lead {
+    max-width: 640px;
+  }
+  .studio-inspi-more {
+    margin-top: 24px;
+    max-width: 520px;
+  }
+
+  @media (max-width: 1023px) {
+    .studio-about,
+    .studio-inspi {
+      grid-template-columns: 1fr;
+    }
+    .studio-archives {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 809px) {
+    .studio-partners-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

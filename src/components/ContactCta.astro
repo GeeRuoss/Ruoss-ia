@@ -1,0 +1,93 @@
+---
+// Section « Prenons un verre. » : panneau sombre avec vidéo, formulaire + fondateur.
+import ContactForm from './ContactForm.astro';
+import FounderCard from './FounderCard.astro';
+---
+
+<section class="section page">
+  <div class="sheet cta">
+    <div class="sheet-media" aria-hidden="true">
+      <video src="/video/hero.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="cta-grid">
+      <div class="cta-left">
+        <ContactForm compact />
+        <p class="small cta-copy">© 2026 Ruoss! Communication</p>
+      </div>
+      <div class="cta-right">
+        <h2 class="display cta-title">Prenons un&nbsp;verre.</h2>
+        <p class="cta-text">
+          Parlez-nous de votre projet ! Qu'il s'agisse d'un site internet, d'un logo de marketing ou de photographie.<br />
+          Et même si votre besoin se limite à un <strong>conseil</strong>, n'hésitez pas à <strong>nous appeler</strong> : nous
+          serons ravis d'en discuter avec vous.
+        </p>
+        <div class="cta-infos">
+          <div>
+            <p class="cta-info-title">◐ Réponse rapide.</p>
+            <p class="small muted">Un premier retour clair et honnête, sans engagement.</p>
+          </div>
+          <div>
+            <p class="cta-info-title">◮ Atteignez des sommets!</p>
+            <p class="small muted">Construisons une image solide, pensée pour durer.</p>
+          </div>
+        </div>
+        <FounderCard />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: clamp(24px, 4vw, 56px);
+  }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) 1fr;
+    gap: clamp(32px, 6vw, 96px);
+    align-items: start;
+  }
+  .cta-left {
+    display: grid;
+    gap: 24px;
+  }
+  .cta-copy {
+    opacity: 0.7;
+  }
+  .cta-title {
+    font-size: clamp(48px, 7.5vw, 108px);
+    margin-bottom: 28px;
+  }
+  .cta-text {
+    max-width: 460px;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 36px;
+  }
+  .cta-infos {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .cta-infos > div {
+    max-width: 240px;
+  }
+  .cta-info-title {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .cta-infos .muted {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  @media (max-width: 809px) {
+    .cta-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-right {
+      order: -1;
+    }
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+import { COUNTERS } from '../data/site';
+---
+
+<div class="counters">
+  {COUNTERS.map((c) => (
+    <div class="counter reveal">
+      <p class="counter-value display" data-count={c.value} data-suffix={c.suffix}>0{c.suffix}</p>
+      <p class="counter-label small muted">{c.label}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .counters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+  }
+  .counter-value {
+    font-size: clamp(48px, 5.9vw, 85px);
+    margin-bottom: 10px;
+  }
+  .counter-label {
+    max-width: 200px;
+  }
+
+  @media (max-width: 809px) {
+    .counters {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

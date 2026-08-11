@@ -1,0 +1,127 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, IMG } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // chemin canonique, ex. '/studio'
+  ogImage?: string;
+  noindex?: boolean;
+}
+const { title, description, path, ogImage = IMG.ogDefault, noindex = false } = Astro.props;
+
+const canonical = SITE.domain + (path === '/' ? '/' : path);
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : SITE.domain + ogImage;
+
+// Entité business partagée sur toutes les pages (@id stable).
+const businessLd = {
+  '@context': 'https://schema.org',
+  '@type': ['ProfessionalService', 'LocalBusiness'],
+  '@id': SITE.domain + '/#studio',
+  name: 'Ruoss! Communication',
+  description:
+    'Studio de design à Verbier (Valais, Suisse) : création de logos, identités de marque, sites internet, design 3D et formations IA pour entreprises et indépendants.',
+  url: SITE.domain,
+  telephone: '+41774506726',
+  email: SITE.email,
+  image: SITE.domain + IMG.ogDefault,
+  founder: { '@type': 'Person', name: 'Guillermo Ruoss' },
+  foundingDate: '2021',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Verbier',
+    postalCode: '1936',
+    addressRegion: 'Valais',
+    addressCountry: 'CH',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 46.0961, longitude: 7.2286 },
+  areaServed: { '@type': 'Place', name: 'Verbier, Val de Bagnes, Valais, Suisse' },
+  knowsLanguage: ['fr', 'en', 'es'],
+  sameAs: [SITE.instagram, SITE.behance],
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Formation IA en entreprise', url: SITE.domain + '/services' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Logo & branding', url: SITE.domain + '/services' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sites internet', url: SITE.domain + '/services' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design avancé (3D, produit, UX/UI)', url: SITE.domain + '/services' } },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/brand/favicon-light.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/brand/favicon-dark.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/brand/favicon-dark.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ruoss! Communication" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:locale" content="fr_CH" />
+    <!-- X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+    <script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
+  </head>
+  <body>
+    <Nav />
+    <slot />
+    <Footer />
+    <script>
+      // Reveal au scroll (fade-up), léger et sans lib.
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Compteurs animés (data-count, data-suffix).
+      const cio = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            cio.unobserve(e.target);
+            const el = e.target as HTMLElement;
+            const target = Number(el.dataset.count || '0');
+            const suffix = el.dataset.suffix || '';
+            const t0 = performance.now();
+            const dur = 1800;
+            const tick = (t: number) => {
+              const p = Math.min(1, (t - t0) / dur);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = Math.round(target * eased) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => cio.observe(el));
+    </script>
+  </body>
+</html>

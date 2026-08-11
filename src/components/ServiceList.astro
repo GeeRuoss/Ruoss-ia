@@ -1,0 +1,190 @@
+---
+// Panneau sombre « Services. » : 4 lignes accordéon avec vignettes et pilules.
+import { SERVICES } from '../data/site';
+
+interface Props {
+  withMedia?: boolean; // vidéo de fond (page services) ou fond sombre uni (home)
+}
+const { withMedia = false } = Astro.props;
+---
+
+<div class:list={['sheet services-sheet', { 'sheet--darker': withMedia }]}>
+  {withMedia && (
+    <div class="sheet-media" aria-hidden="true">
+      <video src="/video/hero.mp4" autoplay muted loop playsinline></video>
+    </div>
+  )}
+  <div class="services-head">
+    <p class="eyebrow services-eyebrow">
+      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--dark)" stroke-width="1.2" fill="none"/></svg>
+      Qu'est ce qu'on fait ?
+    </p>
+    <h2 class="display services-title">Services.<sup>(4)</sup></h2>
+  </div>
+  <ul class="services-rows">
+    {SERVICES.map((s) => (
+      <li class="service-row" data-open="true">
+        <p class="service-num small">{s.num}</p>
+        <div class="service-tiles" aria-hidden="true">
+          {s.tiles.map((t) => (
+            <img src={t} alt="" loading="lazy" />
+          ))}
+        </div>
+        <div class="service-main">
+          <h3 class="h-card">{s.title}</h3>
+          <p class="service-desc small">{s.desc}</p>
+        </div>
+        <div class="service-tags">
+          <p class="small tags-label">{s.tagLabel}</p>
+          <ul>
+            {s.tags.map((tag) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </div>
+        <button class="service-toggle" aria-label={`Réduire ${s.title}`}>
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path class="v" d="M7 2v10" stroke="currentColor" stroke-width="1.5"/><path d="M2 7h10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </li>
+    ))}
+  </ul>
+  <div class="services-cta">
+    <a class="btn btn--light" href="/contact">C'est parti !</a>
+  </div>
+</div>
+
+<style>
+  .services-sheet {
+    padding: clamp(24px, 4vw, 56px) 0 clamp(40px, 6vw, 88px);
+  }
+  .services-head {
+    position: relative;
+    padding: clamp(24px, 5vw, 72px) clamp(24px, 4vw, 56px);
+    text-align: center;
+  }
+  .services-eyebrow {
+    position: absolute;
+    left: clamp(24px, 4vw, 56px);
+    top: clamp(24px, 5vw, 72px);
+    color: var(--white);
+  }
+  .services-title {
+    font-size: var(--h-giant);
+  }
+  .services-title sup {
+    font-size: 0.18em;
+    font-weight: 500;
+    vertical-align: super;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .services-rows {
+    border-top: 1px solid var(--line-light);
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 70px 150px minmax(220px, 340px) 1fr 44px;
+    gap: clamp(16px, 3vw, 48px);
+    align-items: start;
+    padding: clamp(20px, 3vw, 36px) clamp(24px, 4vw, 56px);
+    border-bottom: 1px solid var(--line-light);
+  }
+  .service-num {
+    color: rgba(255, 255, 255, 0.6);
+    padding-top: 4px;
+  }
+  .service-tiles {
+    display: flex;
+  }
+  .service-tiles img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: var(--r-tile);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    margin-left: -18px;
+    transition: transform 0.3s ease;
+  }
+  .service-tiles img:first-child {
+    margin-left: 0;
+  }
+  .service-row:hover .service-tiles img {
+    transform: rotate(-3deg);
+  }
+  .service-main .h-card {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .service-desc {
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 340px;
+  }
+  .tags-label {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+  }
+  .service-tags ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .service-tags li {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--r-pill);
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .service-toggle {
+    color: var(--white);
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line-light);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    justify-self: end;
+    transition: background 0.2s ease;
+  }
+  .service-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .service-row[data-open='true'] .service-toggle .v {
+    display: none;
+  }
+  .service-row[data-open='false'] .service-desc,
+  .service-row[data-open='false'] .service-tags ul {
+    display: none;
+  }
+  .services-cta {
+    padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px) 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 1023px) {
+    .service-row {
+      grid-template-columns: 56px 1fr 44px;
+      grid-template-areas:
+        'num tiles toggle'
+        'num main toggle'
+        'num tags toggle';
+      row-gap: 16px;
+    }
+    .service-num { grid-area: num; }
+    .service-tiles { grid-area: tiles; }
+    .service-main { grid-area: main; }
+    .service-tags { grid-area: tags; }
+    .service-toggle { grid-area: toggle; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
+    row.querySelector('.service-toggle')?.addEventListener('click', () => {
+      row.dataset.open = row.dataset.open === 'true' ? 'false' : 'true';
+    });
+  });
+</script>

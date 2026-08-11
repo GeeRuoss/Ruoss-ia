@@ -1,0 +1,89 @@
+---
+// Formulaire : Formsubmit vers l'email du studio (à activer au premier envoi).
+import { SITE } from '../data/site';
+
+interface Props {
+  compact?: boolean; // variante carte blanche (sections sombres)
+}
+const { compact = false } = Astro.props;
+---
+
+<form class:list={['contact-form', { 'contact-form--card': compact }]} action={`https://formsubmit.co/${SITE.email}`} method="POST">
+  <input type="hidden" name="_subject" value="Nouveau message — ruosscommunication.com" />
+  <input type="hidden" name="_next" value={`${SITE.domain}/merci`} />
+  <input type="hidden" name="_captcha" value="false" />
+  {compact && <p class="form-title">Un projet <em>en tête ?</em></p>}
+  <label>
+    <span class="small muted">{compact ? 'Nom' : 'Votre nom*'}</span>
+    <input type="text" name="nom" placeholder={compact ? 'Nom ou entreprise' : ''} required />
+  </label>
+  <label>
+    <span class="small muted">Email{compact ? '' : ' *'}</span>
+    <input type="email" name="email" placeholder={compact ? 'E-mail' : ''} required />
+  </label>
+  {compact && (
+    <label>
+      <span class="small muted">Téléphone (optionel)</span>
+      <input type="tel" name="telephone" placeholder="+123456789" />
+    </label>
+  )}
+  <label>
+    <span class="small muted">Votre idée</span>
+    <textarea name="message" rows={compact ? 3 : 6} placeholder={compact ? "J'imagine..." : ''}></textarea>
+  </label>
+  <button class="btn btn--dark submit" type="submit">
+    <span class="submit-label">{compact ? 'Ça roule !' : 'Envoyer'}</span>
+    <span class="pin pin--white"></span>
+  </button>
+</form>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: 18px;
+  }
+  .contact-form--card {
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--r-card);
+    padding: 22px;
+    gap: 12px;
+  }
+  .form-title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .form-title em {
+    font-style: normal;
+    font-weight: 400;
+  }
+  label {
+    display: grid;
+    gap: 6px;
+  }
+  input,
+  textarea {
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    padding: 8px 0;
+    font-size: 15px;
+    outline: none;
+    resize: vertical;
+    border-radius: 0;
+  }
+  input:focus,
+  textarea:focus {
+    border-bottom-color: var(--ink);
+  }
+  .submit {
+    justify-self: start;
+    margin-top: 8px;
+  }
+  .contact-form--card .submit {
+    justify-self: stretch;
+    justify-content: center;
+  }
+</style>

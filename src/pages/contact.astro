@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE, IMG } from '../data/site';
+---
+
+<Layout
+  title="Contactez Ruoss! | Studio Design & Agence Web Verbier Valais"
+  description="Contactez Ruoss! Communication, studio de design à Verbier. Devis gratuit pour logo, site web, branding ou photographie. Réponse rapide garantie."
+  path="/contact"
+>
+  <section class="page contact">
+    <h1 class="display contact-title">Nous vous conseillons avec plaisir&nbsp;!</h1>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <h2 class="h-card contact-sub">Un projet en tête ?</h2>
+        <p class="contact-text muted">
+          Écrivez-nous et parlons-en. Que ce soit pour concrétiser une idée ou simplement obtenir un conseil, nous vous
+          accompagnons avec plaisir et pragmatisme.
+        </p>
+        <div class="contact-founder">
+          <img src={IMG.founder} alt="Guillermo Ruoss" width="46" height="46" loading="lazy" />
+          <div>
+            <p class="contact-founder-name">{SITE.founder}</p>
+            <p class="small muted">Fondateur</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <ContactForm />
+        <p class="contact-cross" aria-hidden="true">+</p>
+        <a class="contact-phone" href={SITE.phoneHref}>
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 5.5v7M5.5 9h7" stroke="currentColor" stroke-width="1.5"/></svg>
+          {SITE.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-title {
+    font-size: clamp(48px, 8vw, 116px);
+    padding-block: clamp(40px, 8vw, 110px) clamp(40px, 6vw, 90px);
+    max-width: 15ch;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 480px) minmax(280px, 420px);
+    justify-content: space-between;
+    gap: clamp(32px, 6vw, 96px);
+    padding-bottom: clamp(56px, 9vw, 140px);
+  }
+  .contact-sub {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .contact-text {
+    font-size: clamp(17px, 1.8vw, 24px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin-bottom: 36px;
+  }
+  .contact-founder {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .contact-founder img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .contact-founder-name {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .contact-cross {
+    color: var(--gray);
+    font-size: 20px;
+    font-weight: 300;
+    margin-block: 40px 32px;
+  }
+  .contact-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 809px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

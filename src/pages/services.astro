@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceList from '../components/ServiceList.astro';
+---
+
+<Layout
+  title="Services Design Verbier | Logo, Web, Design 3D & Photo Valais | Ruoss!"
+  description="Création logo et identité visuelle, sites web responsifs, design 3D, photographie professionnelle. Studio Ruoss! à Verbier, Valais. Devis gratuit."
+  path="/services"
+>
+  <section class="page">
+    <h1 class="display services-h1">Découvrez nos services.</h1>
+    <ServiceList withMedia />
+  </section>
+</Layout>
+
+<style>
+  .services-h1 {
+    font-size: clamp(48px, 8.5vw, 120px);
+    padding-block: clamp(40px, 8vw, 120px);
+    max-width: 13ch;
+  }
+</style>

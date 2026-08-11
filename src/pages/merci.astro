@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Merci ! | Ruoss! Communication"
+  description="Message bien reçu. Nous revenons vers vous rapidement."
+  path="/merci"
+  noindex
+>
+  <section class="page merci">
+    <h1 class="display">Merci&nbsp;!</h1>
+    <p class="lead">Message bien reçu. Nous revenons vers vous rapidement.</p>
+    <a class="btn btn--dark" href="/">Retour à l'accueil</a>
+  </section>
+</Layout>
+
+<style>
+  .merci {
+    min-height: 55svh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .merci h1 {
+    font-size: clamp(56px, 9vw, 128px);
+  }
+</style>

@@ -1,0 +1,426 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import FounderCard from '../components/FounderCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ServiceList from '../components/ServiceList.astro';
+import ContactCta from '../components/ContactCta.astro';
+import Counters from '../components/Counters.astro';
+import Stars from '../components/Stars.astro';
+import logoLargeRaw from '../../public/brand/logo-script-large.svg?raw';
+import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../data/site';
+---
+
+<Layout
+  title="Studio Design Verbier | Logo, Web & Branding Valais | Ruoss!"
+  description="Premier studio de design à Verbier, Valais. Création de logos, sites web, branding stratégique, design 3D et photographie pour entreprises suisses. Devis gratuit."
+  path="/"
+>
+  <!-- ============ HERO ============ -->
+  <section class="hero-wrap">
+    <div class="sheet hero">
+      <div class="sheet-media" aria-hidden="true">
+        <video src="/video/hero.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-title-row">
+          <h1 class="display hero-title">
+            <span class="hero-word">Ruoss!</span>
+            <span class="hero-mark" set:html={logoLargeRaw.replace('<svg ', '<svg width="140" ')} />
+          </h1>
+        </div>
+        <p class="hero-sub display">Communication</p>
+        <ul class="hero-services">
+          <li>Formation IA</li>
+          <li>Logo &amp; branding</li>
+          <li>Sites internet</li>
+          <li>Design avancé</li>
+        </ul>
+        <div class="hero-crosses" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+        <div class="hero-bottom">
+          <p class="hero-tagline">
+            Premier studio de design de Verbier.<br />
+            Du projet indépendant aux idées les plus ambitieuses.
+          </p>
+          <p class="small hero-copy">© 2026 Ruoss! Communication</p>
+          <div class="hero-founder"><FounderCard /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS ============ -->
+  <section class="section page clients">
+    <div class="clients-head">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        Ils nous font confiance
+      </p>
+      <p class="muted">(2021-26)</p>
+    </div>
+    <ul class="clients-grid">
+      {CLIENT_LOGOS.map((logo) => (
+        <li class="reveal"><img src={logo} alt="Logo client" loading="lazy" /></li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- ============ PROJETS ============ -->
+  <section class="section page projets">
+    <p class="muted proj-count">(27)</p>
+    <div class="proj-head">
+      <h2 class="display h-giant">Projets.<span class="proj-years">(2021-2026©)</span></h2>
+      <p class="proj-desc small">
+        Nous avons accompagné des entreprises et indépendants de divers secteurs dans la réalisation de leurs objectifs.
+        Voici quelques projets récents.
+      </p>
+    </div>
+    <div class="proj-grid">
+      {PROJECTS.map((p) => (
+        <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}`} />
+      ))}
+      <ProjectCard
+        name={OTHER_PROJECTS_CARD.name}
+        year={OTHER_PROJECTS_CARD.year}
+        logo={OTHER_PROJECTS_CARD.logo}
+        cover={OTHER_PROJECTS_CARD.cover}
+        logoWidth={OTHER_PROJECTS_CARD.logoWidth}
+        href="/projects-2"
+      />
+    </div>
+  </section>
+
+  <!-- ============ CHIFFRES + APPROCHE ============ -->
+  <section class="section page chiffres">
+    <Counters />
+    <div class="approche">
+      <div class="approche-mark"><Logo width={54} /></div>
+      <div class="approche-text">
+        <p class="lead">
+          <span class="muted">Nous concevons chaque projet avec une vision artistique forte et essentielle.</span>
+          Notre approche est simple : Nous privilégions la simplicité, la couleur, la beauté et l'innovation, au service
+          d'un futur clair et fonctionnel.
+        </p>
+        <p class="approche-more small muted">
+          Nous ne survendons pas et n'utilisons pas de discours marketing tape-à-l'œil. Nous concevons simplement des
+          logos, des éléments visuels, des sites et des stratégies bien pensés, fonctionnels et durables, au service des
+          entreprises et particuliers.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section page">
+    <ServiceList />
+  </section>
+
+  <!-- ============ EXPÉRIENCES ============ -->
+  <section class="section page avis">
+    <p class="eyebrow">
+      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+      Testimonials
+    </p>
+    <h2 class="display h-giant avis-title">Expériences.<span class="avis-years">©2021-2026</span></h2>
+    <div class="avis-grid">
+      <div class="avis-card avis-card--score reveal">
+        <p class="avis-score display">5<span>/5</span></p>
+        <p class="small">
+          Nous avons déliveré plus de <strong>150 projets</strong> qui ont aidé des entreprises et indépendats a
+          conquérir leur rêves!
+        </p>
+        <div class="avis-mark"><Logo width={40} /></div>
+        <a class="btn btn--dark" href={SITE.reviewLink} target="_blank" rel="noopener">Laisser un avis</a>
+      </div>
+      {REVIEWS.map((r) => (
+        <div class="avis-card reveal">
+          <div class="avis-user">
+            <img src={r.avatar} alt={`${r.name} — ${r.company}`} width="46" height="46" loading="lazy" />
+            <div>
+              <p class="avis-name">{r.name}</p>
+              <p class="small muted">{r.company}</p>
+            </div>
+          </div>
+          <Stars width={80} />
+          <p class="small avis-text">{r.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ INSTA ============ -->
+  <section class="section page insta">
+    <p class="eyebrow">
+      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+      Réseaux sociaux
+    </p>
+    <h2 class="display h-giant">
+      <a href={SITE.instagram} target="_blank" rel="noopener" class="insta-link">Suivez-nous!</a>
+    </h2>
+    <p class="lead insta-sub">Trouvez-nous uniquement sur insta.</p>
+  </section>
+
+  <ContactCta />
+</Layout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero-wrap {
+    /* Quasi pleine largeur, comme le live (6px de marge) */
+    padding-inline: 6px;
+  }
+  .hero {
+    min-height: calc(100svh - var(--nav-h) - 12px);
+    display: flex;
+  }
+  .hero-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(24px, 4vw, 56px);
+    position: relative;
+  }
+  .hero-title-row {
+    margin-top: clamp(24px, 6vh, 64px);
+    display: flex;
+    justify-content: center;
+  }
+  .hero-title {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: clamp(8px, 1.5vw, 24px);
+    font-size: clamp(72px, 11.4vw, 200px);
+  }
+  .hero-mark :global(svg) {
+    width: clamp(60px, 9.7vw, 168px);
+    height: auto;
+  }
+  .hero-sub {
+    text-align: center;
+    font-size: clamp(18px, 1.45vw, 24px);
+    letter-spacing: -0.06em;
+    margin-top: -0.4em;
+  }
+  .hero-services {
+    position: absolute;
+    right: clamp(24px, 4vw, 56px);
+    top: clamp(96px, 22vh, 220px);
+    display: grid;
+    gap: 10px;
+  }
+  .hero-services li {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+  .hero-crosses {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: clamp(32px, 8vh, 96px);
+    opacity: 0.85;
+    font-weight: 300;
+    font-size: 18px;
+  }
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    gap: 24px;
+  }
+  .hero-tagline {
+    font-size: clamp(17px, 1.8vw, 26px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+  .hero-copy {
+    opacity: 0.75;
+    padding-bottom: 8px;
+  }
+  .hero-founder {
+    justify-self: end;
+  }
+
+  /* ---------- Clients ---------- */
+  .clients {
+    padding-bottom: 0;
+  }
+  .clients-head {
+    display: flex;
+    align-items: center;
+    gap: clamp(48px, 10vw, 160px);
+    margin-bottom: 28px;
+  }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  .clients-grid li {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: clip;
+  }
+  .clients-grid img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---------- Projets ---------- */
+  .proj-count {
+    margin-bottom: clamp(32px, 6vw, 88px);
+  }
+  .proj-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+    margin-bottom: clamp(32px, 4vw, 56px);
+    text-align: center;
+  }
+  .proj-head h2 {
+    grid-column: 1 / -1;
+  }
+  .proj-years {
+    display: block;
+    font-size: clamp(18px, 2vw, 30px);
+    letter-spacing: -0.04em;
+    margin-top: 8px;
+  }
+  .proj-desc {
+    grid-column: 2;
+    max-width: 260px;
+    text-align: left;
+    justify-self: end;
+    margin-top: -80px;
+  }
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  /* ---------- Chiffres ---------- */
+  .approche {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(32px, 8vw, 140px);
+    margin-top: clamp(56px, 8vw, 120px);
+    align-items: start;
+  }
+  .approche-text .lead {
+    max-width: 780px;
+  }
+  .approche-more {
+    margin-top: 24px;
+    max-width: 560px;
+  }
+
+  /* ---------- Avis ---------- */
+  .avis-title {
+    margin-block: 16px 40px;
+  }
+  .avis-years {
+    display: block;
+    font-size: clamp(16px, 1.8vw, 26px);
+    letter-spacing: -0.04em;
+    margin-top: 6px;
+  }
+  .avis-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: start;
+  }
+  .avis-card {
+    background: var(--white);
+    border-radius: var(--r-card);
+    padding: 20px;
+    display: grid;
+    gap: 14px;
+  }
+  .avis-score {
+    font-size: 64px;
+  }
+  .avis-score span {
+    font-size: 24px;
+    color: var(--gray);
+  }
+  .avis-mark {
+    color: var(--ink);
+  }
+  .avis-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .avis-user img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .avis-name {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .avis-text {
+    white-space: pre-line;
+  }
+
+  /* ---------- Insta ---------- */
+  .insta {
+    text-align: left;
+  }
+  .insta h2 {
+    margin-block: 16px 12px;
+    text-align: center;
+  }
+  .insta-link {
+    transition: opacity 0.25s ease;
+  }
+  .insta-link:hover {
+    opacity: 0.6;
+  }
+  .insta-sub {
+    text-align: center;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1023px) {
+    .avis-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 809px) {
+    .hero-services {
+      position: static;
+      margin-top: 32px;
+    }
+    .hero-bottom {
+      grid-template-columns: 1fr;
+    }
+    .hero-founder {
+      justify-self: start;
+    }
+    .clients-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .proj-grid {
+      grid-template-columns: 1fr;
+    }
+    .proj-desc {
+      grid-column: 1;
+      margin-top: 0;
+      justify-self: start;
+    }
+    .avis-grid {
+      grid-template-columns: 1fr;
+    }
+    .approche {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

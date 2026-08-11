@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Galerie complète, ordre du site live (colonne centrée ~1200px).
+const GALLERY = [
+  'Sh3jwaTQqCajd9vqTXRV49ares.jpg',
+  'W5jSy8ubDRXhgMRrhIIWWmxor8.jpg',
+  '4gZMtfAWGqddr9qgqqikWsTTAaw.jpg',
+  'CazPNYZgEUxB3qKmLploXtkJpo.jpg',
+  'MmhtKM1WPPmxJ5alVjWVCggXSg.jpg',
+  'FKy9jf4bgSM02AgBI6oL8YLeLU.jpg',
+  'uNyV1THal3WiaJsYzJ6HRXa8.jpg',
+  '1hOlnhX3qxSOUn7crcsHpHUba0.jpg',
+  '9eHmSny1Szbbg8Qe0VIvVwLU5VA.jpg',
+  '5fgp8GN5EEMboORnmxalUwgIM.jpg',
+  'pEdoVrLATjKsAaC1PNoPxiKqPQ.jpg',
+  'jZy8mZNqIGM2HCHYxxgS95k4U.jpg',
+  'RTQKKfLu2tyeeETFj3BdjCuCYf4.jpg',
+  'GihEumSdb1WQqGNSMEpoUJM0zsw.jpg',
+  'MzKxsvLiSTCF9LDFrAGCrQyIsX8.jpg',
+  'l0k831svmncwboT1fpMBQ02YLo.jpg',
+  'DpAyVJWPYmzOZziPiXAvMFLZShk.jpg',
+  '6zJ6e3g4nRSJc4f0NqAoTKRAXkI.jpg',
+  'GTHkAJwnTtJ2wexYtQjtsQOYes.jpg',
+  '3E9ZlmtbqLAu2uecWms3fD6YWM.jpg',
+  '5CZEqGzLxOjkDkVRp2gERlr6U.jpg',
+  '9uqqLHIx4PBpp0Y57sov5uVECY.jpg',
+  'fGKfApU3dqAgZHEKPW21DIHBD5c.jpg',
+  'fR3GshDEc39l8yxP7Mcn00qc8.jpg',
+  'fS9HL64NH3gAX0jPqQy4Y4NxvuY.jpg',
+  'Vw1yWSCJysnJY5xJrLRJQDCqsas.jpg',
+  'vmCbemvPAA6qvyOInDTBXDmmXE.jpg',
+  'k6J1At31VPUbj2GGM1NYhttVE24.jpg',
+  'n9RydunvjMRCNUwCVHdsarSwE.jpg',
+  '5NxfUHIZIURPfydiW7sKUzTeos.jpg',
+  'pJtyEnloTWRS4DrHeKocDKurHw.jpg',
+  'vxhM4I3ehHUMktVYw6asOZgmACs.jpg',
+  'mkbIcxTrD2z2aY3uokhDvUbJQ2o.jpg',
+  'itU83vLo0dYYx7mbpN8dbAX7SeE.jpg',
+  'T3p64ijQ0wTGqrSQakPjrq6cw.jpg',
+  'XFSY5AJntp5YBGLRkNJq4unrRbk.jpg',
+  '8IWqfVGpt7Hp1cpTSlZxsDrXM.jpg',
+  'oBficr7g7PuNU8thAaKoAQoGyc.jpg',
+  'bOm98ZKjCy1hW4H3S1ltIm94Y.jpg',
+  'gP4IP2KHA8Gmo5tp3MnuTYhkxw.jpg',
+  'Sp8rgsSri7qOhZTBiV4nCy29FVc.jpg',
+  'BrUWlXNKdWBtMr6LMcSYzK5Jc.jpg',
+  'emqMfKtuHCmhmpRt5kmRh49zy30.jpg',
+  'cCFQYJBrEDX7bWkjXx5jUvKTc.jpg',
+  'Ts8JOiw5Lh8L0IENmiTLauut4w.jpg',
+  '1qln9El6eLievgMVqyuenSvHU.jpg',
+  'wVwR6fRdujBLwt5fVu2J4vShyw.jpg',
+  '1635XqeAE8zKS38LsiK2gIeJCEE.jpg',
+  'VWJKZ6lyBao0BsfGF09qmUolNFw.jpg',
+  '33JdvFQNvn7YFfe3Rq9AZxZs.jpg',
+  'OgJlmssWaxslk8rCjjhvQk98ceQ.jpg',
+].map((f) => `/img/${f}`);
+---
+
+<Layout
+  title="Ruoss! Communication - Graphisme, Sites Web, Design"
+  description="Ruoss! Communication est un studio de communication visuelle en Suisse, spécialisé en graphisme, identité visuelle, sites web et design."
+  path="/projects-2"
+>
+  <section class="page listing">
+    <div class="listing-head">
+      <h1 class="display">Projects.<span class="listing-years">(2020-25©)</span></h1>
+      <p class="listing-desc small">
+        Nous avons accompagné des entreprises et indépendants de divers secteurs dans la réalisation de leurs objectifs.
+        Voici quelques projets récents.
+      </p>
+    </div>
+    <div class="listing-gallery">
+      {GALLERY.map((src) => (
+        <img src={src} alt="Projet Ruoss! Communication" loading="lazy" class="reveal" />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .listing {
+    max-width: 1200px;
+    padding-block: clamp(24px, 4vw, 56px);
+  }
+  .listing-head {
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 300px);
+    align-items: end;
+    gap: 32px;
+    margin-bottom: clamp(28px, 4vw, 48px);
+  }
+  .listing-head h1 {
+    font-size: clamp(44px, 5.6vw, 80px);
+  }
+  .listing-years {
+    display: block;
+    font-size: clamp(16px, 1.8vw, 26px);
+    letter-spacing: -0.04em;
+    margin-top: 6px;
+  }
+  .listing-gallery {
+    display: grid;
+    gap: clamp(12px, 1.5vw, 20px);
+  }
+  .listing-gallery img {
+    width: 100%;
+    border-radius: var(--r-card);
+  }
+
+  @media (max-width: 809px) {
+    .listing-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+</style>

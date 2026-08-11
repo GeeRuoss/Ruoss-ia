@@ -1,0 +1,132 @@
+---
+import Logo from './Logo.astro';
+import { NAV, SITE } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="page">
+    <div class="footer-crosses" aria-hidden="true">
+      <span>+</span><span>+</span><span>+</span>
+    </div>
+    <div class="footer-grid">
+      <a class="footer-phone" href={SITE.phoneHref}>
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 5.5v7M5.5 9h7" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>{SITE.phoneDisplay}</span>
+      </a>
+      <div class="footer-col">
+        <p class="small muted">Navigation</p>
+        <ul>
+          {NAV.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="small muted">Social</p>
+        <ul>
+          <li><a href={SITE.instagram} target="_blank" rel="noopener">Instagram <span class="arrow">↗</span></a></li>
+          <li><a href={SITE.behance} target="_blank" rel="noopener">Behance <span class="arrow">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-word display" aria-hidden="true">Ruoss!<span>Communication</span></p>
+  </div>
+  <div class="footer-bar">
+    <div class="page footer-bar-inner">
+      <p class="small">© 2026 Ruoss! Communication. Tous droits réservés</p>
+      <p class="small footer-love"><Logo width={22} /> Made with love by Ruoss! Communication</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-top: clamp(48px, 7vw, 100px);
+    overflow: clip;
+  }
+  .footer-crosses {
+    display: flex;
+    justify-content: space-between;
+    color: var(--gray);
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: clamp(32px, 5vw, 72px);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: clamp(40px, 8vw, 160px);
+    align-items: start;
+  }
+  .footer-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1.5px;
+    justify-self: start;
+  }
+  .footer-col .small {
+    margin-bottom: 14px;
+  }
+  .footer-col li {
+    margin-bottom: 6px;
+  }
+  .footer-col a {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    transition: opacity 0.2s ease;
+  }
+  .footer-col a:hover {
+    opacity: 0.55;
+  }
+  .arrow {
+    color: var(--gray);
+    font-size: 14px;
+  }
+  .footer-word {
+    text-align: right;
+    font-size: clamp(80px, 13.5vw, 195px);
+    line-height: 0.9;
+    margin-top: clamp(24px, 4vw, 56px);
+  }
+  .footer-word span {
+    display: block;
+    font-size: clamp(28px, 4.2vw, 60px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+  .footer-bar {
+    margin-top: clamp(32px, 4vw, 56px);
+    background: #000;
+    color: var(--white);
+    padding-block: 14px;
+  }
+  .footer-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-love {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 809px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-phone {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

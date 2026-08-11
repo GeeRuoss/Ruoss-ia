@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import Logo from '../../components/Logo.astro';
+import { CASE_STUDIES } from '../../data/projects';
+import { PROJECTS } from '../../data/site';
+
+export function getStaticPaths() {
+  return CASE_STUDIES.map((cs) => ({ params: { slug: cs.slug }, props: { cs } }));
+}
+const { cs } = Astro.props;
+
+// Deux autres projets (les deux premiers de la liste, hors projet courant).
+const autres = PROJECTS.filter((p) => p.slug !== cs.slug).slice(0, 2);
+const [pairA, pairB, ...rest] = cs.gallery;
+---
+
+<Layout title={cs.metaTitle} description={cs.metaDescription} path={`/projects/${cs.slug}`}>
+  <article class="page">
+    <h1 class="display cs-title">{cs.name}</h1>
+
+    <div class="cs-intro">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        Introduction
+      </p>
+      <div class="cs-intro-text">
+        {cs.intro.map((p) => <p>{p}</p>)}
+      </div>
+      <dl class="cs-meta">
+        <div><dt class="small muted">Année</dt><dd>{cs.year}</dd></div>
+        <div><dt class="small muted">Industrie</dt><dd>{cs.industry}</dd></div>
+        <div class="cs-meta-services"><dd class="small">{cs.services}</dd></div>
+        <div><dt class="small muted">Temporalité</dt><dd>{cs.duration}</dd></div>
+      </dl>
+    </div>
+
+    {pairA && (
+      <div class="cs-pair">
+        <img src={pairA} alt={cs.name} loading="lazy" class="reveal" />
+        {pairB && <img src={pairB} alt={cs.name} loading="lazy" class="reveal" />}
+      </div>
+    )}
+
+    <div class="cs-block">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        {cs.challengesLabel}
+      </p>
+      <div class="cs-block-text">
+        {cs.challengesTitle && <p class="lead cs-block-title">{cs.challengesTitle}</p>}
+        {cs.challenges.map((p) => <p>{p}</p>)}
+        <a class="btn btn--dark cs-link" href={cs.linkHref} target="_blank" rel="noopener">{cs.linkLabel}</a>
+      </div>
+    </div>
+
+    <div class="cs-gallery">
+      {rest.map((src) => (
+        <img src={src} alt={cs.name} loading="lazy" class="reveal" />
+      ))}
+    </div>
+
+    {cs.closing && (
+      <div class="cs-block">
+        <p class="eyebrow">
+          <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+          {cs.closingLabel}
+        </p>
+        <div class="cs-block-text">
+          {cs.closingTitle && <p class="lead cs-block-title">{cs.closingTitle}</p>}
+          {cs.closing.map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    )}
+
+    <section class="cs-autres">
+      <div class="cs-autres-head">
+        <span class="cs-autres-mark"><Logo width={46} /></span>
+        <h2 class="display">Autres projets.</h2>
+        <a class="btn btn--dark" href="/projects-2">All projects</a>
+      </div>
+      <p class="muted">(2021-26©)</p>
+      <div class="cs-autres-grid">
+        {autres.map((p) => (
+          <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}`} />
+        ))}
+      </div>
+    </section>
+  </article>
+
+  <ContactCta />
+</Layout>
+
+<style>
+  .cs-title {
+    font-size: clamp(44px, 6.7vw, 96px);
+    padding-block: clamp(24px, 4vw, 56px) clamp(24px, 3vw, 40px);
+  }
+  .cs-intro {
+    display: grid;
+    grid-template-columns: 220px 1fr 260px;
+    gap: clamp(24px, 4vw, 64px);
+    padding-bottom: clamp(32px, 4vw, 56px);
+  }
+  .cs-intro-text {
+    display: grid;
+    gap: 16px;
+    max-width: 640px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .cs-meta {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+  }
+  .cs-meta dt {
+    margin-bottom: 2px;
+  }
+  .cs-meta dd {
+    font-weight: 500;
+  }
+  .cs-meta-services dd {
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .cs-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(12px, 1.5vw, 20px);
+    margin-bottom: clamp(40px, 6vw, 88px);
+  }
+  .cs-pair img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--r-card);
+    aspect-ratio: 4 / 3;
+  }
+  .cs-block {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: clamp(24px, 4vw, 64px);
+    padding-block: clamp(24px, 3vw, 48px) clamp(40px, 6vw, 80px);
+  }
+  .cs-block-text {
+    display: grid;
+    gap: 16px;
+    max-width: 640px;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .cs-block-title {
+    margin-bottom: 4px;
+  }
+  .cs-link {
+    justify-self: start;
+    margin-top: 12px;
+  }
+  .cs-gallery {
+    display: grid;
+    gap: clamp(12px, 1.5vw, 20px);
+  }
+  .cs-gallery img {
+    width: 100%;
+    border-radius: var(--r-card);
+  }
+  .cs-autres {
+    padding-block: clamp(56px, 8vw, 120px) 0;
+  }
+  .cs-autres-head {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 40px);
+    margin-bottom: 8px;
+  }
+  .cs-autres-head h2 {
+    font-size: clamp(40px, 6vw, 88px);
+    flex: 1;
+  }
+  .cs-autres-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 2vw, 28px);
+    margin-top: 24px;
+  }
+
+  @media (max-width: 1023px) {
+    .cs-intro {
+      grid-template-columns: 1fr;
+    }
+    .cs-block {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 809px) {
+    .cs-pair,
+    .cs-autres-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

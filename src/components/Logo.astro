@@ -1,0 +1,23 @@
+---
+// Logo script « R! » inline, couleur pilotée par currentColor.
+import logoRaw from '../../public/brand/logo-script.svg?raw';
+
+interface Props {
+  width?: number;
+  class?: string;
+}
+const { width = 40, class: className = '' } = Astro.props;
+
+const svg = logoRaw
+  .replace('fill="rgb(0, 0, 0)"', 'fill="currentColor"')
+  .replace('<svg ', `<svg width="${width}" role="img" aria-label="Ruoss! Communication" `);
+---
+
+<span class={`logo ${className}`} set:html={svg} />
+
+<style>
+  .logo {
+    display: inline-flex;
+    line-height: 0;
+  }
+</style>

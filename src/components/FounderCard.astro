@@ -1,0 +1,53 @@
+---
+import { SITE, IMG } from '../data/site';
+---
+
+<div class="founder-card">
+  <img src={IMG.founder} alt="Guillermo Ruoss, fondateur de Ruoss! Communication" width="213" height="319" loading="lazy" />
+  <div class="founder-info">
+    <p class="small muted">Fondateur</p>
+    <p class="founder-name">{SITE.founder}</p>
+    <a class="btn btn--dark founder-btn" href={SITE.whatsapp} target="_blank" rel="noopener">
+      Whatsapp-moi !
+      <span class="pin pin--green"></span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .founder-card {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    background: var(--white);
+    color: var(--ink);
+    border-radius: var(--r-card);
+    padding: 10px;
+    width: fit-content;
+  }
+  .founder-card img {
+    width: 88px;
+    height: 116px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .founder-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding-right: 10px;
+  }
+  .founder-name {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    max-width: 130px;
+  }
+  .founder-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+</style>
