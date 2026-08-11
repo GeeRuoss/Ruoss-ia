@@ -15,13 +15,13 @@ import FounderCard from './FounderCard.astro';
         <p class="small cta-copy">© 2026 Ruoss! Communication</p>
       </div>
       <div class="cta-right">
-        <h2 class="display cta-title">Prenons un&nbsp;verre.</h2>
-        <p class="cta-text">
+        <h2 class="display cta-title wipe">Prenons un&nbsp;verre.</h2>
+        <p class="cta-text reveal">
           Parlez-nous de votre projet ! Qu'il s'agisse d'un site internet, d'un logo de marketing ou de photographie.<br />
           Et même si votre besoin se limite à un <strong>conseil</strong>, n'hésitez pas à <strong>nous appeler</strong> : nous
           serons ravis d'en discuter avec vous.
         </p>
-        <div class="cta-infos">
+        <div class="cta-infos" data-stagger>
           <div>
             <p class="cta-info-title">◐ Réponse rapide.</p>
             <p class="small muted">Un premier retour clair et honnête, sans engagement.</p>
@@ -31,7 +31,7 @@ import FounderCard from './FounderCard.astro';
             <p class="small muted">Construisons une image solide, pensée pour durer.</p>
           </div>
         </div>
-        <FounderCard />
+        <div class="reveal"><FounderCard /></div>
       </div>
     </div>
   </div>

@@ -12,7 +12,7 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
   path="/studio"
 >
   <article class="page">
-    <h1 class="display studio-title">Studio.</h1>
+    <h1 class="display studio-title wipe">Studio.</h1>
 
     <div class="studio-about">
       <p class="eyebrow">
@@ -55,16 +55,16 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
     </div>
 
     <div class="studio-partners section">
-      <div class="studio-partners-head">
+      <div class="studio-partners-head section-head rule">
         <p class="eyebrow">
           <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
           Quelques parenaires
         </p>
         <p class="muted">(2021-26©)</p>
       </div>
-      <ul class="studio-partners-grid">
+      <ul class="studio-partners-grid" data-stagger>
         {STUDIO_PARTNERS.map((logo) => (
-          <li class="reveal"><img src={logo} alt="Logo partenaire" loading="lazy" /></li>
+          <li><img src={logo} alt="Logo partenaire" loading="lazy" /></li>
         ))}
       </ul>
     </div>
@@ -139,9 +139,6 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
     max-width: 560px;
   }
   .studio-partners-head {
-    display: flex;
-    align-items: center;
-    gap: clamp(48px, 10vw, 160px);
     margin-bottom: 28px;
   }
   .studio-partners-grid {

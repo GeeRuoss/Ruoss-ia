@@ -31,10 +31,10 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
         </div>
         <p class="hero-sub display">Communication</p>
         <ul class="hero-services">
-          <li>Formation IA</li>
-          <li>Logo &amp; branding</li>
-          <li>Sites internet</li>
-          <li>Design avancé</li>
+          <li style="--i:0">Formation IA</li>
+          <li style="--i:1">Logo &amp; branding</li>
+          <li style="--i:2">Sites internet</li>
+          <li style="--i:3">Design avancé</li>
         </ul>
         <div class="hero-crosses" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
         <div class="hero-bottom">
@@ -51,31 +51,40 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
 
   <!-- ============ CLIENTS ============ -->
   <section class="section page clients">
-    <div class="clients-head">
+    <div class="section-head rule">
       <p class="eyebrow">
         <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
         Ils nous font confiance
       </p>
       <p class="muted">(2021-26)</p>
     </div>
-    <ul class="clients-grid">
-      {CLIENT_LOGOS.map((logo) => (
-        <li class="reveal"><img src={logo} alt="Logo client" loading="lazy" /></li>
-      ))}
-    </ul>
+    <div class="marquee reveal" aria-label="Logos de nos clients">
+      <ul>
+        {CLIENT_LOGOS.map((logo) => (
+          <li><img src={logo} alt="Logo client" loading="lazy" /></li>
+        ))}
+      </ul>
+      <ul aria-hidden="true">
+        {CLIENT_LOGOS.map((logo) => (
+          <li><img src={logo} alt="" loading="lazy" /></li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <!-- ============ PROJETS ============ -->
   <section class="section page projets">
-    <p class="muted proj-count">(27)</p>
-    <div class="proj-head">
-      <h2 class="display h-giant">Projets.<span class="proj-years">(2021-2026©)</span></h2>
+    <div class="section-head rule">
+      <p class="muted proj-count">(27)</p>
       <p class="proj-desc small">
         Nous avons accompagné des entreprises et indépendants de divers secteurs dans la réalisation de leurs objectifs.
         Voici quelques projets récents.
       </p>
     </div>
-    <div class="proj-grid">
+    <div class="proj-head">
+      <h2 class="display h-giant wipe">Projets.<span class="proj-years">(2021-2026©)</span></h2>
+    </div>
+    <div class="proj-grid" data-stagger>
       {PROJECTS.map((p) => (
         <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}`} />
       ))}
@@ -91,11 +100,11 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
   </section>
 
   <!-- ============ CHIFFRES + APPROCHE ============ -->
-  <section class="section page chiffres">
+  <section class="section page chiffres rule">
     <Counters />
     <div class="approche">
-      <div class="approche-mark"><Logo width={54} /></div>
-      <div class="approche-text">
+      <div class="approche-mark reveal"><Logo width={54} /></div>
+      <div class="approche-text reveal">
         <p class="lead">
           <span class="muted">Nous concevons chaque projet avec une vision artistique forte et essentielle.</span>
           Notre approche est simple : Nous privilégions la simplicité, la couleur, la beauté et l'innovation, au service
@@ -117,12 +126,15 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
 
   <!-- ============ EXPÉRIENCES ============ -->
   <section class="section page avis">
-    <p class="eyebrow">
-      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
-      Testimonials
-    </p>
-    <h2 class="display h-giant avis-title">Expériences.<span class="avis-years">©2021-2026</span></h2>
-    <div class="avis-grid">
+    <div class="section-head rule">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        Testimonials
+      </p>
+      <p class="muted">(5/5)</p>
+    </div>
+    <h2 class="display h-giant avis-title wipe">Expériences.<span class="avis-years">©2021-2026</span></h2>
+    <div class="avis-grid" data-stagger>
       <div class="avis-card avis-card--score reveal">
         <p class="avis-score display">5<span>/5</span></p>
         <p class="small">
@@ -150,14 +162,17 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
 
   <!-- ============ INSTA ============ -->
   <section class="section page insta">
-    <p class="eyebrow">
-      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
-      Réseaux sociaux
-    </p>
-    <h2 class="display h-giant">
+    <div class="section-head rule">
+      <p class="eyebrow">
+        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
+        Réseaux sociaux
+      </p>
+      <p class="muted">@ruoss_communication</p>
+    </div>
+    <h2 class="display h-giant wipe">
       <a href={SITE.instagram} target="_blank" rel="noopener" class="insta-link">Suivez-nous!</a>
     </h2>
-    <p class="lead insta-sub">Trouvez-nous uniquement sur insta.</p>
+    <p class="lead insta-sub reveal">Trouvez-nous uniquement sur insta.</p>
   </section>
 
   <ContactCta />
@@ -172,6 +187,35 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
   .hero {
     min-height: calc(100svh - var(--nav-h) - 12px);
     display: flex;
+  }
+  /* Entrée du hero : vidéo qui se pose, titre balayé, le reste en cascade */
+  .hero :global(.sheet-media video) {
+    animation: media-settle 1.8s var(--ease-out) both;
+  }
+  .hero-word {
+    display: inline-block;
+    animation: wipe-in 1.1s var(--ease-out) 0.25s both;
+  }
+  .hero-mark {
+    animation: fade-up 0.9s var(--ease-out) 0.9s both;
+  }
+  .hero-sub {
+    animation: fade-up 0.9s var(--ease-out) 0.65s both;
+  }
+  .hero-services li {
+    animation: fade-up 0.8s var(--ease-out) calc(0.9s + var(--i, 0) * 0.12s) both;
+  }
+  .hero-tagline {
+    animation: fade-up 0.9s var(--ease-out) 1.1s both;
+  }
+  .hero-copy {
+    animation: fade-up 0.9s var(--ease-out) 1.25s both;
+  }
+  .hero-founder {
+    animation: fade-up 0.9s var(--ease-out) 1.35s both;
+  }
+  .hero-crosses {
+    animation: fade-up 1s var(--ease-out) 1.5s both;
   }
   .hero-inner {
     flex: 1;
@@ -249,41 +293,29 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
   .clients {
     padding-bottom: 0;
   }
-  .clients-head {
-    display: flex;
-    align-items: center;
-    gap: clamp(48px, 10vw, 160px);
+  .clients .section-head {
     margin-bottom: 28px;
   }
-  .clients-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 14px;
-  }
-  .clients-grid li {
+  .marquee li {
+    flex: none;
+    width: clamp(160px, 15.5vw, 224px);
     background: var(--white);
     border-radius: 10px;
     overflow: clip;
   }
-  .clients-grid img {
+  .marquee img {
     width: 100%;
     height: auto;
   }
 
   /* ---------- Projets ---------- */
-  .proj-count {
-    margin-bottom: clamp(32px, 6vw, 88px);
+  .projets .section-head {
+    align-items: start;
+    margin-bottom: clamp(32px, 5vw, 72px);
   }
   .proj-head {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 32px;
-    margin-bottom: clamp(32px, 4vw, 56px);
     text-align: center;
-  }
-  .proj-head h2 {
-    grid-column: 1 / -1;
+    margin-bottom: clamp(32px, 4vw, 56px);
   }
   .proj-years {
     display: block;
@@ -292,11 +324,8 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     margin-top: 8px;
   }
   .proj-desc {
-    grid-column: 2;
     max-width: 260px;
     text-align: left;
-    justify-self: end;
-    margin-top: -80px;
   }
   .proj-grid {
     display: grid;
@@ -405,16 +434,8 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     .hero-founder {
       justify-self: start;
     }
-    .clients-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
     .proj-grid {
       grid-template-columns: 1fr;
-    }
-    .proj-desc {
-      grid-column: 1;
-      margin-top: 0;
-      justify-self: start;
     }
     .avis-grid {
       grid-template-columns: 1fr;

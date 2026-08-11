@@ -35,8 +35,17 @@ import { NAV, SITE } from '../data/site';
     display: flex;
     align-items: center;
     height: var(--nav-h);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 20;
+    max-width: none;
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+  }
+  .nav.is-scrolled {
+    background: rgba(245, 245, 245, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(10, 10, 10, 0.06);
   }
   .nav-logo {
     flex: none;
@@ -136,24 +145,32 @@ import { NAV, SITE } from '../data/site';
 </style>
 
 <script>
-  const burger = document.querySelector<HTMLButtonElement>('.burger')!;
-  const menu = document.getElementById('menu')!;
-  burger.addEventListener('click', () => {
-    const open = menu.hidden;
-    menu.hidden = !open;
-    burger.classList.toggle('is-open', open);
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-    if (open) burger.querySelectorAll('span').forEach((s) => (s.style.background = '#fff'));
-    else burger.querySelectorAll('span').forEach((s) => (s.style.background = ''));
-  });
-  // Fermer le menu quand on clique un lien.
-  menu.querySelectorAll('a').forEach((a) =>
-    a.addEventListener('click', () => {
-      menu.hidden = true;
-      burger.classList.remove('is-open');
-      document.body.style.overflow = '';
-    })
-  );
+  const initNav = () => {
+    const burger = document.querySelector<HTMLButtonElement>('.burger');
+    const menu = document.getElementById('menu');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', () => {
+      const open = menu.hidden;
+      menu.hidden = !open;
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+      burger.querySelectorAll('span').forEach((s) => (s.style.background = open ? '#fff' : ''));
+    });
+    // Fermer le menu quand on clique un lien.
+    menu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        menu.hidden = true;
+        burger.classList.remove('is-open');
+        document.body.style.overflow = '';
+      })
+    );
+  };
+  document.addEventListener('astro:page-load', initNav);
+
+  // Fond de nav au scroll (un seul listener global, survit aux navigations).
+  const onScroll = () => document.querySelector('.nav')?.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('astro:page-load', onScroll);
 </script>

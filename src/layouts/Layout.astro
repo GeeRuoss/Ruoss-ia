@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -79,49 +80,62 @@ const businessLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
     <script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
+    <ClientRouter />
   </head>
   <body>
     <Nav />
     <slot />
     <Footer />
     <script>
-      // Reveal au scroll (fade-up), léger et sans lib.
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              e.target.classList.add('is-in');
-              io.unobserve(e.target);
-            }
-          }
-        },
-        { threshold: 0.12 }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      // Réinitialisé à chaque navigation (ClientRouter).
+      const init = () => {
+        // Stagger : les enfants d'un [data-stagger] deviennent des .reveal décalés.
+        document.querySelectorAll<HTMLElement>('[data-stagger]').forEach((group) => {
+          [...group.children].forEach((el, i) => {
+            el.classList.add('reveal');
+            (el as HTMLElement).style.setProperty('--d', `${Math.min(i * 90, 540)}ms`);
+          });
+        });
 
-      // Compteurs animés (data-count, data-suffix).
-      const cio = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (!e.isIntersecting) continue;
-            cio.unobserve(e.target);
-            const el = e.target as HTMLElement;
-            const target = Number(el.dataset.count || '0');
-            const suffix = el.dataset.suffix || '';
-            const t0 = performance.now();
-            const dur = 1800;
-            const tick = (t: number) => {
-              const p = Math.min(1, (t - t0) / dur);
-              const eased = 1 - Math.pow(1 - p, 3);
-              el.textContent = Math.round(target * eased) + suffix;
-              if (p < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-          }
-        },
-        { threshold: 0.5 }
-      );
-      document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => cio.observe(el));
+        // Reveal au scroll (fade-up + balayage des titres), léger et sans lib.
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll('.reveal, .wipe').forEach((el) => io.observe(el));
+
+        // Compteurs animés (data-count, data-suffix).
+        const cio = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (!e.isIntersecting) continue;
+              cio.unobserve(e.target);
+              const el = e.target as HTMLElement;
+              const target = Number(el.dataset.count || '0');
+              const suffix = el.dataset.suffix || '';
+              const t0 = performance.now();
+              const dur = 1800;
+              const tick = (t: number) => {
+                const p = Math.min(1, (t - t0) / dur);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+              };
+              requestAnimationFrame(tick);
+            }
+          },
+          { threshold: 0.5 }
+        );
+        document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => cio.observe(el));
+      };
+      document.addEventListener('astro:page-load', init);
     </script>
   </body>
 </html>

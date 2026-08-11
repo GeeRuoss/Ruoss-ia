@@ -203,6 +203,10 @@ textarea {
   height: 8px;
   border-radius: 50%;
   flex: none;
+  transition: transform 0.3s var(--ease-out);
+}
+.btn:hover .pin {
+  transform: scale(1.5);
 }
 .btn .pin--green {
   background: var(--green);
@@ -211,23 +215,111 @@ textarea {
   background: var(--white);
 }
 
-/* ---------- Reveal au scroll ---------- */
+/* ---------- Mouvement ---------- */
+/* Easing signature : sortie douce, très amortie */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reveal au scroll (fade-up), stagger via --d posé par le Layout */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out) var(--d, 0s), transform 0.9s var(--ease-out) var(--d, 0s);
 }
 .reveal.is-in {
   opacity: 1;
   transform: none;
 }
+
+/* Balayage gauche→droite des gros titres (effet signature) */
+.wipe {
+  clip-path: inset(-0.2em 105% -0.2em 0);
+  transition: clip-path 1.1s var(--ease-out) var(--d, 0s);
+}
+.wipe.is-in {
+  clip-path: inset(-0.2em -8% -0.2em 0);
+}
+
+/* Animations d'entrée (hero) */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes wipe-in {
+  from {
+    clip-path: inset(-0.2em 105% -0.2em 0);
+  }
+  to {
+    clip-path: inset(-0.2em -8% -0.2em 0);
+  }
+}
+@keyframes media-settle {
+  from {
+    transform: scale(1.07);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Filet de structure en tête de section */
+.rule {
+  border-top: 1px solid var(--line);
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 18px;
+}
+
+/* Marquee logos clients */
+.marquee {
+  display: flex;
+  gap: 14px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee ul {
+  display: flex;
+  gap: 14px;
+  flex: none;
+  min-width: 100%;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover ul {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-100% - 14px));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal,
+  .wipe {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
+  }
+  .marquee ul {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

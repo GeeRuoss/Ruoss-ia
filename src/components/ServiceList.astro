@@ -19,9 +19,9 @@ const { withMedia = false } = Astro.props;
       <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--dark)" stroke-width="1.2" fill="none"/></svg>
       Qu'est ce qu'on fait ?
     </p>
-    <h2 class="display services-title">Services.<sup>(4)</sup></h2>
+    <h2 class="display services-title wipe">Services.<sup>(4)</sup></h2>
   </div>
-  <ul class="services-rows">
+  <ul class="services-rows" data-stagger>
     {SERVICES.map((s) => (
       <li class="service-row" data-open="true">
         <p class="service-num small">{s.num}</p>
@@ -182,9 +182,12 @@ const { withMedia = false } = Astro.props;
 </style>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
-    row.querySelector('.service-toggle')?.addEventListener('click', () => {
-      row.dataset.open = row.dataset.open === 'true' ? 'false' : 'true';
+  const initServices = () => {
+    document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
+      row.querySelector('.service-toggle')?.addEventListener('click', () => {
+        row.dataset.open = row.dataset.open === 'true' ? 'false' : 'true';
+      });
     });
-  });
+  };
+  document.addEventListener('astro:page-load', initServices);
 </script>
