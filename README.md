@@ -32,4 +32,8 @@ Build de production : `npm run build` → `dist/`.
 
 - Formulaires : [Formsubmit](https://formsubmit.co) vers l'email du studio — **à activer au premier envoi réel**
   (email de confirmation Formsubmit), redirection vers `/merci`.
-- Pas encore déployé : le DNS pointe toujours vers Framer.
+- Hébergement : [Netlify](https://app.netlify.com/projects/ruoss-communication) (projet `ruoss-communication`),
+  déploiement automatique à chaque push sur `main` (`netlify.toml` : `npm run build`, dossier `dist`).
+  Domaine `www.ruosscommunication.com` + apex, HTTPS Let's Encrypt géré par Netlify.
+- DNS chez 1ahosting (zone 20i/StackCP) : A apex → `75.2.60.5`, `www` CNAME → `ruoss-communication.netlify.app`.
+  Mail (stackmail : MX, SPF, imap/smtp/pop3/mail) et ftp inchangés.
