@@ -1,0 +1,8 @@
+# Hébergement Netlify : build Astro à chaque push sur main, site servi depuis dist/.
+# Le domaine (www.ruosscommunication.com) se règle dans Netlify > Domain management.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
