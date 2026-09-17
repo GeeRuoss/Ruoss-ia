@@ -5,18 +5,20 @@ import ContactCta from '../../components/ContactCta.astro';
 import Logo from '../../components/Logo.astro';
 import { CASE_STUDIES } from '../../data/projects';
 import { PROJECTS } from '../../data/site';
+import { WEB_PROJECTS } from '../../data/web-projects';
+import WebCaseStudy from '../../components/WebCaseStudy.astro';
 
 export function getStaticPaths() {
-  return CASE_STUDIES.map((cs) => ({ params: { slug: cs.slug }, props: { cs } }));
+  return [...CASE_STUDIES.map((cs) => ({ params: { slug: cs.slug }, props: { cs } })), ...WEB_PROJECTS.filter((p) => p.newCaseStudy).map((webProject) => ({ params: { slug: webProject.slug }, props: { webProject } }))];
 }
-const { cs } = Astro.props;
+const { cs, webProject } = Astro.props;
 
 // Deux autres projets (les deux premiers de la liste, hors projet courant).
-const autres = PROJECTS.filter((p) => p.slug !== cs.slug).slice(0, 2);
-const [pairA, pairB, ...rest] = cs.gallery;
+const autres = PROJECTS.filter((p) => p.slug !== cs?.slug).slice(0, 2);
+const [pairA, pairB, ...rest] = cs?.gallery ?? [];
 ---
 
-<Layout title={cs.metaTitle} description={cs.metaDescription} path={`/projects/${cs.slug}`}>
+{webProject ? <WebCaseStudy project={webProject} /> : <Layout title={cs.metaTitle} description={cs.metaDescription} path={`/projects/${cs.slug}`}>
   <article class="page">
     <h1 class="display cs-title wipe">{cs.name}</h1>
 
@@ -96,7 +98,7 @@ const [pairA, pairB, ...rest] = cs.gallery;
   </article>
 
   <ContactCta />
-</Layout>
+</Layout>}
 
 <style>
   .cs-service { padding-block: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }

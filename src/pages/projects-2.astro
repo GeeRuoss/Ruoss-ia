@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WebProjects from '../components/WebProjects.astro';
+import ContactCta from '../components/ContactCta.astro';
 
 // Galerie complète, ordre du site live (colonne centrée ~1200px).
 const GALLERY = [
@@ -58,60 +60,41 @@ const GALLERY = [
 ---
 
 <Layout
-  title="Ruoss! Communication - Graphisme, Sites Web, Design"
-  description="Ruoss! Communication est un studio de communication visuelle en Suisse, spécialisé en graphisme, identité visuelle, sites web et design."
-  path="/projects-2"
+  title="Nos projets : sites web & identités visuelles | Ruoss! Verbier"
+  description="Explorez les sites internet et identités dessinés sur mesure par Ruoss! Communication à Verbier : Joshua Ruoss, Carron + Deslarzes, Bikeverbier et d’autres univers."
+  path="/projects-2/"
 >
   <section class="page listing">
-    <div class="listing-head">
-      <h1 class="display wipe">Projects.<span class="listing-years">(2020-25©)</span></h1>
-      <p class="listing-desc small">
-        Nous avons accompagné des entreprises et indépendants de divers secteurs dans la réalisation de leurs objectifs.
-        Voici quelques projets récents.
-      </p>
-    </div>
-    <div class="listing-gallery">
-      {GALLERY.map((src) => (
-        <img src={src} alt="Projet Ruoss! Communication" loading="lazy" class="reveal" />
-      ))}
-    </div>
+    <header class="listing-head">
+      <h1 class="display">Projets.<br /><span>Du caractère.</span></h1>
+      <p class="listing-desc">Des métiers différents, des univers singuliers. Chaque design est dessiné à la main, avec le soin des détails qui fait la différence.</p>
+    </header>
+    <WebProjects filterable />
+    <details class="creative-gallery">
+      <summary><span>Encore un peu de création ?</span><span class="gallery-plus" aria-hidden="true">+</span></summary>
+      <p class="gallery-intro">Affiches, illustrations, identités : une promenade dans les créations du studio.</p>
+      <div class="listing-gallery">
+        {GALLERY.map((src) => <img src={src} alt="Création graphique du studio Ruoss! Communication" loading="lazy" />)}
+      </div>
+    </details>
   </section>
+  <ContactCta />
 </Layout>
 
 <style>
-  .listing {
-    max-width: 1200px;
-    padding-block: clamp(24px, 4vw, 56px);
-  }
-  .listing-head {
-    display: grid;
-    grid-template-columns: 1fr minmax(220px, 300px);
-    align-items: end;
-    gap: 32px;
-    margin-bottom: clamp(28px, 4vw, 48px);
-  }
-  .listing-head h1 {
-    font-size: clamp(44px, 5.6vw, 80px);
-  }
-  .listing-years {
-    display: block;
-    font-size: clamp(16px, 1.8vw, 26px);
-    letter-spacing: -0.04em;
-    margin-top: 6px;
-  }
-  .listing-gallery {
-    display: grid;
-    gap: clamp(12px, 1.5vw, 20px);
-  }
-  .listing-gallery img {
-    width: 100%;
-    border-radius: var(--r-card);
-  }
-
-  @media (max-width: 809px) {
-    .listing-head {
-      grid-template-columns: 1fr;
-      align-items: start;
-    }
-  }
+  .listing { max-width:1400px; padding-block:clamp(32px,5vw,72px); }
+  .listing-head { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:40px; margin-bottom:clamp(40px,6vw,80px); }
+  .listing-head h1 { font-size:clamp(2.75rem,7vw,6.5rem); line-height:1.02; }
+  .listing-head h1 span { color:#696969; }
+  .listing-desc { font-size:1.25rem; line-height:1.6; max-width:36ch; }
+  .creative-gallery { border-top:1px solid var(--line); margin-top:72px; padding-top:24px; }
+  .creative-gallery summary { display:flex; align-items:center; gap:24px; justify-content:space-between; cursor:pointer; list-style:none; font-size:clamp(1.5rem,3vw,2.5rem); line-height:1.2; letter-spacing:-.04em; min-height:64px; }
+  .creative-gallery summary::-webkit-details-marker { display:none; }
+  .gallery-plus { flex:none; width:48px; height:48px; display:grid; place-items:center; border:1px solid #aaa; border-radius:50%; font-size:2rem; transition:transform .25s; }
+  .creative-gallery[open] .gallery-plus { transform:rotate(45deg); }
+  .gallery-intro { font-size:1.125rem; line-height:1.6; margin-block:24px 32px; }
+  .listing-gallery { columns:2; column-gap:20px; }
+  .listing-gallery img { width:100%; height:auto; border-radius:var(--r-card); margin-bottom:20px; break-inside:avoid; }
+  @media(max-width:700px) { .listing-head { grid-template-columns:1fr; gap:24px; } .listing-gallery { columns:1; } }
+  @media(prefers-reduced-motion:reduce) { .gallery-plus { transition:none; } }
 </style>

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { OFFERS } from '../../data/offers';
 import { SITE, PROJECTS } from '../../data/site';
 import ProjectCard from '../../components/ProjectCard.astro';
+import WebProjects from '../../components/WebProjects.astro';
 export function getStaticPaths() {
   return OFFERS.map((offer) => ({ params: { slug: offer.slug }, props: { offer } }));
 }
@@ -41,7 +42,7 @@ const structuredData = [
     </section>
     <section class="offer-section offer-proof">
       <div><h2 class="display">{offer.proofTitle}</h2><p>{offer.proof}</p></div>
-      {projects.length > 0 ? <div class="proof-grid">{projects.map((p) => <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />)}</div> : <a class="text-link" href="/studio/">Rencontrer le studio <span aria-hidden="true">↗</span></a>}
+      {offer.slug === 'creation-site-internet-valais' ? <WebProjects /> : projects.length > 0 ? <div class="proof-grid">{projects.map((p) => <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />)}</div> : <a class="text-link" href="/studio/">Rencontrer le studio <span aria-hidden="true">↗</span></a>}
     </section>
     <section class="offer-section">
       <h2 class="display">Comment on avance.</h2>

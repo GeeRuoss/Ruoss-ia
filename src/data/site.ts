@@ -89,7 +89,7 @@ export const SERVICES: Service[] = [
     num: '(003)',
     title: 'Sites internet',
     href: '/services/creation-site-internet-valais/',
-    desc: 'Création et refonte de sites internet à Verbier et en Valais. Une identité soignée, des pages rapides et un parcours clair pour faciliter les demandes de vos clients.',
+    desc: 'Création et refonte de sites internet à Verbier et en Valais. Des interfaces dessinées à la main, sur mesure, avec le soin du détail et un parcours clair pour vos clients.',
     tagLabel: 'Categories',
     tags: ['Création & refonte', 'Référencement local', 'Design sur mesure', 'Mobile & maintenance'],
     tiles: ['/img/M84O8r2oa0Cn7cFcuoQW0uhlxY.jpg', '/img/7aTjPHDEIHlVgn0dR4LMop9ReE.jpg'],

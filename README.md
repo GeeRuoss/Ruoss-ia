@@ -42,7 +42,11 @@ Build de production : `npm run build` → `dist/`.
 - Quatre pages métiers dans `src/data/offers.ts`, rendues par `src/pages/services/[slug].astro`.
 - Accueil : agence web à Verbier ; studio : agence de communication ; services : web, formation IA, solutions IA et graphisme.
 - URL canoniques avec slash final, conformes aux URL servies par Netlify. Ancien `/projects` redirigé vers `/projects-2/` dans `public/_redirects`.
-- Sitemap : 14 pages indexables ; `/merci/` et 404 exclus. La 404 est rendue par `src/pages/404.astro`.
+- Sitemap : 17 pages indexables ; `/merci/` et 404 exclus. La 404 est rendue par `src/pages/404.astro`.
 - JSON-LD de services et fils d’Ariane ; métadonnées et maillage des études de cas.
 - Le domaine, l’hébergement et les accès existants sont conservés.
 - Les données Search Console et le rapport d’audit restent dans le dossier privé de travail, hors dépôt.
+
+## Réalisations web et galerie
+
+Les cinq références web et leurs liens sont dans `src/data/web-projects.ts`. La page `/projects-2/` propose huit projets, des filtres et la galerie historique dépliable. Voir `WEB-PROJECTS.md` pour les composants et les médias.

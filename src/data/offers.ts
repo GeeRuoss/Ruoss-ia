@@ -9,17 +9,17 @@ export const OFFERS = [
     image: '/img/gPgftrAGsKYEwr63438RZIvsdoo.jpg', alt: 'Projet Bikeverbier, site web et identité visuelle réalisés par Ruoss!',
     sectionTitle: 'Du premier message au premier contact.',
     sections: [
-      { title: 'Un design qui porte votre activité', text: 'Nous partons de votre métier, de votre public et de votre identité visuelle. Les contenus et la navigation sont construits autour des questions de vos futurs clients : ce que vous proposez, à qui cela s’adresse et comment vous contacter. Un logo existant, des photos de votre entreprise et vos réalisations forment le point de départ.' },
+      { title: 'Un design dessiné à la main, pour vous', text: 'Nous concevons et dessinons chaque interface à la main, à partir de votre métier et de votre identité. Composition, typographie, couleurs, cadrages et détails : chaque choix est travaillé pour votre entreprise. C’est cette attention qui donne au site sa personnalité et sa qualité, avec une navigation pensée pour vos clients.' },
       { title: 'Un site pratique sur téléphone', text: 'Les pages doivent rester faciles à lire et à utiliser sur un petit écran. Nous travaillons les images, les boutons, le menu et le parcours de demande. Pour un guide, un commerce ou un prestataire à Verbier, consulter une offre et poser une question doit être simple, même en déplacement.' },
       { title: 'Le référencement prévu dès la conception', text: 'Chaque page répond à une intention précise, avec un titre descriptif, une structure claire et des liens utiles. Les adresses, les redirections, les performances et le sitemap sont contrôlés. Search Console permet ensuite de suivre les recherches qui affichent le site et les pages qui reçoivent des clics.' },
     ],
     process: [
       { title: 'Définir le besoin', text: 'Nous précisons votre public, les offres prioritaires, les contenus disponibles et l’action attendue : prise de contact, demande de devis ou réservation.' },
-      { title: 'Concevoir et construire', text: 'Nous organisons les pages, dessinons l’interface et intégrons les contenus. La solution technique dépend de vos besoins de mise à jour et des fonctions utiles.' },
+      { title: 'Concevoir et construire', text: 'Nous dessinons les pages à la main et affinons leur composition avec vous. Nous construisons ensuite le site autour de ce design, avec les fonctions utiles et des contenus faciles à parcourir.' },
       { title: 'Vérifier et accompagner', text: 'Nous contrôlons les pages sur mobile et ordinateur, les liens et le parcours de contact. L’hébergement, les accès et les évolutions sont clarifiés avant la mise en ligne.' },
     ],
-    proofTitle: 'Des sites et des identités que vous pouvez voir.',
-    proof: 'Bikeverbier associe une offre de guides VTT à une identité alpine singulière. Pour NIRLAB, le travail relie site web, identité visuelle et interfaces. Ces réalisations montrent comment le design s’adapte à des publics très différents.',
+    proofTitle: 'Des sites qui ont leur propre caractère.',
+    proof: 'Joshua Ruoss, Carron + Deslarzes, Bikeverbier, les Pontonniers de Bex et NIRLAB : des métiers différents, cinq univers dessinés sur mesure. Explorez les projets ou ouvrez directement les sites pour les découvrir.',
     projects: ['bikeverbier', 'nirlab'],
     faqs: [
       { q: 'Combien coûte la création d’un site internet en Valais ?', a: 'Le budget dépend du nombre de pages, des contenus à produire, des langues et des fonctionnalités. Nous préparons un devis adapté au périmètre, en distinguant la création, l’hébergement et les éventuelles évolutions. Envoyez-nous votre site actuel ou une description du projet pour lancer la discussion.' },
@@ -91,7 +91,7 @@ export const OFFERS = [
     image: '/img/QoTnY5PP6N3Bf8OA7WzU9Z9Mw.jpg', alt: 'Identité visuelle Skipatrol Verbier, projet du studio Ruoss!',
     sectionTitle: 'Le caractère de votre marque, sur chaque support.',
     sections: [
-      { title: 'Logo et identité visuelle', text: 'Nous clarifions ce qui rend votre activité singulière avant de travailler la forme. Le logo, la typographie, les couleurs et les principes de composition sont pensés ensemble. L’identité doit rester lisible sur un téléphone, un document imprimé et les supports réellement utilisés par votre entreprise.' },
+      { title: 'Logo et identité visuelle', text: 'Nous clarifions ce qui rend votre activité singulière avant de travailler la forme. Nous dessinons à la main le logo et les compositions, puis travaillons ensemble la typographie, les couleurs et les déclinaisons. L’identité doit rester lisible sur un téléphone, un document imprimé et les supports réellement utilisés par votre entreprise.' },
       { title: 'Graphisme et direction artistique', text: 'Affiches, étiquettes, brochures ou communication digitale : nous déclinons l’identité selon le message et le contexte. Le travail de graphic design relie la composition, les images et la hiérarchie de lecture. Il peut prolonger une charte existante ou accompagner une évolution de votre marque.' },
       { title: 'Votre image et votre site, ensemble', text: 'Une nouvelle identité gagne à être pensée avec ses usages numériques. Nous pouvons coordonner le branding avec la création ou la refonte de votre site internet. Vous gardez un interlocuteur pour relier le langage visuel, les contenus et le parcours de vos visiteurs.' },
     ],

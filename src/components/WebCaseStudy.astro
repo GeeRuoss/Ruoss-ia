@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WebProjects from './WebProjects.astro';
+import { SITE } from '../data/site';
+const { project } = Astro.props;
+const path = `/projects/${project.slug}/`;
+const structuredData = [
+  { '@context':'https://schema.org', '@type':'CreativeWork', name:`Site internet — ${project.name}`, description:project.description, url:SITE.domain+path, image:SITE.domain+project.image, creator:{ '@id':SITE.domain+'/#studio' } },
+  { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:[{ '@type':'ListItem', position:1, name:'Accueil', item:SITE.domain+'/' }, { '@type':'ListItem', position:2, name:'Projets', item:SITE.domain+'/projects-2/' }, { '@type':'ListItem', position:3, name:project.name, item:SITE.domain+path }] },
+];
+---
+<Layout title={project.title} description={project.description} path={path} ogImage={project.image} structuredData={structuredData}>
+  <article class="page web-case">
+    <nav class="case-breadcrumb" aria-label="Fil d’Ariane"><a href="/projects-2/">Projets</a><span aria-hidden="true">/</span><span aria-current="page">{project.name}</span></nav>
+    <header class="case-head">
+      <div><p class="case-category">{project.category}</p><h1 class="display">{project.name}</h1></div>
+      <div><p class="case-summary">{project.summary}</p><a class="btn btn--dark" href={project.url} aria-label={`Voir le site ${project.name} (nouvel onglet)`} target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">↗</span></a></div>
+    </header>
+    <img class="case-cover" src={project.image} alt={project.alt} width="1200" height={project.slug === 'joshua-ruoss' ? '630' : '800'} fetchpriority="high" />
+    <section class="case-intro"><h2 class="display">{project.heading}</h2><p>{project.intro}</p></section>
+    <section class="case-work" aria-label="Notre travail sur le projet">
+      {project.sections.map((s) => <div><h2>{s.title}</h2><p>{s.text}</p></div>)}
+    </section>
+    <section class="case-scope"><h2>Ce que nous avons conçu.</h2><ul>{project.details.map((detail) => <li>{detail}</li>)}</ul></section>
+    <section class="case-cta sheet"><h2 class="display">Votre site.<br />Votre caractère.</h2><div><p>Nous dessinons votre site à la main, autour de votre identité et de vos clients. Parlons de ce que vous souhaitez leur montrer.</p><a class="btn btn--light" href="/services/creation-site-internet-valais/">Découvrir notre approche web</a><a class="case-contact" href="/contact/">Parlons de votre projet →</a></div></section>
+    <section class="case-related"><h2 class="display">D’autres univers.</h2><WebProjects exclude={project.slug} limit={2} /></section>
+  </article>
+</Layout>
+<style>
+  .web-case { max-width:1400px; }
+  .case-breadcrumb { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-block:24px 40px; font-size:1rem; }
+  .case-breadcrumb a { display:inline-flex; min-height:44px; align-items:center; text-decoration:underline; text-underline-offset:5px; }
+  .case-head { display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:end; margin-bottom:40px; }
+  .case-category { color:#555; margin-bottom:20px; }
+  h1 { font-size:clamp(2.5rem,6vw,6rem); line-height:1.04; overflow-wrap:anywhere; }
+  p { font-size:1.125rem; line-height:1.65; }
+  .case-summary { font-size:1.25rem; margin-bottom:24px; max-width:40ch; }
+  .case-cover { display:block; width:100%; height:auto; border-radius:var(--r-card); }
+  .case-intro { padding-block:clamp(48px,7vw,96px); display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+  .case-intro h2, .case-cta h2, .case-related > h2 { font-size:clamp(2rem,4vw,4rem); line-height:1.1; }
+  .case-work { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:36px; border-block:1px solid var(--line); padding-block:40px; }
+  .case-work h2, .case-scope h2 { font-size:1.5rem; font-weight:600; letter-spacing:-.03em; line-height:1.25; margin-bottom:18px; }
+  .case-scope { padding-block:40px 56px; }
+  .case-scope ul { display:grid; grid-template-columns:1fr 1fr; gap:12px 32px; padding-left:24px; font-size:1.125rem; line-height:1.5; }
+  .case-cta { padding:clamp(28px,5vw,64px); display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .case-cta p { margin-bottom:24px; }
+  .case-contact { display:flex; align-items:center; min-height:44px; margin-top:16px; text-decoration:underline; text-underline-offset:5px; }
+  .case-related { padding-block:64px 0; }
+  .case-related > h2 { margin-bottom:32px; }
+  @media(max-width:850px) { .case-work { grid-template-columns:1fr; } }
+  @media(max-width:600px) { .case-head, .case-intro, .case-cta, .case-scope ul { grid-template-columns:1fr; gap:24px; } }
+</style>
