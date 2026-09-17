@@ -14,12 +14,14 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { label: 'Studio', href: '/studio' },
-  { label: 'Projets', href: '/projects-2' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Sites web', href: '/services/creation-site-internet-valais/' },
+  { label: 'Formation IA', href: '/services/formation-ia-valais/' },
+  { label: 'Solutions IA', href: '/services/solutions-ia-entreprise/' },
+  { label: 'Projets', href: '/projects-2/' },
+  { label: 'Contact', href: '/contact/' },
 ] as const;
 
+// Ordre commercial : web, formation, solutions IA, identité visuelle.
 // Compteurs animés (valeurs finales du site live).
 export const COUNTERS = [
   { value: 112, suffix: '', label: 'Clients accompagnés depuis 2021' },
@@ -57,6 +59,7 @@ export const OTHER_PROJECTS_CARD = {
 export interface Service {
   num: string;
   title: string;
+  href: string;
   desc: string;
   tagLabel: 'Categories' | 'Services';
   tags: string[];
@@ -67,14 +70,16 @@ export const SERVICES: Service[] = [
   {
     num: '(001)',
     title: 'Formation IA',
+    href: '/services/formation-ia-valais/',
     desc: "Des formations pensées pour rendre les équipes autonomes avec l'intelligence artificielle, sur leurs vrais cas métier et au service de leur productivité.",
     tagLabel: 'Categories',
-    tags: ['Agents IA sur mesure', 'Productivité au quotidien', 'Formation en entreprise', 'Bons réflexes & données', "Cas d'usage métier"],
+    tags: ['Pratique sur vos cas métier', 'Formation en entreprise', 'Esprit critique & données'],
     tiles: ['/img/AJRl3xcIDVMdSDmwpm9LfszmMkw.webp', '/img/VXpQonqJjWFrwAoUQbKVCkYuHg.jpg', '/img/tlJTX5Ux18kUx3r8ndlVe55ZE7s.png'],
   },
   {
     num: '(002)',
-    title: 'Logo & Branding',
+    title: 'Graphisme & branding',
+    href: '/services/graphisme-branding-valais/',
     desc: 'Identités de marque stratégiques conçues pour clarifier le positionnement, renforcer la reconnaissance et assurer une cohérence durable.',
     tagLabel: 'Services',
     tags: ['Création de logo sur mesure', 'Identité visuelle complète', 'Illustration', 'Direction artistique globale', 'Rebranding & repositionnement de marque', 'Chartes graphiques (print & digital)'],
@@ -83,20 +88,25 @@ export const SERVICES: Service[] = [
   {
     num: '(003)',
     title: 'Sites internet',
-    desc: 'Sites centrés utilisateur, pensés pour transmettre des messages clairs, offrir une navigation fluide et générer des résultats mesurables.',
+    href: '/services/creation-site-internet-valais/',
+    desc: 'Création et refonte de sites internet à Verbier et en Valais. Une identité soignée, des pages rapides et un parcours clair pour faciliter les demandes de vos clients.',
     tagLabel: 'Categories',
-    tags: ['Sites internet', 'Community management', 'UX & architecture de contenu', 'UI design', 'Maintenance & évolutions continues', 'Optimisation mobile & responsive'],
+    tags: ['Création & refonte', 'Référencement local', 'Design sur mesure', 'Mobile & maintenance'],
     tiles: ['/img/M84O8r2oa0Cn7cFcuoQW0uhlxY.jpg', '/img/7aTjPHDEIHlVgn0dR4LMop9ReE.jpg'],
   },
   {
     num: '(004)',
-    title: 'Design avancé',
-    desc: 'Solutions de design combinant 3D, produit, UX et UI pour créer des expériences fonctionnelles et impactantes.',
+    title: 'Solutions IA',
+    href: '/services/solutions-ia-entreprise/',
+    desc: 'Des assistants et automatisations IA adaptés aux tâches de votre entreprise, avec des règles claires et une validation humaine.',
     tagLabel: 'Categories',
-    tags: ['Design produit & prototypage', 'Modélisation 3D & rendus réalistes', "Design d'objets et concepts", 'Visualisation avancée & simulations', "Création d'affiches", 'Illustration'],
+    tags: ['Assistants sur mesure', 'Automatisation', 'Organisation des connaissances', 'Intégration & accompagnement'],
     tiles: ['/img/pUCS4TBS6MtRY9iQz9kl7OzjMB8.jpg', '/img/Udxjrd1L0GmN6XLWkogckkNO5p8.jpg', '/img/gRP7p0jTGCvMVpM0IsQNTg6VQ.jpg'],
   },
 ];
+
+SERVICES.sort((a, b) => ['Sites internet', 'Formation IA', 'Solutions IA', 'Graphisme & branding'].indexOf(a.title) - ['Sites internet', 'Formation IA', 'Solutions IA', 'Graphisme & branding'].indexOf(b.title));
+SERVICES.forEach((s, i) => { s.num = `(00${i + 1})`; });
 
 export const REVIEWS = [
   {

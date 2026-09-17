@@ -30,10 +30,19 @@ Build de production : `npm run build` → `dist/`.
 
 ## Notes
 
-- Formulaires : [Formsubmit](https://formsubmit.co) vers l'email du studio — **à activer au premier envoi réel**
-  (email de confirmation Formsubmit), redirection vers `/merci`.
+- Contact : formulaire local de préparation WhatsApp, envoi final par le visiteur. Aucun stockage de saisie, lien e-mail et téléphone en complément.
 - Hébergement : [Netlify](https://app.netlify.com/projects/ruoss-communication) (projet `ruoss-communication`),
   déploiement automatique à chaque push sur `main` (`netlify.toml` : `npm run build`, dossier `dist`).
   Domaine `www.ruosscommunication.com` + apex, HTTPS Let's Encrypt géré par Netlify.
 - DNS chez 1ahosting (zone 20i/StackCP) : A apex → `75.2.60.5`, `www` CNAME → `ruoss-communication.netlify.app`.
   Mail (stackmail : MX, SPF, imap/smtp/pop3/mail) et ftp inchangés.
+
+## Évolution web et IA — 17 septembre 2026
+
+- Quatre pages métiers dans `src/data/offers.ts`, rendues par `src/pages/services/[slug].astro`.
+- Accueil : agence web à Verbier ; studio : agence de communication ; services : web, formation IA, solutions IA et graphisme.
+- URL canoniques avec slash final, conformes aux URL servies par Netlify. Ancien `/projects` redirigé vers `/projects-2/` dans `public/_redirects`.
+- Sitemap : 14 pages indexables ; `/merci/` et 404 exclus. La 404 est rendue par `src/pages/404.astro`.
+- JSON-LD de services et fils d’Ariane ; métadonnées et maillage des études de cas.
+- Le domaine, l’hébergement et les accès existants sont conservés.
+- Les données Search Console et le rapport d’audit restent dans le dossier privé de travail, hors dépôt.

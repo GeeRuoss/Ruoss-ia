@@ -27,7 +27,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: 'nirlab',
     name: 'NIRLAB SA',
-    metaTitle: 'NIRLAB SA | Projet Design Verbier | Ruoss!',
+    metaTitle: 'NIRLAB : site web, identité visuelle & interfaces | Ruoss!',
     metaDescription:
       "Découvrez le projet NIRLAB SA réalisé par Ruoss! Communication, studio de design à Verbier. Direction artistique, logo, charte graphique, app design, site web et 3D.",
     intro: [
@@ -173,7 +173,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: 'bikeverbier',
     name: 'Bikeverbier.ch',
-    metaTitle: 'Bikeverbier.ch | Projet Design Verbier | Ruoss!',
+    metaTitle: 'Bikeverbier : création de site web et branding | Ruoss!',
     metaDescription:
       'Découvrez le projet Bikeverbier.ch réalisé par Ruoss! Communication, studio de design à Verbier. Site web, logo et identité graphique.',
     intro: [

@@ -5,7 +5,7 @@ import { COUNTERS } from '../data/site';
 <div class="counters">
   {COUNTERS.map((c) => (
     <div class="counter reveal">
-      <p class="counter-value display" data-count={c.value} data-suffix={c.suffix}>0{c.suffix}</p>
+      <p class="counter-value display" data-count={c.value} data-suffix={c.suffix}>{c.value}{c.suffix}</p>
       <p class="counter-label small muted">{c.label}</p>
     </div>
   ))}

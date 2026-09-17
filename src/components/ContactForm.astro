@@ -1,89 +1,58 @@
 ---
-// Formulaire : Formsubmit vers l'email du studio (à activer au premier envoi).
 import { SITE } from '../data/site';
-
-interface Props {
-  compact?: boolean; // variante carte blanche (sections sombres)
-}
+interface Props { compact?: boolean; }
 const { compact = false } = Astro.props;
 ---
-
-<form class:list={['contact-form', { 'contact-form--card': compact }]} action={`https://formsubmit.co/${SITE.email}`} method="POST">
-  <input type="hidden" name="_subject" value="Nouveau message — ruosscommunication.com" />
-  <input type="hidden" name="_next" value={`${SITE.domain}/merci`} />
-  <input type="hidden" name="_captcha" value="false" />
-  {compact && <p class="form-title">Un projet <em>en tête ?</em></p>}
-  <label>
-    <span class="small muted">{compact ? 'Nom' : 'Votre nom*'}</span>
-    <input type="text" name="nom" placeholder={compact ? 'Nom ou entreprise' : ''} required />
-  </label>
-  <label>
-    <span class="small muted">Email{compact ? '' : ' *'}</span>
-    <input type="email" name="email" placeholder={compact ? 'E-mail' : ''} required />
-  </label>
-  {compact && (
-    <label>
-      <span class="small muted">Téléphone (optionel)</span>
-      <input type="tel" name="telephone" placeholder="+123456789" />
-    </label>
-  )}
-  <label>
-    <span class="small muted">Votre idée</span>
-    <textarea name="message" rows={compact ? 3 : 6} placeholder={compact ? "J'imagine..." : ''}></textarea>
-  </label>
-  <button class="btn btn--dark submit" type="submit">
-    <span class="submit-label">{compact ? 'Ça roule !' : 'Envoyer'}</span>
-    <span class="pin pin--white"></span>
-  </button>
-</form>
-
+<div class:list={['contact-form', { 'contact-form--card': compact }]}>
+  <form class="project-message" data-whatsapp={SITE.whatsapp} hidden>
+    <p class="form-title">Parlons de votre projet.</p>
+    <label>Votre prénom ou entreprise<input name="name" autocomplete="name" required maxlength="100" /></label>
+    <label>Votre besoin<select name="service"><option>Un site internet</option><option>Une formation IA</option><option>Une solution IA</option><option>Du graphisme ou un logo</option><option>Un autre projet</option></select></label>
+    <label>Votre idée <span class="optional">(facultatif)</span><textarea name="idea" rows="3" maxlength="2000" placeholder="Votre activité, vos objectifs, votre échéance…"></textarea></label>
+    <div class="message-preview"><p>Votre message</p><output class="message-text"></output></div>
+    <button class="btn btn--dark" type="submit">Préparer dans WhatsApp <span aria-hidden="true">↗</span></button>
+    <p class="form-note">Vous relisez et envoyez le message dans WhatsApp. Rien n’est envoyé pendant la saisie.</p>
+  </form>
+  <p class="contact-fallback"><a href={SITE.whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a><span aria-hidden="true"> · </span><a href={`mailto:${SITE.email}`}>Écrire par e-mail</a></p>
+</div>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLFormElement>('.project-message').forEach((form) => {
+      if (form.dataset.ready) return;
+      form.dataset.ready = 'true';
+      const output = form.querySelector<HTMLOutputElement>('output');
+      const message = () => {
+        const data = new FormData(form);
+        const name = String(data.get('name') || '').trim();
+        const idea = String(data.get('idea') || '').trim();
+        return `Bonjour Guillermo,${name ? ` je suis ${name}.` : ''}\nJe souhaite échanger sur ${String(data.get('service')).toLowerCase()}.${idea ? `\n\n${idea}` : ''}`;
+      };
+      const update = () => { if (output) output.value = message(); };
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        window.open(`${form.dataset.whatsapp}?text=${encodeURIComponent(message())}`, '_blank', 'noopener,noreferrer');
+      });
+      update();
+      form.hidden = false;
+    });
+  });
+</script>
 <style>
-  .contact-form {
-    display: grid;
-    gap: 18px;
-  }
-  .contact-form--card {
-    background: var(--white);
-    color: var(--ink);
-    border-radius: var(--r-card);
-    padding: 22px;
-    gap: 12px;
-  }
-  .form-title {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    margin-bottom: 6px;
-  }
-  .form-title em {
-    font-style: normal;
-    font-weight: 400;
-  }
-  label {
-    display: grid;
-    gap: 6px;
-  }
-  input,
-  textarea {
-    border: 0;
-    border-bottom: 1px solid var(--line);
-    background: transparent;
-    padding: 8px 0;
-    font-size: 15px;
-    outline: none;
-    resize: vertical;
-    border-radius: 0;
-  }
-  input:focus,
-  textarea:focus {
-    border-bottom-color: var(--ink);
-  }
-  .submit {
-    justify-self: start;
-    margin-top: 8px;
-  }
-  .contact-form--card .submit {
-    justify-self: stretch;
-    justify-content: center;
-  }
+  .contact-form--card { background: var(--white); color: var(--ink); border-radius: var(--r-card); padding: 24px; }
+  form { display: grid; gap: 20px; }
+  form[hidden] { display: none; }
+  .form-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -.03em; }
+  label { display: grid; gap: 8px; font-size: 1rem; }
+  input, textarea, select { width: 100%; min-width: 0; border: 1px solid #888; border-radius: 8px; background: white; color: #111; padding: 12px; font: inherit; font-size: 1rem; }
+  textarea { resize: vertical; }
+  .optional { color: #666; }
+  .message-preview { background: #edf2ec; padding: 16px; border-radius: 12px; color: #16231a; }
+  .message-preview > p { font-weight: 600; margin-bottom: 8px; }
+  output { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 1rem; line-height: 1.5; }
+  .form-note { font-size: 1rem; line-height: 1.5; color: #555; }
+  .contact-fallback { margin-top: 20px; font-size: 1rem; line-height: 1.6; }
+  .contact-fallback a { text-decoration: underline; text-underline-offset: 4px; display: inline-block; padding-block: 8px; }
 </style>

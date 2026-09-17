@@ -74,16 +74,22 @@ const [pairA, pairB, ...rest] = cs.gallery;
       </div>
     )}
 
+    <section class="cs-service">
+      <h2 class="h-card">Un projet pour votre entreprise ?</h2>
+      <p>Découvrez notre accompagnement en Valais et parlons de vos besoins.</p>
+      {['nirlab', 'bikeverbier'].includes(cs.slug) && <a class="btn btn--dark" href="/services/creation-site-internet-valais/">Création de sites internet</a>}
+      <a class="btn btn--dark" href="/services/graphisme-branding-valais/">Graphisme et identité visuelle</a>
+    </section>
     <section class="cs-autres">
       <div class="cs-autres-head">
         <span class="cs-autres-mark"><Logo width={46} /></span>
         <h2 class="display wipe">Autres projets.</h2>
-        <a class="btn btn--dark" href="/projects-2">All projects</a>
+        <a class="btn btn--dark" href="/projects-2/">Tous les projets</a>
       </div>
       <p class="muted">(2021-26©)</p>
       <div class="cs-autres-grid">
         {autres.map((p) => (
-          <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}`} />
+          <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />
         ))}
       </div>
     </section>
@@ -93,6 +99,8 @@ const [pairA, pairB, ...rest] = cs.gallery;
 </Layout>
 
 <style>
+  .cs-service { padding-block: 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+  .cs-service h2, .cs-service p { flex-basis: 100%; }
   .cs-title {
     font-size: clamp(44px, 6.7vw, 96px);
     padding-block: clamp(24px, 4vw, 56px) clamp(24px, 3vw, 40px);

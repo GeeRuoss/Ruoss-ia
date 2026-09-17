@@ -1,6 +1,6 @@
 # Ruoss! Communication
 
-> Studio de design à Verbier (Valais, Suisse), fondé en 2021 par Guillermo Ruoss. Création de logos, identités de marque, sites internet, design 3D et formations IA pour entreprises et indépendants. Plus de 150 projets livrés pour 112 clients, dans plus de 50 pays.
+> Agence web et studio de communication à Verbier (Valais, Suisse), fondé en 2021 par Guillermo Ruoss. Création de logos, identités de marque, sites internet, design 3D et formations IA pour entreprises et indépendants. Plus de 150 projets livrés pour 112 clients, dans plus de 50 pays.
 
 Ruoss! Communication privilégie la simplicité, la couleur, la beauté et l'innovation : des logos, des sites et des stratégies bien pensés, fonctionnels et durables, sans discours marketing tape-à-l'œil. Trois affiches du studio ont été sélectionnées pour intégrer les archives de la Confédération suisse.
 
@@ -8,11 +8,10 @@ Coordonnées : téléphone +41 77 450 67 26 · WhatsApp +41 77 450 67 26 · emai
 
 ## Services
 
-- [Services](https://www.ruosscommunication.com/services) : les 4 pôles du studio.
-  - Formation IA : formations pour rendre les équipes autonomes avec l'intelligence artificielle (agents IA sur mesure, productivité, formation en entreprise, cas d'usage métier).
-  - Logo & Branding : identités de marque stratégiques (logo sur mesure, identité visuelle complète, direction artistique, rebranding, chartes graphiques print & digital).
-  - Sites internet : sites centrés utilisateur (UX, UI, architecture de contenu, maintenance, optimisation mobile).
-  - Design avancé : 3D, design produit, prototypage, rendus réalistes, affiches.
+- [Sites internet en Valais](https://www.ruosscommunication.com/services/creation-site-internet-valais/) : création et refonte, design, navigation mobile et référencement local.
+- [Formation IA](https://www.ruosscommunication.com/services/formation-ia-valais/) : ateliers pratiques pour entreprises et indépendants, adaptés à leurs tâches.
+- [Solutions IA](https://www.ruosscommunication.com/services/solutions-ia-entreprise/) : cadrage, prototypes d’assistants et automatisations, intégration selon faisabilité.
+- [Graphisme et branding](https://www.ruosscommunication.com/services/graphisme-branding-valais/) : logos, identités visuelles, supports imprimés et numériques.
 
 ## Pages
 

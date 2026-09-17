@@ -18,10 +18,9 @@ import { NAV, SITE } from '../data/site';
   <div class="menu-inner page">
     <nav class="menu-links" aria-label="Menu">
       <a href="/">Accueil</a>
-      <a href="/studio">Studio</a>
-      <a href="/projects-2">Projects</a>
-      <a href="/services">Services</a>
-      <a href="/contact">Contact</a>
+      {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href="/studio/">Studio</a>
+      <a href="/services/">Tous les services</a>
     </nav>
     <div class="menu-bottom">
       <a class="menu-phone" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
@@ -55,10 +54,11 @@ import { NAV, SITE } from '../data/site';
     flex: 1;
     display: flex;
     justify-content: space-evenly;
-    padding-inline: 8vw;
+    padding-inline: 3vw;
+    gap: 20px;
   }
   .nav-links a {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.02em;
     opacity: 0.9;
@@ -72,6 +72,7 @@ import { NAV, SITE } from '../data/site';
     display: grid;
     gap: 7px;
     padding: 10px 0;
+    min-height: 44px; min-width: 44px; margin-left: auto;
   }
   .burger span {
     display: block;
@@ -87,6 +88,10 @@ import { NAV, SITE } from '../data/site';
     transform: translateY(-4.25px) rotate(-45deg);
   }
 
+  :global(.menu-open) .nav { background: var(--dark); color: var(--white); }
+  :global(.menu-open) .nav-logo { color: var(--white); }
+  :global(.menu-open) .nav-links { visibility: hidden; }
+  :global(.menu-open) .burger span { background: var(--white); }
   /* Menu plein écran */
   .menu {
     position: fixed;
@@ -104,14 +109,16 @@ import { NAV, SITE } from '../data/site';
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8vh;
+    gap: 3vh;
+    padding-top: calc(var(--nav-h) + 20px); padding-bottom: 32px; overflow-y: auto;
   }
   .menu-links {
     display: grid;
     gap: 4px;
   }
   .menu-links a {
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(26px, 4.5vw, 56px);
+    min-height: 44px;
     font-weight: 600;
     letter-spacing: -0.05em;
     line-height: 1.1;
@@ -149,26 +156,33 @@ import { NAV, SITE } from '../data/site';
     const burger = document.querySelector<HTMLButtonElement>('.burger');
     const menu = document.getElementById('menu');
     if (!burger || !menu) return;
-    burger.addEventListener('click', () => {
-      const open = menu.hidden;
+    const setOpen = (open: boolean) => {
       menu.hidden = !open;
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', String(open));
       burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
       document.body.style.overflow = open ? 'hidden' : '';
-      burger.querySelectorAll('span').forEach((s) => (s.style.background = open ? '#fff' : ''));
-    });
-    // Fermer le menu quand on clique un lien.
-    menu.querySelectorAll('a').forEach((a) =>
-      a.addEventListener('click', () => {
-        menu.hidden = true;
-        burger.classList.remove('is-open');
-        document.body.style.overflow = '';
-      })
-    );
+      document.body.classList.toggle('menu-open', open);
+    };
+    setOpen(false);
+    burger.addEventListener('click', () => setOpen(menu.hidden));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+
   };
   document.addEventListener('astro:page-load', initNav);
 
+  document.addEventListener('keydown', (event) => {
+    const menu = document.getElementById('menu');
+    const burger = document.querySelector<HTMLButtonElement>('.burger');
+    if (!menu || menu.hidden || !burger) return;
+    if (event.key === 'Escape') { burger.click(); burger.focus(); }
+    if (event.key === 'Tab') {
+      const items = [burger, ...menu.querySelectorAll<HTMLAnchorElement>('a')];
+      const first = items[0]; const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  });
   // Fond de nav au scroll (un seul listener global, survit aux navigations).
   const onScroll = () => document.querySelector('.nav')?.classList.toggle('is-scrolled', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });

@@ -5,7 +5,7 @@ import { ClientRouter } from 'astro:transitions';
 
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, IMG } from '../data/site';
+import { SITE, IMG, SERVICES } from '../data/site';
 
 interface Props {
   title: string;
@@ -13,10 +13,11 @@ interface Props {
   path: string; // chemin canonique, ex. '/studio'
   ogImage?: string;
   noindex?: boolean;
+  structuredData?: Record<string, unknown>[];
 }
-const { title, description, path, ogImage = IMG.ogDefault, noindex = false } = Astro.props;
+const { title, description, path, ogImage = IMG.ogDefault, noindex = false, structuredData = [] } = Astro.props;
 
-const canonical = SITE.domain + (path === '/' ? '/' : path);
+const canonical = SITE.domain + (path === '/' ? '/' : path.replace(/\/$/, '') + '/');
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : SITE.domain + ogImage;
 
 // Entité business partagée sur toutes les pages (@id stable).
@@ -26,7 +27,7 @@ const businessLd = {
   '@id': SITE.domain + '/#studio',
   name: 'Ruoss! Communication',
   description:
-    'Studio de design à Verbier (Valais, Suisse) : création de logos, identités de marque, sites internet, design 3D et formations IA pour entreprises et indépendants.',
+    'Agence web et studio de communication à Verbier, en Valais : création de sites internet, formations IA, solutions IA et identité visuelle pour entreprises et indépendants.',
   url: SITE.domain,
   telephone: '+41774506726',
   email: SITE.email,
@@ -40,16 +41,10 @@ const businessLd = {
     addressRegion: 'Valais',
     addressCountry: 'CH',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: 46.0961, longitude: 7.2286 },
   areaServed: { '@type': 'Place', name: 'Verbier, Val de Bagnes, Valais, Suisse' },
   knowsLanguage: ['fr', 'en', 'es'],
   sameAs: [SITE.instagram, SITE.behance],
-  makesOffer: [
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Formation IA en entreprise', url: SITE.domain + '/services' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Logo & branding', url: SITE.domain + '/services' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sites internet', url: SITE.domain + '/services' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Design avancé (3D, produit, UX/UI)', url: SITE.domain + '/services' } },
-  ],
+  makesOffer: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, url: SITE.domain + s.href } })),
 };
 ---
 
@@ -81,10 +76,13 @@ const businessLd = {
     <meta name="twitter:image" content={ogImageAbs} />
     <script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
     <ClientRouter />
+    {structuredData.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+    <noscript><style is:inline>.reveal{opacity:1;transform:none}.wipe{clip-path:none}</style></noscript>
   </head>
   <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
     <Nav />
-    <slot />
+    <main id="contenu"><slot /></main>
     <Footer />
     <script>
       // Réinitialisé à chaque navigation (ClientRouter).

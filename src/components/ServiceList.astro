@@ -31,8 +31,9 @@ const { withMedia = false } = Astro.props;
           ))}
         </div>
         <div class="service-main">
-          <h3 class="h-card">{s.title}</h3>
-          <p class="service-desc small">{s.desc}</p>
+          <h3 class="h-card"><a href={s.href}>{s.title}</a></h3>
+          <p class="service-desc small" id={`service-${s.num}`}>{s.desc}</p>
+          <a class="service-link" href={s.href}>Découvrir {s.title} <span aria-hidden="true">↗</span></a>
         </div>
         <div class="service-tags">
           <p class="small tags-label">{s.tagLabel}</p>
@@ -42,14 +43,14 @@ const { withMedia = false } = Astro.props;
             ))}
           </ul>
         </div>
-        <button class="service-toggle" aria-label={`Réduire ${s.title}`}>
+        <button class="service-toggle" aria-label={`Réduire ${s.title}`} aria-expanded="true" aria-controls={`service-${s.num}`} data-title={s.title}>
           <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path class="v" d="M7 2v10" stroke="currentColor" stroke-width="1.5"/><path d="M2 7h10" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
       </li>
     ))}
   </ul>
   <div class="services-cta">
-    <a class="btn btn--light" href="/contact">C'est parti !</a>
+    <a class="btn btn--light" href="/contact/">C'est parti !</a>
   </div>
 </div>
 
@@ -133,14 +134,14 @@ const { withMedia = false } = Astro.props;
     color: var(--ink);
     border-radius: var(--r-pill);
     padding: 6px 14px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.01em;
   }
   .service-toggle {
     color: var(--white);
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--line-light);
     border-radius: 50%;
     display: grid;
@@ -164,6 +165,8 @@ const { withMedia = false } = Astro.props;
     justify-content: center;
   }
 
+  .service-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin-top: 12px; text-decoration: underline; text-underline-offset: 4px; }
+  .service-main, .service-tags { min-width: 0; }
   @media (max-width: 1023px) {
     .service-row {
       grid-template-columns: 56px 1fr 44px;
@@ -179,6 +182,10 @@ const { withMedia = false } = Astro.props;
     .service-tags { grid-area: tags; }
     .service-toggle { grid-area: toggle; }
   }
+  @media (max-width: 599px) {
+    .service-row { grid-template-columns: minmax(0, 1fr) 44px; grid-template-areas: "main toggle" "tags tags"; gap: 16px; }
+    .service-num, .service-tiles, .services-eyebrow { display: none; }
+  }
 </style>
 
 <script>
@@ -186,6 +193,9 @@ const { withMedia = false } = Astro.props;
     document.querySelectorAll<HTMLElement>('.service-row').forEach((row) => {
       row.querySelector('.service-toggle')?.addEventListener('click', () => {
         row.dataset.open = row.dataset.open === 'true' ? 'false' : 'true';
+        const toggle = row.querySelector('button');
+        toggle?.setAttribute('aria-expanded', row.dataset.open);
+        toggle?.setAttribute('aria-label', `${row.dataset.open === 'true' ? 'Réduire' : 'Développer'} ${toggle?.dataset.title}`);
       });
     });
   };

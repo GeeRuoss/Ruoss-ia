@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page introuvable | Ruoss! Communication"
+  description="Cette page n'existe pas ou a été déplacée. Retrouvez le site de Ruoss! Communication."
+  path="/404"
+  noindex
+>
+  <section class="page error-page">
+    <h1 class="display">Page introuvable</h1>
+    <p class="lead">Cette page n'existe pas ou a été déplacée.</p>
+    <a class="btn btn--dark" href="/">Retour à l'accueil</a>
+  </section>
+</Layout>
+
+<style>
+  .error-page {
+    min-height: 55svh;
+    padding-block: 64px;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+  .error-page h1 {
+    max-width: 12ch;
+    font-size: clamp(40px, 6vw, 88px);
+  }
+</style>

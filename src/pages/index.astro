@@ -12,8 +12,8 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
 ---
 
 <Layout
-  title="Studio Design Verbier | Logo, Web & Branding Valais | Ruoss!"
-  description="Premier studio de design à Verbier, Valais. Création de logos, sites web, branding stratégique, design 3D et photographie pour entreprises suisses. Devis gratuit."
+  title="Agence web à Verbier, Valais | Sites internet & IA | Ruoss!"
+  description="Ruoss! Communication à Verbier : création de sites internet en Valais, formations IA, solutions IA et identité visuelle. Parlons de votre projet."
   path="/"
 >
   <!-- ============ HERO ============ -->
@@ -24,24 +24,21 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
       </div>
       <div class="hero-inner">
         <div class="hero-title-row">
-          <h1 class="display hero-title">
+          <div class="display hero-title" aria-label="Ruoss!">
             <span class="hero-word">Ruoss!</span>
             <span class="hero-mark" set:html={logoLargeRaw.replace('<svg ', '<svg width="140" ')} />
-          </h1>
+          </div>
         </div>
         <p class="hero-sub display">Communication</p>
         <ul class="hero-services">
-          <li style="--i:0">Formation IA</li>
-          <li style="--i:1">Logo &amp; branding</li>
-          <li style="--i:2">Sites internet</li>
-          <li style="--i:3">Design avancé</li>
+          <li style="--i:0"><a href="/services/creation-site-internet-valais/">Sites internet</a></li>
+          <li style="--i:1"><a href="/services/formation-ia-valais/">Formation IA</a></li>
+          <li style="--i:2"><a href="/services/solutions-ia-entreprise/">Solutions IA</a></li>
+          <li style="--i:3"><a href="/services/graphisme-branding-valais/">Graphisme &amp; branding</a></li>
         </ul>
         <div class="hero-crosses" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
         <div class="hero-bottom">
-          <p class="hero-tagline">
-            Premier studio de design de Verbier.<br />
-            Du projet indépendant aux idées les plus ambitieuses.
-          </p>
+          <div class="hero-position"><h1 class="hero-tagline">Votre agence web à Verbier, en Valais.</h1><p>Des sites qui vous ressemblent.<br />Une IA qui vous aide vraiment.</p><a class="btn btn--light" href="/contact/">Parlons de votre projet</a></div>
           <p class="small hero-copy">© 2026 Ruoss! Communication</p>
           <div class="hero-founder"><FounderCard /></div>
         </div>
@@ -86,7 +83,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     </div>
     <div class="proj-grid" data-stagger>
       {PROJECTS.map((p) => (
-        <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}`} />
+        <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />
       ))}
       <ProjectCard
         name={OTHER_PROJECTS_CARD.name}
@@ -94,7 +91,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
         logo={OTHER_PROJECTS_CARD.logo}
         cover={OTHER_PROJECTS_CARD.cover}
         logoWidth={OTHER_PROJECTS_CARD.logoWidth}
-        href="/projects-2"
+        href="/projects-2/"
       />
     </div>
   </section>
@@ -138,8 +135,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
       <div class="avis-card avis-card--score reveal">
         <p class="avis-score display">5<span>/5</span></p>
         <p class="small">
-          Nous avons déliveré plus de <strong>150 projets</strong> qui ont aidé des entreprises et indépendats a
-          conquérir leur rêves!
+          Plus de <strong>150 projets</strong> réalisés pour accompagner les entreprises et les indépendants dans leurs ambitions.
         </p>
         <div class="avis-mark"><Logo width={40} /></div>
         <a class="btn btn--dark" href={SITE.reviewLink} target="_blank" rel="noopener">Laisser un avis</a>
@@ -276,7 +272,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     gap: 24px;
   }
   .hero-tagline {
-    font-size: clamp(17px, 1.8vw, 26px);
+    font-size: clamp(26px, 2.6vw, 38px);
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.35;
@@ -289,6 +285,24 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     justify-self: end;
   }
 
+  .hero-position { max-width: 36rem; }
+  .hero-position > p { font-size: 1.125rem; margin-block: 1rem; line-height: 1.5; }
+  .hero-services a { display: inline-flex; align-items: center; min-height: 44px; }
+  .hero-bottom { grid-template-columns: minmax(0, 1.5fr) auto minmax(0, 1fr); }
+  .hero-copy { display: none; }
+  .hero-founder { grid-column: 3; }
+  @media(max-width: 809px) { .hero-bottom { grid-template-columns: 1fr; } .hero-founder { grid-column: auto; } .hero-crosses { margin-block: 24px; } }
+
+  @media(max-width: 809px) {
+    .hero-title-row { order: 0; margin-top: 12px; }
+    .hero-sub { order: 1; }
+    .hero-bottom { order: 2; margin-top: 36px; }
+    .hero-services { order: 3; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-top: 24px; }
+    .hero-services li { font-size: 1rem; }
+    .hero-crosses, .hero-founder { display: none; }
+    .hero { min-height: auto; }
+    .hero-inner { padding-block: 32px; }
+  }
   /* ---------- Clients ---------- */
   .clients {
     padding-bottom: 0;

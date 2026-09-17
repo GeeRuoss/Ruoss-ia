@@ -1,23 +1,18 @@
-# SEO ruosscommunication.com
+# Référencement — Ruoss! Communication
 
-Règle d'or : la refonte ne doit rien casser. Les URLs du site Framer sont conservées à l'identique
-(`/projects-2`, `/projects/<slug>`, pas d'extension).
+Domaine principal : https://www.ruosscommunication.com/. Netlify sert les pages avec un slash final ; canoniques, sitemap et liens internes suivent ce format.
 
-## Meta par page
-Titres et descriptions repris du site live (voir chaque page Astro). Domaine canonique : `https://www.ruosscommunication.com` (www).
+## Pages prioritaires
 
-## Données structurées
-JSON-LD `ProfessionalService` + `LocalBusiness` sur toutes les pages (Layout.astro) : adresse Verbier,
-géo, fondateur, offres (4 services), sameAs Instagram/Behance.
+- Accueil : agence web à Verbier.
+- `/services/creation-site-internet-valais/` : création et refonte de sites internet en Valais.
+- `/services/formation-ia-valais/` : formations IA.
+- `/services/solutions-ia-entreprise/` : assistants et automatisations.
+- `/services/graphisme-branding-valais/` : logo, identité et graphisme.
+- `/studio/` : agence de communication à Verbier et en Valais.
 
-## IA / LLM
-- `public/llms.txt` : fiche complète du studio pour les moteurs IA.
-- `public/robots.txt` : tous les bots IA autorisés (GPTBot, ClaudeBot, Perplexity, etc.).
+Les études de cas font des liens vers les services correspondants. Chaque page possède un titre, une description et un H1. Les données structurées de services partagent l’identifiant de l’entreprise. Aucune note agrégée, certification ou offre tarifaire n’est inventée.
 
-## Sitemap
-`@astrojs/sitemap` → `/sitemap-index.xml`, référencé dans robots.txt et le `<head>`. `/merci` en noindex.
+`robots.txt` annonce `/sitemap-index.xml`. Les pages noindex `/merci/` et 404 sont exclues du sitemap. L’ancien `/projects` redirige vers `/projects-2/`.
 
-## À faire au moment du switch DNS
-1. Vérifier la Search Console (propriété existante Framer).
-2. Soumettre le sitemap.
-3. Contrôler que les 10 URLs répondent 200 (pas de redirects internes).
+`llms.txt` est un annuaire factuel complémentaire, sans garantie de citation IA. Les classements, la visibilité locale et les demandes doivent être suivis séparément. Les données privées Search Console ne sont pas publiées dans ce dépôt.
