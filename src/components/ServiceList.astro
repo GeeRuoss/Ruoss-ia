@@ -1,5 +1,5 @@
 ---
-// Panneau sombre « Services. » : 4 lignes accordéon avec vignettes et pilules.
+// Panneau sombre « Services. » : 3 lignes accordéon avec vignettes et pilules.
 import { SERVICES } from '../data/site';
 
 interface Props {
@@ -19,7 +19,7 @@ const { withMedia = false } = Astro.props;
       <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--dark)" stroke-width="1.2" fill="none"/></svg>
       Qu'est ce qu'on fait ?
     </p>
-    <h2 class="display services-title wipe">Services.<sup>(4)</sup></h2>
+    <h2 class="display services-title wipe">Services.<sup>({SERVICES.length})</sup></h2>
   </div>
   <ul class="services-rows" data-stagger>
     {SERVICES.map((s) => (

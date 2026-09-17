@@ -2,7 +2,7 @@
 
 Les références sont centralisées dans `src/data/web-projects.ts`. Joshua Ruoss, Carron + Deslarzes et les Pontonniers de Bex ont une nouvelle page de projet ; Bikeverbier et NIRLAB conservent leurs URL et études de cas existantes.
 
-`WebProjects.astro` affiche les cartes et les liens externes. Sur la page Projets, les filtres ajoutent les trois références d’identité visuelle et gardent les huit projets accessibles sans JavaScript. Bikeverbier et NIRLAB figurent aussi dans le filtre Identités. La galerie historique reste disponible dans le panneau dépliable. Les animations respectent la préférence de mouvement réduit.
+`WebProjects.astro` affiche les cartes et les liens externes. Sur la page Projets, les filtres ajoutent les trois références d’identité visuelle et gardent les huit projets accessibles sans JavaScript. Bikeverbier et NIRLAB figurent aussi dans le filtre Graphisme & 3D. La galerie historique reste disponible dans le panneau dépliable. Les animations respectent la préférence de mouvement réduit.
 
 ## Médias
 

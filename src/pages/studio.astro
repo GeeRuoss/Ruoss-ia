@@ -3,32 +3,35 @@ import Layout from '../layouts/Layout.astro';
 import Counters from '../components/Counters.astro';
 import ContactCta from '../components/ContactCta.astro';
 import Logo from '../components/Logo.astro';
-import { IMG, STUDIO_PARTNERS } from '../data/site';
+import { IMG, STUDIO_PARTNERS, SITE } from '../data/site';
 ---
 
 <Layout
-  title="Agence de communication à Verbier, Valais | Ruoss!"
-  description="Ruoss! Communication, agence de communication à Verbier en Valais. Guillermo Ruoss relie création web, graphisme, identité visuelle et accompagnement IA."
-  path="/studio"
+  title="Guillermo Ruoss, designer à Verbier | Studio Ruoss!"
+  description="Rencontrez Guillermo Ruoss, designer et fondateur de Ruoss! Communication à Verbier. Graphisme, 3D, développement web et IA : une approche sur mesure en Valais."
+  path="/studio/"
+  structuredData={[{'@context':'https://schema.org','@type':'Person','@id':SITE.domain+'/studio/#guillermo',name:SITE.founder,jobTitle:'Designer et fondateur',url:SITE.domain+'/studio/',image:SITE.domain+IMG.founder,worksFor:{'@id':SITE.domain+'/#studio'}}]}
 >
   <article class="page">
-    <h1 class="display studio-title wipe">Un studio à Verbier.<br />Des idées pour le Valais.</h1>
-
-    <div class="studio-about">
-      <p class="eyebrow">
-        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
-        A propos
-      </p>
-      <p class="studio-about-text lead">
-        Ruoss! Communication est une agence web et de communication basée à Verbier, au service des entreprises et des indépendants du Valais. Nous concevons des sites internet, des identités et des outils de communication ancrés dans le réel,
-        pensés pour durer et faire sens. Chaque design est dessiné à la main : nous travaillons la composition, la typographie et les détails pour construire une création sur mesure, de qualité. <span class="muted">Le studio est fondé et dirigé par Guillermo Ruoss
-        autodidacte, qui développe son approche à travers des projets mêlant design, contexte et usage.</span>
-      </p>
+    <section class="studio-about">
       <figure class="studio-founder">
-        <figcaption class="small muted">Aucun processus inutile, seulement des solutions efficaces, adaptées à vos besoins.</figcaption>
-        <img src={IMG.founder} alt="Guillermo Ruoss" width="213" height="319" loading="lazy" />
+        <img src={IMG.founder} alt="Portrait de Guillermo Ruoss, designer et fondateur de Ruoss! Communication" width="213" height="319" fetchpriority="high" />
+        <figcaption>Guillermo Ruoss<br /><span class="muted">Designer &amp; fondateur</span></figcaption>
       </figure>
-    </div>
+      <div class="studio-about-text">
+        <p class="muted">Ruoss! Communication · Verbier, Valais</p>
+        <h1 class="display studio-title">Guillermo Ruoss.<br />Le design, d’abord.</h1>
+        <p>Je suis designer et fondateur de Ruoss! Communication, à Verbier. Le graphisme est mon point de départ : travailler une forme, une couleur, une composition jusqu’à trouver ce qui donne du caractère à votre projet.</p>
+        <p>Je dessine chaque design à la main, avec le soin de la typographie et des détails. Cette approche se prolonge dans les identités visuelles, les affiches, la 3D et les interfaces. Le développement web et l’IA viennent élargir ce que nous pouvons créer ensemble : un site, une application ou un outil utile à votre activité.</p>
+        <a class="btn btn--dark" href="/contact/">Faisons connaissance</a>
+      </div>
+    </section>
+
+    <section class="studio-domains" aria-label="Les trois domaines du studio">
+      <a href="/services/graphisme-branding-valais/"><h2>Graphisme &amp; 3D</h2><p>Le cœur créatif du studio : identités, images et direction artistique.</p><span aria-hidden="true">↗</span></a>
+      <a href="/services/creation-site-internet-valais/"><h2>Web &amp; développement</h2><p>Du design de votre site au fonctionnement de vos applications.</p><span aria-hidden="true">↗</span></a>
+      <a href="/services/intelligence-artificielle-valais/"><h2>Intelligence artificielle</h2><p>Des formations et des solutions adaptées à votre façon de travailler.</p><span aria-hidden="true">↗</span></a>
+    </section>
 
     <img class="studio-hero reveal" src={IMG.studioParaglide} alt="Parapente au-dessus des montagnes de Verbier" loading="lazy" />
 
@@ -94,34 +97,26 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
 </Layout>
 
 <style>
-  .studio-title {
-    font-size: clamp(48px, 8vw, 112px);
-    padding-block: clamp(24px, 5vw, 72px) clamp(24px, 4vw, 64px);
-  }
-  .studio-about {
-    display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    gap: clamp(24px, 4vw, 72px);
-    align-items: start;
-    padding-bottom: clamp(40px, 5vw, 72px);
-  }
-  .studio-about-text {
-    max-width: 620px;
-  }
-  .studio-founder {
-    display: grid;
-    gap: 12px;
-    justify-items: start;
-  }
-  .studio-founder img {
-    width: 110px;
-    height: auto;
-    border-radius: 10px;
-  }
+  .studio-title { font-size:clamp(2.5rem,4.8vw,4.75rem); line-height:1.05; margin-block:20px 28px; overflow-wrap:anywhere; }
+  .studio-about { display:grid; grid-template-columns:minmax(240px, .7fr) minmax(0,1.5fr); gap:clamp(32px,6vw,88px); align-items:center; padding-block:clamp(32px,5vw,64px); }
+  .studio-about-text { max-width:800px; }
+  .studio-about-text p { font-size:1.125rem; line-height:1.65; }
+  .studio-about-text p + p { margin-top:20px; }
+  .studio-about-text .btn { margin-top:28px; }
+  .studio-founder { display:grid; gap:20px; justify-items:center; text-align:center; background:#e9e8e4; border-radius:var(--r-card); padding:clamp(24px,3vw,40px); }
+  .studio-founder img { width:213px; max-width:100%; height:auto; border-radius:12px; }
+  .studio-founder figcaption { font-size:1.125rem; line-height:1.55; }
+  .studio-domains { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-block:12px 64px; }
+  .studio-domains a { border-top:1px solid var(--line); padding-top:24px; }
+  .studio-domains h2 { font-size:1.5rem; font-weight:600; letter-spacing:-.03em; line-height:1.2; margin-bottom:12px; }
+  .studio-domains p { font-size:1.125rem; line-height:1.6; }
+  .studio-domains span { display:inline-block; font-size:1.75rem; margin-top:16px; transition:transform .25s; }
+  .studio-domains a:hover span { transform:translate(4px,-4px); }
+  @media(prefers-reduced-motion:reduce) { .studio-domains a:hover span { transform:none; } }
   .studio-hero {
     width: 100%;
     border-radius: var(--r-card);
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 21 / 8;
     object-fit: cover;
   }
   .studio-archives {
@@ -168,7 +163,6 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
   }
 
   @media (max-width: 1023px) {
-    .studio-about,
     .studio-inspi {
       grid-template-columns: 1fr;
     }
@@ -177,6 +171,8 @@ import { IMG, STUDIO_PARTNERS } from '../data/site';
     }
   }
   @media (max-width: 809px) {
+    .studio-about, .studio-domains { grid-template-columns:1fr; }
+    .studio-founder { max-width:320px; width:100%; justify-self:center; }
     .studio-partners-grid {
       grid-template-columns: 1fr 1fr;
     }

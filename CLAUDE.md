@@ -11,7 +11,7 @@ Le site vit sur main. Domaine canonique : https://www.ruosscommunication.com (h�
 
 ## Règles
 1. Jamais déployer sans validation de Guillermo.
-2. Préserver le positionnement web/formation IA/solutions IA et les pages de services ajoutées le 17 septembre 2026.
+2. Préserver les trois domaines validés : Graphisme & 3D en premier, Sites web & développement, Intelligence artificielle. Les pages détaillées formation et solutions IA restent accessibles sous une entrée commune.
 3. Images : noms hashés d'origine Framer dans `public/img/`, mapping sémantique dans les data files.
 4. `npm run dev -- --port 4322` (4321 = bikeverbier).
 

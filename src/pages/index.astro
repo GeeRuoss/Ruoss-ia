@@ -8,12 +8,12 @@ import ContactCta from '../components/ContactCta.astro';
 import Counters from '../components/Counters.astro';
 import Stars from '../components/Stars.astro';
 import logoLargeRaw from '../../public/brand/logo-script-large.svg?raw';
-import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../data/site';
+import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } from '../data/site';
 ---
 
 <Layout
-  title="Agence web à Verbier, Valais | Sites internet & IA | Ruoss!"
-  description="Ruoss! Communication à Verbier : création de sites internet en Valais, formations IA, solutions IA et identité visuelle. Parlons de votre projet."
+  title="Graphisme & agence web à Verbier, Valais | Ruoss!"
+  description="Studio de graphisme et agence web à Verbier en Valais. Identités visuelles, 3D, sites et applications sur mesure, formations et solutions IA avec Guillermo Ruoss."
   path="/"
 >
   <!-- ============ HERO ============ -->
@@ -31,14 +31,11 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
         </div>
         <p class="hero-sub display">Communication</p>
         <ul class="hero-services">
-          <li style="--i:0"><a href="/services/creation-site-internet-valais/">Sites internet</a></li>
-          <li style="--i:1"><a href="/services/formation-ia-valais/">Formation IA</a></li>
-          <li style="--i:2"><a href="/services/solutions-ia-entreprise/">Solutions IA</a></li>
-          <li style="--i:3"><a href="/services/graphisme-branding-valais/">Graphisme &amp; branding</a></li>
+          {SERVICES.map((service, i) => <li style={`--i:${i}`}><a href={service.href}>{service.title}</a></li>)}
         </ul>
         <div class="hero-crosses" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
         <div class="hero-bottom">
-          <div class="hero-position"><h1 class="hero-tagline">Votre agence web à Verbier, en Valais.</h1><p>Des sites dessinés à la main, pour vous.<br />Une IA qui vous aide vraiment.</p><a class="btn btn--light" href="/contact/">Parlons de votre projet</a></div>
+          <div class="hero-position"><h1 class="hero-tagline">Studio graphique & agence web à Verbier.</h1><p>Le design comme point de départ.<br />Des identités, des sites et des outils sur mesure.</p><a class="btn btn--light" href="/contact/">Parlons de votre projet</a></div>
           <p class="small hero-copy">© 2026 Ruoss! Communication</p>
           <div class="hero-founder"><FounderCard /></div>
         </div>
@@ -297,7 +294,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS } from '../d
     .hero-title-row { order: 0; margin-top: 12px; }
     .hero-sub { order: 1; }
     .hero-bottom { order: 2; margin-top: 36px; }
-    .hero-services { order: 3; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-top: 24px; }
+    .hero-services { order: 3; grid-template-columns: 1fr; gap: 4px; margin-top: 24px; }
     .hero-services li { font-size: 1rem; }
     .hero-crosses, .hero-founder { display: none; }
     .hero { min-height: auto; }

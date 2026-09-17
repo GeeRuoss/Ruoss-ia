@@ -10,14 +10,14 @@ const identityCopy: Record<string,string> = {
 };
 const web = WEB_PROJECTS.map((p) => ({...p, type:'web', identity:['nirlab','bikeverbier'].includes(p.slug)}));
 const identities = PROJECTS.filter((p) => identityCopy[p.slug]).map((p) => ({slug:p.slug, name:p.name, category:'Identité visuelle', image:p.cover, alt:`Projet ${p.name} par Ruoss! Communication`, summary:identityCopy[p.slug], url:'', type:'identity', identity:true}));
-const projects = (filterable ? [...web,...identities] : web).filter((p) => p.slug !== exclude).slice(0, limit);
+const projects = (filterable ? [identities[0], web[0], identities[1], web[1], identities[2], ...web.slice(2)] : web).filter((p) => p.slug !== exclude).slice(0, limit);
 const Heading = filterable ? 'h2' : 'h3';
 ---
 <div data-project-explorer>
 {filterable && <div class="project-filters" aria-label="Filtrer les projets" role="group" hidden>
   <button type="button" data-project-filter="all" aria-pressed="true" aria-controls="project-grid">Tout explorer</button>
   <button type="button" data-project-filter="web" aria-pressed="false" aria-controls="project-grid">Sites web</button>
-  <button type="button" data-project-filter="identity" aria-pressed="false" aria-controls="project-grid">Identités</button>
+  <button type="button" data-project-filter="identity" aria-pressed="false" aria-controls="project-grid">Graphisme &amp; 3D</button>
   <p class="project-count" aria-live="polite" aria-atomic="true">{projects.length} projets</p>
 </div>}
 <div class="web-projects" id={filterable ? 'project-grid' : undefined}>

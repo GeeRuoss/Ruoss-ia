@@ -1,6 +1,6 @@
 # Ruoss! Communication
 
-> Agence web et studio de communication à Verbier (Valais, Suisse), fondé en 2021 par Guillermo Ruoss. Création de logos, identités de marque, sites internet, design 3D et formations IA pour entreprises et indépendants. Plus de 150 projets livrés pour 112 clients, dans plus de 50 pays.
+> Studio de graphisme et agence web à Verbier (Valais, Suisse), fondé en 2021 par Guillermo Ruoss. Graphisme et 3D, sites et applications web sur mesure, formations et solutions IA pour entreprises et indépendants. Plus de 150 projets livrés pour 112 clients, dans plus de 50 pays.
 
 Ruoss! Communication privilégie la simplicité, la couleur, la beauté et l'innovation : des logos, des sites et des stratégies bien pensés, fonctionnels et durables, sans discours marketing tape-à-l'œil. Trois affiches du studio ont été sélectionnées pour intégrer les archives de la Confédération suisse.
 
@@ -8,17 +8,16 @@ Coordonnées : téléphone +41 77 450 67 26 · WhatsApp +41 77 450 67 26 · emai
 
 ## Services
 
-- [Sites internet en Valais](https://www.ruosscommunication.com/services/creation-site-internet-valais/) : création et refonte, design, navigation mobile et référencement local.
-- [Formation IA](https://www.ruosscommunication.com/services/formation-ia-valais/) : ateliers pratiques pour entreprises et indépendants, adaptés à leurs tâches.
-- [Solutions IA](https://www.ruosscommunication.com/services/solutions-ia-entreprise/) : cadrage, prototypes d’assistants et automatisations, intégration selon faisabilité.
-- [Graphisme et branding](https://www.ruosscommunication.com/services/graphisme-branding-valais/) : logos, identités visuelles, supports imprimés et numériques.
+- [Graphisme et 3D](https://www.ruosscommunication.com/services/graphisme-branding-valais/) : le cœur du studio ; logos, identités, affiches, modélisation et rendu 3D.
+- [Sites web et développement](https://www.ruosscommunication.com/services/creation-site-internet-valais/) : sites, applications web, systèmes de réservation et outils métier ; design et développement sur mesure.
+- [Intelligence artificielle](https://www.ruosscommunication.com/services/intelligence-artificielle-valais/) : un accompagnement qui réunit les [formations IA](https://www.ruosscommunication.com/services/formation-ia-valais/) et les [solutions IA](https://www.ruosscommunication.com/services/solutions-ia-entreprise/).
 
 ## Pages
 
 - [Accueil](https://www.ruosscommunication.com/) : présentation du studio, projets récents, services, avis clients.
-- [Studio](https://www.ruosscommunication.com/studio) : à propos, partenaires, inspirations.
-- [Projets](https://www.ruosscommunication.com/projects-2) : galerie complète 2020-2026.
-- [Contact](https://www.ruosscommunication.com/contact) : formulaire et téléphone, réponse rapide.
+- [Studio](https://www.ruosscommunication.com/studio/) : portrait et présentation de Guillermo Ruoss, son approche de designer, partenaires et inspirations.
+- [Projets](https://www.ruosscommunication.com/projects-2/) : galerie de graphisme, 3D et sites web, avec filtres et liens vers les réalisations.
+- [Contact](https://www.ruosscommunication.com/contact/) : formulaire et téléphone, réponse rapide.
 
 ## Études de cas
 
@@ -27,3 +26,7 @@ Coordonnées : téléphone +41 77 450 67 26 · WhatsApp +41 77 450 67 26 · emai
 - [Le Catogne](https://www.ruosscommunication.com/projects/le-catogne) : logo et direction artistique pour le restaurant de Verbier (2024).
 - [Skipatrol Verbier](https://www.ruosscommunication.com/projects/skipatrol-verbier) : logo, photographie, autocollants (2025).
 - [Bikeverbier.ch](https://www.ruosscommunication.com/projects/bikeverbier) : site web, logo, identité graphique (2025).
+
+- [Joshua Ruoss](https://www.ruosscommunication.com/projects/joshua-ruoss/) : site d’un guide de montagne à Verbier, activités et outils de préparation.
+- [Carron + Deslarzes](https://www.ruosscommunication.com/projects/carron-deslarzes/) : site de charpente et rénovation en Valais.
+- [Pontonniers de Bex](https://www.ruosscommunication.com/projects/pontonniers-bex/) : site du club, programme et galerie.

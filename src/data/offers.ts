@@ -1,27 +1,29 @@
 // Contenus métiers : périmètres proposés, sans résultats ni tarifs inventés.
 export const OFFERS = [
   {
-    slug: 'creation-site-internet-valais', label: 'Sites internet',
-    title: 'Création de site internet en Valais | Agence web Ruoss!',
-    description: 'Création et refonte de sites internet en Valais, depuis Verbier. Design sur mesure, navigation mobile et référencement local pour PME et indépendants.',
-    heading: 'Votre prochain site internet commence ici.',
-    intro: 'Une entreprise a besoin d’un site qui explique son offre, donne confiance et facilite le contact. Depuis Verbier, Ruoss! Communication crée et repense les sites internet des PME, des indépendants et des acteurs du tourisme en Valais.',
+    slug: 'creation-site-internet-valais', label: 'Sites web & développement',
+    title: 'Sites internet & développement web en Valais | Ruoss!',
+    description: 'Sites internet, applications web, réservations et outils métier sur mesure en Valais. Ruoss! à Verbier relie design, développement et référencement local.',
+    heading: 'Du site internet à votre prochaine application.',
+    intro: 'Depuis Verbier, Ruoss! Communication conçoit et développe des sites internet, des applications web et des outils sur mesure pour les entreprises du Valais. Nous prenons en charge le design, l’interface et le fonctionnement : présenter votre activité, gérer des réservations ou simplifier le travail de votre équipe.',
     image: '/img/gPgftrAGsKYEwr63438RZIvsdoo.jpg', alt: 'Projet Bikeverbier, site web et identité visuelle réalisés par Ruoss!',
-    sectionTitle: 'Du premier message au premier contact.',
+    sectionTitle: 'Du design au fonctionnement.',
     sections: [
       { title: 'Un design dessiné à la main, pour vous', text: 'Nous concevons et dessinons chaque interface à la main, à partir de votre métier et de votre identité. Composition, typographie, couleurs, cadrages et détails : chaque choix est travaillé pour votre entreprise. C’est cette attention qui donne au site sa personnalité et sa qualité, avec une navigation pensée pour vos clients.' },
+      { title: 'Applications, réservations et outils métier', text: 'Un espace client, un calendrier de réservation, un configurateur ou un outil de gestion : nous développons les fonctions autour de votre façon de travailler. Le projet peut comprendre les interfaces, la logique côté serveur, les données et les connexions à vos outils. Nous définissons ensemble les usages, les accès et les besoins de suivi.' },
       { title: 'Un site pratique sur téléphone', text: 'Les pages doivent rester faciles à lire et à utiliser sur un petit écran. Nous travaillons les images, les boutons, le menu et le parcours de demande. Pour un guide, un commerce ou un prestataire à Verbier, consulter une offre et poser une question doit être simple, même en déplacement.' },
       { title: 'Le référencement prévu dès la conception', text: 'Chaque page répond à une intention précise, avec un titre descriptif, une structure claire et des liens utiles. Les adresses, les redirections, les performances et le sitemap sont contrôlés. Search Console permet ensuite de suivre les recherches qui affichent le site et les pages qui reçoivent des clics.' },
     ],
     process: [
       { title: 'Définir le besoin', text: 'Nous précisons votre public, les offres prioritaires, les contenus disponibles et l’action attendue : prise de contact, demande de devis ou réservation.' },
       { title: 'Concevoir et construire', text: 'Nous dessinons les pages à la main et affinons leur composition avec vous. Nous construisons ensuite le site autour de ce design, avec les fonctions utiles et des contenus faciles à parcourir.' },
-      { title: 'Vérifier et accompagner', text: 'Nous contrôlons les pages sur mobile et ordinateur, les liens et le parcours de contact. L’hébergement, les accès et les évolutions sont clarifiés avant la mise en ligne.' },
+      { title: 'Vérifier et accompagner', text: 'Nous testons les parcours sur mobile et ordinateur, les formulaires, les droits d’accès et les intégrations concernés. L’hébergement, les sauvegardes, la maintenance et les évolutions sont définis selon le périmètre du projet.' },
     ],
     proofTitle: 'Des sites qui ont leur propre caractère.',
     proof: 'Joshua Ruoss, Carron + Deslarzes, Bikeverbier, les Pontonniers de Bex et NIRLAB : des métiers différents, cinq univers dessinés sur mesure. Explorez les projets ou ouvrez directement les sites pour les découvrir.',
     projects: ['bikeverbier', 'nirlab'],
     faqs: [
+      { q: 'Développez-vous aussi des applications et des systèmes de réservation ?', a: 'Oui. Nous pouvons concevoir une application web, un espace client, un système de réservation ou un outil métier. Le cadrage précise les utilisateurs, les fonctions, les données et les intégrations nécessaires. Le développement couvre l’interface et le fonctionnement côté serveur selon le projet.' },
       { q: 'Combien coûte la création d’un site internet en Valais ?', a: 'Le budget dépend du nombre de pages, des contenus à produire, des langues et des fonctionnalités. Nous préparons un devis adapté au périmètre, en distinguant la création, l’hébergement et les éventuelles évolutions. Envoyez-nous votre site actuel ou une description du projet pour lancer la discussion.' },
       { q: 'Pouvez-vous refaire mon site sans changer de domaine ?', a: 'Oui. Une refonte peut conserver votre nom de domaine et les adresses utiles. Nous examinons les pages existantes avant de modifier la structure ; lorsqu’une adresse change, une redirection vers la page correspondante est prévue.' },
       { q: 'Travaillez-vous uniquement à Verbier ?', a: 'Le studio est basé à Verbier, dans le Val de Bagnes. Nous accompagnons aussi les entreprises et les indépendants ailleurs en Valais, notamment à Martigny, Sion et Sierre. L’organisation des échanges est adaptée au projet.' },
@@ -83,16 +85,17 @@ export const OFFERS = [
     ], cta: 'Étudions votre besoin',
   },
   {
-    slug: 'graphisme-branding-valais', label: 'Graphisme & branding',
-    title: 'Graphiste en Valais, logo & branding à Verbier | Ruoss!',
-    description: 'Logo, identité visuelle et graphic design en Valais. Le studio Ruoss! Communication à Verbier crée une image cohérente pour votre entreprise.',
-    heading: 'Une identité que l’on reconnaît.',
-    intro: 'Un logo, une affiche, un site ou une enseigne racontent la même entreprise. Ruoss! Communication, studio de graphisme à Verbier, conçoit des identités visuelles cohérentes pour les entreprises et les indépendants du Valais.',
+    slug: 'graphisme-branding-valais', label: 'Graphisme & 3D',
+    title: 'Graphiste en Valais : identité visuelle & 3D | Ruoss!',
+    description: 'Graphisme, logos, identités visuelles, affiches et 3D à Verbier en Valais. Des créations sur mesure dessinées à la main par le studio Ruoss! Communication.',
+    heading: 'Du caractère. De la première esquisse à la 3D.',
+    intro: 'Le graphisme est le cœur de Ruoss! Communication. Depuis Verbier, nous créons des logos, des identités visuelles, des affiches et des images 3D pour les entreprises et les indépendants du Valais. Chaque projet commence par une intention graphique et un design dessiné à la main, avec une attention particulière à la composition et aux détails.',
     image: '/img/QoTnY5PP6N3Bf8OA7WzU9Z9Mw.jpg', alt: 'Identité visuelle Skipatrol Verbier, projet du studio Ruoss!',
     sectionTitle: 'Le caractère de votre marque, sur chaque support.',
     sections: [
       { title: 'Logo et identité visuelle', text: 'Nous clarifions ce qui rend votre activité singulière avant de travailler la forme. Nous dessinons à la main le logo et les compositions, puis travaillons ensemble la typographie, les couleurs et les déclinaisons. L’identité doit rester lisible sur un téléphone, un document imprimé et les supports réellement utilisés par votre entreprise.' },
       { title: 'Graphisme et direction artistique', text: 'Affiches, étiquettes, brochures ou communication digitale : nous déclinons l’identité selon le message et le contexte. Le travail de graphic design relie la composition, les images et la hiérarchie de lecture. Il peut prolonger une charte existante ou accompagner une évolution de votre marque.' },
+      { title: 'Modélisation et images 3D', text: 'La 3D permet de montrer un produit, de travailler les matières ou de composer une image qui serait difficile à photographier. Nous concevons les volumes, l’éclairage et les rendus dans la continuité de votre identité. Pour NIRLAB, la modélisation et le rendu 3D font partie de l’accompagnement visuel du projet.' },
       { title: 'Votre image et votre site, ensemble', text: 'Une nouvelle identité gagne à être pensée avec ses usages numériques. Nous pouvons coordonner le branding avec la création ou la refonte de votre site internet. Vous gardez un interlocuteur pour relier le langage visuel, les contenus et le parcours de vos visiteurs.' },
     ],
     process: [
@@ -101,7 +104,7 @@ export const OFFERS = [
       { title: 'Décliner et transmettre', text: 'Les fichiers et déclinaisons sont préparés selon les supports convenus. Une charte peut formaliser les règles pour les futurs intervenants.' },
     ],
     proofTitle: 'Des projets ancrés dans leur contexte.',
-    proof: 'Le Catogne à Verbier illustre le travail sur un logo et une signalétique en lien avec un lieu. Le Domaine du Raffort relie une identité à des étiquettes de vin. Skipatrol Verbier explore un symbole abstrait, lisible et reconnaissable.', projects: ['le-catogne', 'domaine-du-raffort', 'skipatrol-verbier'],
+    proof: 'Le Catogne à Verbier illustre le travail sur un logo et une signalétique en lien avec un lieu. Le Domaine du Raffort relie une identité à des étiquettes de vin. Skipatrol Verbier explore un symbole abstrait. NIRLAB illustre le lien entre identité visuelle, interfaces et images 3D.', projects: ['le-catogne', 'domaine-du-raffort', 'skipatrol-verbier', 'nirlab'],
     faqs: [
       { q: 'Peut-on moderniser un logo existant ?', a: 'Oui. Nous commençons par identifier ce qui fonctionne et ce que vos clients reconnaissent déjà. Une évolution ciblée peut suffire ; une refonte complète n’est proposée que si elle répond au besoin.' },
       { q: 'Quels fichiers sont livrés ?', a: 'Les formats et déclinaisons sont définis selon le projet : usages numériques, impression, versions du logo et éventuelle charte graphique. Les besoins de vos imprimeurs ou partenaires sont pris en compte pendant le cadrage.' },

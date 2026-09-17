@@ -14,14 +14,15 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { label: 'Sites web', href: '/services/creation-site-internet-valais/' },
-  { label: 'Formation IA', href: '/services/formation-ia-valais/' },
-  { label: 'Solutions IA', href: '/services/solutions-ia-entreprise/' },
+  { label: 'Graphisme & 3D', href: '/services/graphisme-branding-valais/' },
+  { label: 'Web & développement', href: '/services/creation-site-internet-valais/' },
+  { label: 'IA', href: '/services/intelligence-artificielle-valais/' },
   { label: 'Projets', href: '/projects-2/' },
+  { label: 'Studio', href: '/studio/' },
   { label: 'Contact', href: '/contact/' },
 ] as const;
 
-// Ordre commercial : web, formation, solutions IA, identité visuelle.
+// Trois domaines : graphisme, développement web et IA.
 // Compteurs animés (valeurs finales du site live).
 export const COUNTERS = [
   { value: 112, suffix: '', label: 'Clients accompagnés depuis 2021' },
@@ -68,45 +69,30 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    num: '(001)',
-    title: 'Formation IA',
-    href: '/services/formation-ia-valais/',
-    desc: "Des formations pensées pour rendre les équipes autonomes avec l'intelligence artificielle, sur leurs vrais cas métier et au service de leur productivité.",
-    tagLabel: 'Categories',
-    tags: ['Pratique sur vos cas métier', 'Formation en entreprise', 'Esprit critique & données'],
-    tiles: ['/img/AJRl3xcIDVMdSDmwpm9LfszmMkw.webp', '/img/VXpQonqJjWFrwAoUQbKVCkYuHg.jpg', '/img/tlJTX5Ux18kUx3r8ndlVe55ZE7s.png'],
-  },
-  {
-    num: '(002)',
-    title: 'Graphisme & branding',
+    num: '(001)', title: 'Graphisme & 3D',
     href: '/services/graphisme-branding-valais/',
-    desc: 'Identités de marque stratégiques conçues pour clarifier le positionnement, renforcer la reconnaissance et assurer une cohérence durable.',
+    desc: 'Le cœur du studio. Logos, identités, affiches et images 3D : des créations dessinées à la main, avec une direction artistique singulière et le soin du détail.',
     tagLabel: 'Services',
-    tags: ['Création de logo sur mesure', 'Identité visuelle complète', 'Illustration', 'Direction artistique globale', 'Rebranding & repositionnement de marque', 'Chartes graphiques (print & digital)'],
+    tags: ['Identité visuelle', 'Affiches & édition', 'Direction artistique', 'Modélisation & rendu 3D'],
     tiles: ['/img/1aNBz6OHulTp3IunAt8E8Ixvg9M.jpg', '/img/Cq0gHsa8HW5KX7IapBrtFJESTE.jpg', '/img/hghbpIDZCx1nXzMeQEYH5p1r2mo.jpg'],
   },
   {
-    num: '(003)',
-    title: 'Sites internet',
+    num: '(002)', title: 'Sites web & développement',
     href: '/services/creation-site-internet-valais/',
-    desc: 'Création et refonte de sites internet à Verbier et en Valais. Des interfaces dessinées à la main, sur mesure, avec le soin du détail et un parcours clair pour vos clients.',
-    tagLabel: 'Categories',
-    tags: ['Création & refonte', 'Référencement local', 'Design sur mesure', 'Mobile & maintenance'],
+    desc: 'Du site vitrine à l’application web : nous dessinons les interfaces et développons les fonctions dont vous avez besoin, jusqu’aux réservations et aux outils métier.',
+    tagLabel: 'Services',
+    tags: ['Sites sur mesure', 'Applications web', 'Réservations', 'Outils métier'],
     tiles: ['/img/M84O8r2oa0Cn7cFcuoQW0uhlxY.jpg', '/img/7aTjPHDEIHlVgn0dR4LMop9ReE.jpg'],
   },
   {
-    num: '(004)',
-    title: 'Solutions IA',
-    href: '/services/solutions-ia-entreprise/',
-    desc: 'Des assistants et automatisations IA adaptés aux tâches de votre entreprise, avec des règles claires et une validation humaine.',
-    tagLabel: 'Categories',
-    tags: ['Assistants sur mesure', 'Automatisation', 'Organisation des connaissances', 'Intégration & accompagnement'],
-    tiles: ['/img/pUCS4TBS6MtRY9iQz9kl7OzjMB8.jpg', '/img/Udxjrd1L0GmN6XLWkogckkNO5p8.jpg', '/img/gRP7p0jTGCvMVpM0IsQNTg6VQ.jpg'],
+    num: '(003)', title: 'Intelligence artificielle',
+    href: '/services/intelligence-artificielle-valais/',
+    desc: 'Apprendre à utiliser l’IA ou développer une solution pour votre entreprise : formations, assistants et automatisations réunis dans un même accompagnement.',
+    tagLabel: 'Services',
+    tags: ['Formations pratiques', 'Assistants IA', 'Automatisations'],
+    tiles: ['/img/AJRl3xcIDVMdSDmwpm9LfszmMkw.webp', '/img/VXpQonqJjWFrwAoUQbKVCkYuHg.jpg'],
   },
 ];
-
-SERVICES.sort((a, b) => ['Sites internet', 'Formation IA', 'Solutions IA', 'Graphisme & branding'].indexOf(a.title) - ['Sites internet', 'Formation IA', 'Solutions IA', 'Graphisme & branding'].indexOf(b.title));
-SERVICES.forEach((s, i) => { s.num = `(00${i + 1})`; });
 
 export const REVIEWS = [
   {
