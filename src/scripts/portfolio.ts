@@ -27,7 +27,7 @@ function initPortfolio() {
   filters.forEach(link => link.addEventListener('click', event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    history.replaceState(null, '', link.hash);
+    history.replaceState(history.state, '', link.hash);
     applyFilter(link.dataset.filter!);
     const grid = root!.querySelector<HTMLElement>('.portfolio-grid')!;
     if (grid.getBoundingClientRect().top < filterBar.getBoundingClientRect().bottom + 20) {
