@@ -9,14 +9,14 @@ type Card =
   | { kind: 'art'; item: typeof artworks[number]; featured?: boolean }
   | { kind: 'identity'; item: typeof PROJECTS[number]; featured?: boolean }
   | { kind: 'web'; item: typeof catalog.projects[number]; featured?: boolean }
-  | { kind: 'pack' | 'ai' | 'training'; featured?: boolean };
+  | { kind: 'pack' | 'ai' | 'training' | 'render'; featured?: boolean };
 const art = (i: number, featured = false): Card => ({ kind: 'art', item: artworks[i], featured });
 const web = (i: number, featured = false): Card => ({ kind: 'web', item: catalog.projects[i], featured });
 const identity = (i: number): Card => ({ kind: 'identity', item: PROJECTS[i] });
 const firstArtworks = [0, 15, 9, 11, 19, 21];
 const cards: Card[] = [
   art(0, true), web(0, true), identity(1), art(15), web(2),
-  identity(0), art(9), { kind: 'ai' }, web(1),
+  identity(0), art(9), { kind: 'render' }, { kind: 'ai' }, web(1),
   art(11), { kind: 'pack' }, identity(2), art(19), web(3),
   { kind: 'training' }, identity(3), web(4), art(21), identity(4), web(5), web(6),
   ...artworks.filter((_, i) => !firstArtworks.includes(i)).map((item): Card => ({ kind: 'art', item })),
@@ -65,6 +65,7 @@ const thumb = (file: string, size: number) => `/img/portfolio/${file.replace('.j
           </div>
           <p class="portfolio-services">{card.item.categories.join(' · ')}</p>
         </>}
+        {card.kind === 'render' && <a href="/projects/908-devices/"><div class="render-surface portfolio-surface"><img src="/img/graphisme/mx908-face-1200.webp" alt="Rendu 3D du MX908 de 908 Devices" width="1200" height="675" loading="lazy" /></div><h2 class="portfolio-caption">908 Devices</h2><p class="portfolio-services">Modélisation et rendu 3D.</p></a>}
         {card.kind === 'pack' && <a href="https://joshruoss.ch/materiel/" target="_blank" rel="noopener noreferrer" aria-label="Essayer Fais ton sac de Joshua Ruoss (nouvel onglet)">
           <div class="pack-surface portfolio-surface"><img src="/img/web-projects/fais-ton-sac.webp" alt="Fais ton sac, la liste de matériel interactive de Joshua Ruoss" width="1200" height="630" loading="lazy" /></div>
           <h2 class="portfolio-caption">Fais ton sac.</h2><p class="portfolio-services">L’outil de Joshua Ruoss, à essayer.</p>

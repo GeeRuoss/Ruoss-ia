@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="MX908 : modélisation et rendu 3D | Ruoss! Communication" description="Le MX908 de 908 Devices en 3D : modélisation, matières, éclairage sur verre fumé et animation. Un projet visuel du studio Ruoss! à Verbier." path="/projects/908-devices/" ogImage="/brand/og-mx908-v1.jpg">
+  <article class="page mx-project">
+    <a class="mx-back" href="/services/graphisme-branding-valais/">Graphisme &amp; 3D</a>
+    <header class="mx-header"><div><p>908 Devices</p><h1 class="display">MX908.<br />Matière &amp; lumière.</h1></div><p>Un produit reconstruit en 3D. Des matières satinées, un sol en verre fumé et un éclairage orange et bleu pour en révéler les volumes.</p></header>
+    <img class="mx-still" src="/img/graphisme/mx908-face-1800.webp" srcset="/img/graphisme/mx908-face-640.webp 640w, /img/graphisme/mx908-face-1200.webp 1200w, /img/graphisme/mx908-face-1800.webp 1800w" sizes="(max-width:1400px) calc(100vw - 40px), 1400px" alt="Modélisation du MX908 de face, avec son reflet sur le verre fumé" width="2560" height="1440" fetchpriority="high" />
+    <section class="mx-motion" aria-labelledby="mx-motion-title"><h2 class="display" id="mx-motion-title">Le produit<br />en mouvement.</h2><video controls playsinline preload="none" poster="/img/graphisme/mx908-face-1200.webp" aria-label="Animation 3D du MX908, film de six secondes sans son"><source src="/video/projects/mx908-film-verre.mp4" type="video/mp4" /><p><a href="/video/projects/mx908-film-verre.mp4">Regarder l’animation du MX908</a></p></video></section>
+    <section class="mx-other-view" aria-labelledby="mx-detail-title"><h2 class="display" id="mx-detail-title">Un autre regard.</h2><img class="mx-still" src="/img/graphisme/mx908-studio-1800.webp" srcset="/img/graphisme/mx908-studio-640.webp 640w, /img/graphisme/mx908-studio-1200.webp 1200w, /img/graphisme/mx908-studio-1800.webp 1800w" sizes="(max-width:1400px) calc(100vw - 40px), 1400px" alt="Vue en perspective du MX908, avec les reflets du studio sur le boîtier" width="2560" height="1440" loading="lazy" /></section>
+    <nav class="mx-more" aria-label="Poursuivre la découverte"><a href="/projects/nirlab/">Découvrir NIRLAB</a><a href="/projects-2/">Tous les projets</a></nav>
+  </article>
+</Layout>
+<style>
+  .mx-project { max-width:1400px; padding-bottom:70px; }
+  .mx-back { display:inline-flex; font-size:20px; min-height:48px; padding-block:12px; margin-block:24px; text-decoration:underline; text-underline-offset:6px; }
+  .mx-header { display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end; margin-block:24px 48px; }
+  .mx-header h1 { font-size:clamp(48px,6.7vw,96px); line-height:1.03; }
+  .mx-header > div > p { font-size:22px; margin-bottom:24px; }
+  .mx-header > p { font-size:22px; line-height:1.5; max-width:36ch; }
+  .mx-still, video { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; border-radius:20px; background:#000; }
+  .mx-motion, .mx-other-view { margin-top:clamp(64px,8vw,112px); }
+  h2 { font-size:clamp(38px,5.3vw,72px); margin-bottom:30px; }
+  .mx-more { display:flex; flex-wrap:wrap; justify-content:space-between; gap:25px; margin-top:70px; padding-block:30px; border-top:1px solid #bbb; }
+  .mx-more a { font-size:clamp(23px,3vw,36px); letter-spacing:-.04em; text-decoration:underline; text-underline-offset:7px; min-height:48px; }
+  a:focus-visible, video:focus-visible { outline:3px solid #176ad7; outline-offset:6px; }
+  @media(max-width:750px) { .mx-header { grid-template-columns:1fr; gap:24px; margin-block:10px 30px; } .mx-header h1 { font-size:clamp(40px,11vw,64px); } .mx-header > p { font-size:20px; } .mx-still { aspect-ratio:4/3; object-fit:cover; } .mx-more { margin-top:45px; } }
+</style>

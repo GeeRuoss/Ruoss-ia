@@ -1,0 +1,81 @@
+---
+import { PROJECTS } from '../data/site';
+import { WEB_PROJECTS } from '../data/web-projects';
+import artworks from '../data/portfolio-artworks.json';
+const identities = PROJECTS.filter(p => p.slug !== 'nirlab').map(p => ({ ...p, image: p.cover, alt: p.name }));
+const websites = WEB_PROJECTS.filter(p => p.newCaseStudy).map(p => ({ ...p, logo: '', logoWidth: 0 }));
+const projects = [...identities, ...websites];
+const galleryPreview = [artworks[0], artworks[21], artworks[9], artworks[19], artworks[39], artworks[38]];
+---
+<div class="graphic-work" id="creations">
+  <section class="featured-work" aria-labelledby="mx908-title">
+    <a class="mx908-cover work-image" href="/projects/908-devices/" aria-label="Découvrir le projet MX908 de 908 Devices">
+      <img src="/img/graphisme/mx908-face-1800.webp" srcset="/img/graphisme/mx908-face-640.webp 640w, /img/graphisme/mx908-face-1200.webp 1200w, /img/graphisme/mx908-face-1800.webp 1800w" sizes="(max-width:1400px) calc(100vw - 40px), 1350px" alt="Rendu 3D du MX908 de 908 Devices, sur verre fumé avec des lumières orange et bleue" width="2560" height="1440" fetchpriority="high" />
+    </a>
+    <div class="work-caption"><div><h2 id="mx908-title"><a href="/projects/908-devices/">908 Devices.</a></h2><p>Modélisation, matières et lumière.</p></div><a class="work-link" href="/projects/908-devices/">Découvrir le projet</a></div>
+  </section>
+
+  <section class="featured-work nirlab-work" aria-labelledby="nirlab-title">
+    <div class="work-caption"><div><h2 id="nirlab-title">NIRLAB.</h2><p>Identité visuelle, interfaces et images 3D.</p></div><a class="work-link" href="/projects/nirlab/">Voir le projet NIRLAB</a></div>
+    <a class="nirlab-images" href="/projects/nirlab/" aria-label="Explorer les créations NIRLAB">
+      <img src="/img/graphisme/nirlab-3d-1200.webp" srcset="/img/graphisme/nirlab-3d-640.webp 640w, /img/graphisme/nirlab-3d-1200.webp 1200w" sizes="(max-width:700px) calc(100vw - 32px), 50vw" alt="Rendu 3D NIRLAB : appareil et interface mobile dans un univers bleu" width="1200" height="675" loading="lazy" />
+      <img src="/img/graphisme/nirlab-identite-1200.webp" srcset="/img/graphisme/nirlab-identite-640.webp 640w, /img/graphisme/nirlab-identite-1200.webp 1200w" sizes="(max-width:700px) calc(100vw - 32px), 50vw" alt="Déclinaisons du logo NIRLAB dans sa charte graphique" width="1200" height="675" loading="lazy" />
+    </a>
+  </section>
+
+  <section class="graphic-projects" aria-labelledby="graphic-projects-title">
+    <h2 class="display" id="graphic-projects-title">Des projets<br />à explorer.</h2>
+    <div class="graphic-project-grid">
+      {projects.map(project => <article class="graphic-project">
+        <a href={`/projects/${project.slug}/`}>
+          <div class:list={['project-image', { 'project-image--logo': project.logo, 'project-image--josh': project.slug === 'joshua-ruoss' }]}>
+            <img class="project-cover" src={project.image} alt="" width="1200" height="900" loading="lazy" />
+            {project.logo && <img class="project-logo" src={project.logo} alt="" style={`--logo-width:${project.logoWidth}px`} loading="lazy" />}
+          </div>
+          <h3>{project.name}</h3>
+        </a>
+      </article>)}
+      <article class="graphic-project gallery-project">
+        <a href="/projects-2/">
+          <div class="gallery-mosaic" aria-hidden="true">
+            {galleryPreview.map(art => <img src={`/img/portfolio/${art.file.replace('.jpg', '')}-640.webp`} alt="" width="640" height="360" loading="lazy" style={`background:${art.background}`} />)}
+          </div>
+          <h3>Toute la galerie.</h3><p>Logos, affiches, illustrations et sites.</p>
+        </a>
+      </article>
+    </div>
+    <a class="all-work-link" href="/projects-2/">Voir tous les projets</a>
+  </section>
+</div>
+<style>
+  .graphic-work { padding-top:48px; scroll-margin-top:90px; }
+  .featured-work { margin-bottom:clamp(64px,8vw,112px); }
+  .work-image { display:block; overflow:hidden; border-radius:20px; background:#030303; }
+  .mx908-cover img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; transition:transform .7s ease; }
+  .work-caption { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:18px 30px; margin-top:24px; }
+  .work-caption h2 { margin:0 0 9px; font-size:clamp(32px,4vw,56px); letter-spacing:-.05em; line-height:1.1; font-weight:500; }
+  .work-caption p { font-size:20px; line-height:1.4; color:#555; }
+  .work-link { font-size:20px; min-height:44px; padding-block:10px; text-decoration:underline; text-underline-offset:6px; }
+  .nirlab-images { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:30px; }
+  .nirlab-images img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:18px; background:#ececec; transition:transform .6s ease; }
+  .graphic-projects > h2 { font-size:clamp(42px,6vw,80px); margin-bottom:42px; }
+  .graphic-project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:42px 24px; }
+  .graphic-project { min-width:0; }
+  .project-image { position:relative; overflow:hidden; border-radius:18px; aspect-ratio:4/3; background:#e5e5e5; }
+  .project-cover { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+  .project-image--logo::after { content:''; position:absolute; inset:0; background:#12121273; }
+  .project-logo { position:absolute; z-index:1; left:50%; top:50%; transform:translate(-50%,-50%); width:var(--logo-width); max-width:65%; max-height:60%; object-fit:contain; }
+  .project-image--josh { background:#365887; }
+  .project-image--josh .project-cover { object-fit:contain; }
+  .graphic-project h3 { margin-top:18px; font-size:clamp(25px,2.5vw,34px); line-height:1.15; font-weight:500; letter-spacing:-.035em; }
+  .graphic-project p { margin-top:8px; font-size:20px; color:#555; }
+  .gallery-mosaic { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; aspect-ratio:4/3; padding:18px; background:#e8e8e5; border-radius:18px; overflow:hidden; }
+  .gallery-mosaic img { width:100%; height:100%; object-fit:contain; border-radius:8px; }
+  .gallery-mosaic img:nth-child(2), .gallery-mosaic img:nth-child(4) { rotate:3deg; }
+  .gallery-mosaic img:nth-child(3), .gallery-mosaic img:nth-child(5) { rotate:-3deg; }
+  .all-work-link { display:block; width:fit-content; margin-top:48px; padding-block:12px; font-size:clamp(26px,3.5vw,42px); letter-spacing:-.04em; text-decoration:underline; text-underline-offset:9px; text-decoration-thickness:2px; }
+  a:focus-visible { outline:3px solid #176ad7; outline-offset:6px; }
+  @media(hover:hover) and (prefers-reduced-motion:no-preference) { .work-image:hover img, .graphic-project a:hover .project-cover { transform:scale(1.025); } .nirlab-images:hover img:first-child { transform:translateY(-5px); } }
+  @media(max-width:700px) { .graphic-work { padding-top:32px; } .nirlab-images, .graphic-project-grid { grid-template-columns:1fr; } .nirlab-images { gap:18px; } .mx908-cover img { aspect-ratio:4/3; } .work-caption { margin-top:20px; gap:10px; } .graphic-project-grid { gap:32px; } .graphic-projects > h2 { margin-bottom:28px; } }
+  @media(prefers-reduced-motion:reduce) { .graphic-work * { transition:none!important; } }
+</style>

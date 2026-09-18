@@ -92,9 +92,9 @@ export const OFFERS = [
     slug: 'graphisme-branding-valais', label: 'Graphisme & 3D',
     title: 'Graphiste en Valais : identité visuelle & 3D | Ruoss!',
     description: 'Graphisme, logos, identités visuelles, affiches et 3D à Verbier en Valais. Des créations sur mesure dessinées à la main par le studio Ruoss! Communication.',
-    heading: 'Du caractère. De la première esquisse à la 3D.',
-    intro: 'Le graphisme est le cœur de Ruoss! Communication. Depuis Verbier, nous créons des logos, des identités visuelles, des affiches et des images 3D pour les entreprises et les indépendants du Valais. Chaque projet commence par une intention graphique et un design dessiné à la main, avec une attention particulière à la composition et aux détails.',
-    image: '/img/QoTnY5PP6N3Bf8OA7WzU9Z9Mw.jpg', alt: 'Identité visuelle Skipatrol Verbier, projet du studio Ruoss!',
+    heading: 'Du caractère. De l’esquisse à la 3D.',
+    intro: 'Logos, identités, affiches et images 3D. Depuis Verbier, nous dessinons des univers sur mesure, de la première idée aux supports qui font vivre votre marque.',
+    image: '/img/graphisme/mx908-face-1200.webp', alt: 'Rendu 3D du MX908 de 908 Devices, par Ruoss!',
     sectionTitle: 'Le caractère de votre marque, sur chaque support.',
     sections: [
       { title: 'Logo et identité visuelle', text: 'Nous clarifions ce qui rend votre activité singulière avant de travailler la forme. Nous dessinons à la main le logo et les compositions, puis travaillons ensemble la typographie, les couleurs et les déclinaisons. L’identité doit rester lisible sur un téléphone, un document imprimé et les supports réellement utilisés par votre entreprise.' },

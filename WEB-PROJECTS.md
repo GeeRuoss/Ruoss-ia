@@ -26,3 +26,18 @@ La page réunit les 51 originaux, les cinq identités présentées avec leurs vr
 - Aperçu de partage : `public/brand/og-projets-v2.jpg`.
 
 Validation locale : build statique, 51 originaux comparés à la version précédente, 1 109 liens et médias internes sans cible manquante, filtres et visionneuse testés, visite Joshua intégrée, vues 320/390/1280 px, aucune erreur JavaScript observée. Publication GitHub Pages uniquement, builds Netlify maintenus à l’arrêt.
+
+
+## Graphisme & 3D, 18 septembre 2026
+
+La page `/services/graphisme-branding-valais/` présente désormais le rendu MX908 de 908 Devices, deux visuels NIRLAB, les liens vers les neuf fiches projets et un aperçu menant à toute la galerie `/projects-2/`. Les logos et les médias existants sont conservés.
+
+- `src/components/GraphicProjects.astro` : présentation des créations et des projets, grands liens textuels et grille responsive.
+- `/projects/908-devices/` : deux rendus et un film de six secondes. Le lecteur démarre uniquement sur demande, avec commandes natives et `preload="none"`.
+- `public/img/graphisme/mx908-*` : exports WebP du rendu final validé `MX908-face-verre.png` et de la vue `MX908-studio-verre.png`, issus du projet 3D du studio. Les fichiers de travail ne sont pas publiés.
+- `public/video/projects/mx908-film-verre.mp4` : film original du projet, sans modification et sans piste sonore, environ 564 Ko.
+- `public/img/graphisme/nirlab-*` : variantes optimisées des créations déjà publiées dans la fiche NIRLAB. Les onze images de cette fiche restent disponibles.
+- Aperçus de partage dédiés : `og-graphisme-v1.jpg` et `og-mx908-v1.jpg`.
+- La galerie contient 67 entrées, dont 57 dans Graphisme, avec le nouveau projet 908 Devices.
+
+Validation : build de 23 pages, 1 180 liens et médias internes sans cible manquante, vues 320/390/1280 px sans débordement, lecture complète du film dans le navigateur, navigation vers NIRLAB et la galerie, filtre Graphisme et retour arrière, absence d’erreur JavaScript observée. Les pages Web et Formation IA ont également été contrôlées. Publication GitHub Pages uniquement ; la configuration de pause Netlify reste inchangée.
