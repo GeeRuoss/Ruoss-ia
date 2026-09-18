@@ -1,102 +1,102 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import WebProjects from '../components/WebProjects.astro';
-import ContactCta from '../components/ContactCta.astro';
+import { PROJECTS } from '../data/site';
+import artworks from '../data/portfolio-artworks.json';
+import catalog from '../../public/experience/api/projects.json';
+import '../styles/portfolio.css';
 
-// Galerie complète, ordre du site live (colonne centrée ~1200px).
-const GALLERY = [
-  'Sh3jwaTQqCajd9vqTXRV49ares.jpg',
-  'W5jSy8ubDRXhgMRrhIIWWmxor8.jpg',
-  '4gZMtfAWGqddr9qgqqikWsTTAaw.jpg',
-  'CazPNYZgEUxB3qKmLploXtkJpo.jpg',
-  'MmhtKM1WPPmxJ5alVjWVCggXSg.jpg',
-  'FKy9jf4bgSM02AgBI6oL8YLeLU.jpg',
-  'uNyV1THal3WiaJsYzJ6HRXa8.jpg',
-  '1hOlnhX3qxSOUn7crcsHpHUba0.jpg',
-  '9eHmSny1Szbbg8Qe0VIvVwLU5VA.jpg',
-  '5fgp8GN5EEMboORnmxalUwgIM.jpg',
-  'pEdoVrLATjKsAaC1PNoPxiKqPQ.jpg',
-  'jZy8mZNqIGM2HCHYxxgS95k4U.jpg',
-  'RTQKKfLu2tyeeETFj3BdjCuCYf4.jpg',
-  'GihEumSdb1WQqGNSMEpoUJM0zsw.jpg',
-  'MzKxsvLiSTCF9LDFrAGCrQyIsX8.jpg',
-  'l0k831svmncwboT1fpMBQ02YLo.jpg',
-  'DpAyVJWPYmzOZziPiXAvMFLZShk.jpg',
-  '6zJ6e3g4nRSJc4f0NqAoTKRAXkI.jpg',
-  'GTHkAJwnTtJ2wexYtQjtsQOYes.jpg',
-  '3E9ZlmtbqLAu2uecWms3fD6YWM.jpg',
-  '5CZEqGzLxOjkDkVRp2gERlr6U.jpg',
-  '9uqqLHIx4PBpp0Y57sov5uVECY.jpg',
-  'fGKfApU3dqAgZHEKPW21DIHBD5c.jpg',
-  'fR3GshDEc39l8yxP7Mcn00qc8.jpg',
-  'fS9HL64NH3gAX0jPqQy4Y4NxvuY.jpg',
-  'Vw1yWSCJysnJY5xJrLRJQDCqsas.jpg',
-  'vmCbemvPAA6qvyOInDTBXDmmXE.jpg',
-  'k6J1At31VPUbj2GGM1NYhttVE24.jpg',
-  'n9RydunvjMRCNUwCVHdsarSwE.jpg',
-  '5NxfUHIZIURPfydiW7sKUzTeos.jpg',
-  'pJtyEnloTWRS4DrHeKocDKurHw.jpg',
-  'vxhM4I3ehHUMktVYw6asOZgmACs.jpg',
-  'mkbIcxTrD2z2aY3uokhDvUbJQ2o.jpg',
-  'itU83vLo0dYYx7mbpN8dbAX7SeE.jpg',
-  'T3p64ijQ0wTGqrSQakPjrq6cw.jpg',
-  'XFSY5AJntp5YBGLRkNJq4unrRbk.jpg',
-  '8IWqfVGpt7Hp1cpTSlZxsDrXM.jpg',
-  'oBficr7g7PuNU8thAaKoAQoGyc.jpg',
-  'bOm98ZKjCy1hW4H3S1ltIm94Y.jpg',
-  'gP4IP2KHA8Gmo5tp3MnuTYhkxw.jpg',
-  'Sp8rgsSri7qOhZTBiV4nCy29FVc.jpg',
-  'BrUWlXNKdWBtMr6LMcSYzK5Jc.jpg',
-  'emqMfKtuHCmhmpRt5kmRh49zy30.jpg',
-  'cCFQYJBrEDX7bWkjXx5jUvKTc.jpg',
-  'Ts8JOiw5Lh8L0IENmiTLauut4w.jpg',
-  '1qln9El6eLievgMVqyuenSvHU.jpg',
-  'wVwR6fRdujBLwt5fVu2J4vShyw.jpg',
-  '1635XqeAE8zKS38LsiK2gIeJCEE.jpg',
-  'VWJKZ6lyBao0BsfGF09qmUolNFw.jpg',
-  '33JdvFQNvn7YFfe3Rq9AZxZs.jpg',
-  'OgJlmssWaxslk8rCjjhvQk98ceQ.jpg',
-].map((f) => `/img/${f}`);
+type Card =
+  | { kind: 'art'; item: typeof artworks[number]; featured?: boolean }
+  | { kind: 'identity'; item: typeof PROJECTS[number]; featured?: boolean }
+  | { kind: 'web'; item: typeof catalog.projects[number]; featured?: boolean }
+  | { kind: 'pack' | 'ai' | 'training'; featured?: boolean };
+const art = (i: number, featured = false): Card => ({ kind: 'art', item: artworks[i], featured });
+const web = (i: number, featured = false): Card => ({ kind: 'web', item: catalog.projects[i], featured });
+const identity = (i: number): Card => ({ kind: 'identity', item: PROJECTS[i] });
+const firstArtworks = [0, 15, 9, 11, 19, 21];
+const cards: Card[] = [
+  art(0, true), web(0, true), identity(1), art(15), web(2),
+  identity(0), art(9), { kind: 'ai' }, web(1),
+  art(11), { kind: 'pack' }, identity(2), art(19), web(3),
+  { kind: 'training' }, identity(3), web(4), art(21), identity(4), web(5), web(6),
+  ...artworks.filter((_, i) => !firstArtworks.includes(i)).map((item): Card => ({ kind: 'art', item })),
+];
+const category = (card: Card) => ['ai', 'training'].includes(card.kind) ? 'ia' : ['web', 'pack'].includes(card.kind) ? 'web' : 'graphisme';
+const detailPaths: Record<string, string> = { carron: 'carron-deslarzes', bike: 'bikeverbier', josh: 'joshua-ruoss', bex: 'pontonniers-bex', nirlab: 'nirlab' };
+const thumb = (file: string, size: number) => `/img/portfolio/${file.replace('.jpg', '')}-${size}.webp`;
 ---
-
-<Layout
-  title="Nos projets : sites web & identités visuelles | Ruoss! Verbier"
-  description="Explorez les sites internet et identités dessinés sur mesure par Ruoss! Communication à Verbier : Joshua Ruoss, Carron + Deslarzes, Bikeverbier et d’autres univers."
-  path="/projects-2/"
->
-  <section class="page listing">
-    <header class="listing-head">
-      <h1 class="display">Projets.<br /><span>Du caractère.</span></h1>
-      <p class="listing-desc">Des métiers différents, des univers singuliers. Chaque design est dessiné à la main, avec le soin des détails qui fait la différence.</p>
+<Layout title="Projets : graphisme, sites web & IA | Ruoss! Communication" description="Explorez les créations du studio Ruoss! à Verbier : logos, affiches, identités visuelles, sites web et accompagnement IA." path="/projects-2/" ogImage="/brand/og-projets-v2.jpg">
+  <section class="portfolio page" data-portfolio>
+    <header class="portfolio-intro">
+      <h1 class="display">Projets.<br /><span>À vous de jouer.</span></h1>
+      <p>Des identités qui marquent.<br />Des sites qui se vivent.</p>
     </header>
-    <p class="gallery-3d-link"><a class="btn btn--dark" href="/experience/" data-astro-reload>Explorer les sites en 3D</a></p>
-    <WebProjects filterable />
-    <details class="creative-gallery">
-      <summary><span>Encore un peu de création ?</span><span class="gallery-plus" aria-hidden="true">+</span></summary>
-      <p class="gallery-intro">Affiches, illustrations, identités : une promenade dans les créations du studio.</p>
-      <div class="listing-gallery">
-        {GALLERY.map((src) => <img src={src} alt="Création graphique du studio Ruoss! Communication" loading="lazy" />)}
-      </div>
-    </details>
-  </section>
-  <ContactCta />
-</Layout>
 
-<style>
-  .gallery-3d-link { margin-bottom: 32px; }
-  .listing { max-width:1400px; padding-block:clamp(32px,5vw,72px); }
-  .listing-head { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:40px; margin-bottom:clamp(40px,6vw,80px); }
-  .listing-head h1 { font-size:clamp(2.75rem,7vw,6.5rem); line-height:1.02; }
-  .listing-head h1 span { color:#696969; }
-  .listing-desc { font-size:1.25rem; line-height:1.6; max-width:36ch; }
-  .creative-gallery { border-top:1px solid var(--line); margin-top:72px; padding-top:24px; }
-  .creative-gallery summary { display:flex; align-items:center; gap:24px; justify-content:space-between; cursor:pointer; list-style:none; font-size:clamp(1.5rem,3vw,2.5rem); line-height:1.2; letter-spacing:-.04em; min-height:64px; }
-  .creative-gallery summary::-webkit-details-marker { display:none; }
-  .gallery-plus { flex:none; width:48px; height:48px; display:grid; place-items:center; border:1px solid #aaa; border-radius:50%; font-size:2rem; transition:transform .25s; }
-  .creative-gallery[open] .gallery-plus { transform:rotate(45deg); }
-  .gallery-intro { font-size:1.125rem; line-height:1.6; margin-block:24px 32px; }
-  .listing-gallery { columns:2; column-gap:20px; }
-  .listing-gallery img { width:100%; height:auto; border-radius:var(--r-card); margin-bottom:20px; break-inside:avoid; }
-  @media(max-width:700px) { .listing-head { grid-template-columns:1fr; gap:24px; } .listing-gallery { columns:1; } }
-  @media(prefers-reduced-motion:reduce) { .gallery-plus { transition:none; } }
-</style>
+    <nav class="portfolio-filters" aria-label="Catégories de projets" id="categories">
+      <a href="#tout" data-filter="tout" aria-current="true">Tout</a>
+      <a href="#graphisme" data-filter="graphisme">Graphisme</a>
+      <a href="#sites-web" data-filter="web">Sites web</a>
+      <a href="#ia" data-filter="ia">IA</a>
+    </nav>
+    <noscript><style is:inline>.portfolio-filters{display:none}</style></noscript>
+    <p class="portfolio-sr" data-filter-status role="status" aria-atomic="true"></p>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+      {cards.map((card, i) => <article class:list={['portfolio-card', `portfolio-card--${card.kind}`, { 'portfolio-card--featured': card.featured }]} data-category={category(card)}>
+        {card.kind === 'art' && <a class="artwork-surface portfolio-surface" href={`/img/${card.item.file}`} data-artwork style={`background:${card.item.background}`} data-title={card.item.title} aria-label={`Voir en grand : ${card.item.title}`}>
+          <img src={thumb(card.item.file, 1200)} srcset={`${thumb(card.item.file, 640)} 640w, ${thumb(card.item.file, 1200)} 1200w`} sizes={card.featured ? '(max-width: 639px) calc(100vw - 32px), 50vw' : '(max-width: 639px) calc(100vw - 32px), (max-width: 999px) 50vw, 33vw'} alt={card.item.title} width={card.item.width} height={card.item.height} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} decoding="async" />
+        </a>}
+        {card.kind === 'identity' && <a class="identity-link" href={`/projects/${card.item.slug}/`}>
+          <div class="identity-surface portfolio-surface">
+            <img class="identity-cover" src={card.item.cover} alt="" loading="lazy" width="1200" height="900" />
+            <img class="identity-logo" src={card.item.logo} alt="" loading="lazy" style={`--logo-width:${card.item.logoWidth}px`} />
+          </div>
+          <h2 class="portfolio-caption">{card.item.name}</h2>
+        </a>}
+        {card.kind === 'web' && <>
+          <a class="website-surface portfolio-surface" href={`/experience/?projet=${card.item.id}`} aria-label={`Explorer le site ${card.item.name} en 3D`} style={`--site-color:${'color' in card.item ? card.item.color : '#c9d9e0'}`}>
+            <div class="portfolio-computer" aria-hidden="true">
+              <div class="computer-screen"><img src={`/img/portfolio/site-${card.item.id}.webp`} alt="" width="1000" height="625" loading="lazy" /></div>
+              <div class="computer-chin"></div><div class="computer-foot"></div>
+            </div>
+          </a>
+          <div class="portfolio-caption-row"><h2 class="portfolio-caption"><a href={`/experience/?projet=${card.item.id}`}>{card.item.name}</a></h2>
+            {detailPaths[card.item.id] && <a class="portfolio-detail" href={`/projects/${detailPaths[card.item.id]}/`}>Le projet</a>}
+          </div>
+          <p class="portfolio-services">{card.item.categories.join(' · ')}</p>
+        </>}
+        {card.kind === 'pack' && <a href="https://joshruoss.ch/materiel/" target="_blank" rel="noopener noreferrer" aria-label="Essayer Fais ton sac de Joshua Ruoss (nouvel onglet)">
+          <div class="pack-surface portfolio-surface"><img src="/img/web-projects/fais-ton-sac.webp" alt="Fais ton sac, la liste de matériel interactive de Joshua Ruoss" width="1200" height="630" loading="lazy" /></div>
+          <h2 class="portfolio-caption">Fais ton sac.</h2><p class="portfolio-services">L’outil de Joshua Ruoss, à essayer.</p>
+        </a>}
+        {card.kind === 'ai' && <a class="ai-link" href="/services/solutions-ia-entreprise/">
+          <div class="ai-surface portfolio-surface">
+            <span class="ai-context">À construire ensemble</span>
+            <div class="ai-documents" aria-hidden="true"><span></span><span></span><span><i></i><i></i><i></i></span></div>
+            <h2>Vos savoirs.<br />Votre assistant.</h2>
+            <span class="ai-bottom">En local ou dans le cloud.</span>
+          </div>
+          <p class="portfolio-caption">Solutions IA</p>
+        </a>}
+        {card.kind === 'training' && <a class="training-link" href="/services/formation-ia-valais/">
+          <div class="training-surface portfolio-surface">
+            <div class="training-book"><span>Ruoss!</span><h2>L’IA.<br />En pratique.</h2></div>
+          </div>
+          <h2 class="portfolio-caption">Formation &amp; guide sur mesure</h2><p class="portfolio-services">Un guide complet et une demi-journée avec vous.</p>
+        </a>}
+      </article>)}
+    </div>
+    <a class="portfolio-top" href="#categories">Revenir aux catégories</a>
+    <section class="portfolio-contact" aria-labelledby="portfolio-contact-title">
+      <h2 class="display" id="portfolio-contact-title">Et votre<br />projet ?</h2>
+      <a href="/contact/">Parlons-en.</a>
+    </section>
+
+    <dialog class="artwork-viewer" aria-labelledby="artwork-title">
+      <div class="artwork-toolbar"><h2 id="artwork-title"></h2><button type="button" data-artwork-close autofocus>Fermer</button></div>
+      <div class="artwork-stage"><img data-artwork-image alt="" /></div>
+      <div class="artwork-navigation"><button type="button" data-artwork-previous>Précédent</button><p data-artwork-position aria-live="polite"></p><button type="button" data-artwork-next>Suivant</button></div>
+    </dialog>
+  </section>
+  <script src="../scripts/portfolio.ts"></script>
+</Layout>

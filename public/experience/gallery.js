@@ -42,7 +42,8 @@ function initGallery(){
  fetch('/experience/api/projects.json',{signal:controller.signal}).then(async response=>{
   if(!response.ok)throw new Error('catalogue');
   ({projects}=await response.json());if(disposed)return;
-  buildPicker();select(0);$('#enter').disabled=false;
+  const requestedId=new URLSearchParams(location.search).get('projet');
+  buildPicker();select(Math.max(0,projects.findIndex(project=>project.id===requestedId)));$('#enter').disabled=false;
   const starter=observe(new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){starter.disconnect();start3D().catch(()=>{if(!disposed){disposeScene();sceneHost.classList.remove('has-webgl')}})}},{rootMargin:'300px'}),sceneHost);
  }).catch(()=>{if(!disposed){message('La galerie est momentanément indisponible.');$('#enter').disabled=true}});
 async function start3D(){const [THREE,{RoomEnvironment}]=await Promise.all([import('./vendor/three.module.min.js'),import('./vendor/RoomEnvironment.js')]);if(disposed)return;const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setClearColor(0x000000,0);sceneHost.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-hidden','true');
