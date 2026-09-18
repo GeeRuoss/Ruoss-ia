@@ -1,19 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SiteGallery from '../components/SiteGallery.astro';
 ---
 <Layout title="Les sites de Ruoss!" description="Explorez les sites créés par Ruoss! Communication, studio de design à Verbier." path="/experience/" showFooter={false} clientRouter={false}>
   <link slot="head" rel="stylesheet" href="/experience/gallery.css" />
-  <section class="experience page" aria-label="Réalisations Ruoss">
-    <div class="gallery-toolbar"><button id="choose">Les projets</button></div>
-    <div class="gallery">
-      <div id="scene" tabindex="0" role="region" aria-label="Ordinateurs en 3D. Glissez ou utilisez les touches gauche et droite pour changer de projet. Appuyez sur Entrée pour visiter le site."><img id="fallback" src="/experience/assets/carron-desktop.png" alt="Aperçu du site sélectionné" /></div>
-      <div class="project-info"><div aria-live="polite"><h1 id="name" class="display">Carron + Deslarzes</h1><p id="categories">Logo · Photo · Site web · Référencement</p></div><button id="enter" class="btn btn--dark" disabled>Visiter le site</button></div>
-      <nav class="browse" aria-label="Parcourir les projets"><button class="previous">Projet précédent</button><button class="next">Projet suivant</button></nav>
-      <p class="gallery-status" id="status" role="status" hidden></p>
-    </div>
-    <noscript><a href="/projects-2/">Voir les projets</a></noscript>
-  </section>
-  <dialog id="project-picker" aria-labelledby="picker-title"><div class="picker-head"><h2 id="picker-title" class="display">Les projets</h2><button id="close-picker">Fermer</button></div><div id="project-list"></div></dialog>
-  <dialog id="visitor" aria-labelledby="visitor-title"><div class="visitor-bar"><button id="close">Retour à la galerie</button><strong id="visitor-title"></strong><div class="device-controls" role="group" aria-label="Format du site"><button id="desktop" aria-pressed="true">Ordinateur</button><button id="phone" aria-pressed="false">Téléphone</button></div><a id="visit-external" target="_blank" rel="noopener">Ouvrir le site</a></div><div class="page-bar" id="pages" role="group" aria-label="Pages à explorer"></div><div id="frame-wrap"><div id="device-slot"><div id="device-shell"><iframe id="live-site" title="Visite du site" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe></div></div></div></dialog>
-  <script is:inline type="module" src="/experience/gallery.js"></script>
+  <SiteGallery />
 </Layout>

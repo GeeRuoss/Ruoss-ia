@@ -20,7 +20,7 @@ export const OFFERS = [
       { title: 'Vérifier et accompagner', text: 'Nous testons les parcours sur mobile et ordinateur, les formulaires, les droits d’accès et les intégrations concernés. L’hébergement, les sauvegardes, la maintenance et les évolutions sont définis selon le périmètre du projet.' },
     ],
     proofTitle: 'Des sites qui ont leur propre caractère.',
-    proof: 'Joshua Ruoss, Carron + Deslarzes, Bikeverbier, les Pontonniers de Bex et NIRLAB : des métiers différents, cinq univers dessinés sur mesure. Explorez les projets ou ouvrez directement les sites pour les découvrir.',
+    proof: 'Des métiers différents, des univers dessinés sur mesure. Explorez nos sites et naviguez dans leurs pages, directement ici.',
     projects: ['bikeverbier', 'nirlab'],
     faqs: [
       { q: 'Développez-vous aussi des applications et des systèmes de réservation ?', a: 'Oui. Nous pouvons concevoir une application web, un espace client, un système de réservation ou un outil métier. Le cadrage précise les utilisateurs, les fonctions, les données et les intégrations nécessaires. Le développement couvre l’interface et le fonctionnement côté serveur selon le projet.' },

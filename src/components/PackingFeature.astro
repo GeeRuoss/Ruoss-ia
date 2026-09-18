@@ -1,0 +1,20 @@
+<section class="packing-feature" aria-labelledby="packing-title">
+  <div class="packing-copy">
+    <h2 class="display" id="packing-title">Un site qui<br />rend service.</h2>
+    <p>Pour Joshua Ruoss, nous avons créé « Fais ton sac » : une liste de matériel interactive pour préparer sa sortie en montagne. On choisit son activité, on coche ses affaires, on emporte sa liste.</p>
+    <a class="btn btn--dark" href="https://joshruoss.ch/materiel/" data-gallery-project="josh" data-gallery-path="/materiel/">Essayer Fais ton sac</a>
+  </div>
+  <a class="packing-art" href="https://joshruoss.ch/materiel/" data-gallery-project="josh" data-gallery-path="/materiel/" aria-label="Essayer Fais ton sac de Joshua Ruoss">
+    <img src="/img/web-projects/fais-ton-sac.webp" alt="Fais ton sac, la liste de matériel interactive de Joshua Ruoss" width="1200" height="630" loading="lazy" />
+  </a>
+</section>
+<style>
+  .packing-feature { display: grid; grid-template-columns: 1fr 1.2fr; align-items: center; gap: clamp(28px, 5vw, 72px); margin-block: clamp(48px, 7vw, 96px); }
+  .packing-copy h2 { font-size: clamp(36px, 4vw, 64px); line-height: 1.05; margin-bottom: 28px; }
+  .packing-copy p { font-size: 20px; line-height: 1.65; max-width: 42ch; margin-bottom: 28px; }
+  .packing-copy .btn { font-size: 20px; min-height: 60px; padding: 16px 26px; }
+  .packing-art { display: block; background: #365887; border-radius: 24px; overflow: hidden; }
+  .packing-art img { width: 100%; height: auto; }
+  @media (max-width: 900px) { .packing-feature { grid-template-columns: 1fr; } .packing-copy p { max-width: 60ch; } }
+  @media (max-width: 600px) { .packing-art { order: -1; } .packing-copy .btn { width: 100%; justify-content: center; } }
+</style>

@@ -1,5 +1,7 @@
 /* Uses the Ruoss design system from src/styles/global.css. */
 .experience { padding-top: 12px; }
+.experience--embedded { padding-top: 0; }
+.experience--embedded .browse { margin-bottom: 0; }
 .experience button, #project-picker button, #visitor button { font-family: var(--font); font-size: 20px; color: inherit; touch-action: manipulation; }
 .gallery-toolbar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
 .gallery-toolbar button { min-height: 52px; padding: 8px 0; font-weight: 500; letter-spacing: -.02em; }
@@ -22,7 +24,7 @@
 #visitor::backdrop, #project-picker::backdrop { background: #121212cc; backdrop-filter: blur(16px); }
 #visitor { width: calc(100vw - 40px); height: calc(100dvh - 40px); max-width: none; max-height: none; overflow: hidden; }
 #visitor[open] { display: flex; flex-direction: column; animation: visit-in .35s var(--ease-out); }
-.visitor-bar { padding: 16px 20px; display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+.visitor-bar { padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 22px; flex-shrink: 0; }
 .visitor-bar strong { font-size: 20px; margin-right: auto; }
 #visitor .visitor-bar button, #visitor .page-bar button { font-size: 18px; background: #e4e4e4; border-radius: var(--r-pill); min-height: 52px; padding: 12px 20px; }
 .visitor-bar a { font-size: 18px; min-height: 52px; display: flex; align-items: center; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }

@@ -7,8 +7,8 @@
       "sector": "Charpente & rénovation",
       "location": "Valais",
       "url": "https://carron-deslarzes.ch/",
-      "logo": "assets/carron.svg",
-      "cover": "assets/carron-desktop.png",
+      "logo": "/experience/assets/carron.svg",
+      "cover": "/experience/assets/carron-desktop.png",
       "color": "#c7d3ba",
       "categories": [
         "Logo",
@@ -39,8 +39,8 @@
       "sector": "Guides VTT",
       "location": "Verbier",
       "url": "https://www.bikeverbier.ch/",
-      "logo": "assets/bike.svg",
-      "cover": "assets/bike-desktop.png",
+      "logo": "/experience/assets/bike.svg",
+      "cover": "/experience/assets/bike-desktop.png",
       "color": "#afd6c9",
       "categories": [
         "Identité visuelle",
@@ -69,8 +69,8 @@
       "sector": "Guide de montagne",
       "location": "Verbier",
       "url": "https://joshruoss.ch/",
-      "logo": "assets/josh.svg",
-      "cover": "assets/josh-desktop.png",
+      "logo": "/experience/assets/josh.svg",
+      "cover": "/experience/assets/josh-desktop.png",
       "color": "#b6c9e1",
       "categories": [
         "Site web",
@@ -88,7 +88,7 @@
           "path": "/hors-piste-verbier/"
         },
         {
-          "label": "Matériel",
+          "label": "Fais ton sac",
           "path": "/materiel/"
         }
       ]
@@ -99,8 +99,8 @@
       "sector": "Club sportif",
       "location": "Chablais",
       "url": "https://www.pontonniersbex.ch/",
-      "logo": "assets/bex.svg",
-      "cover": "assets/bex-desktop.png",
+      "logo": "/experience/assets/bex.svg",
+      "cover": "/experience/assets/bex-desktop.png",
       "color": "#b2cef1",
       "categories": [
         "Site web"
@@ -128,8 +128,8 @@
       "sector": "Bois de feu",
       "location": "Valais",
       "url": "https://geeruoss.github.io/coppey-bois-de-feu/",
-      "logo": "assets/coppey.svg",
-      "cover": "assets/coppey-desktop.png",
+      "logo": "/experience/assets/coppey.svg",
+      "cover": "/experience/assets/coppey-desktop.png",
       "color": "#cfbb9a",
       "categories": [
         "Site web"
@@ -156,8 +156,8 @@
       "sector": "Physiothérapie",
       "location": "Verbier",
       "url": "https://geeruoss.github.io/physio-verbier/",
-      "logo": "assets/physio.png",
-      "cover": "assets/physio-desktop.png",
+      "logo": "/experience/assets/physio.png",
+      "cover": "/experience/assets/physio-desktop.png",
       "color": "#b3c4ae",
       "categories": [
         "Site web"
@@ -175,6 +175,32 @@
         {
           "label": "Les soins",
           "path": "/physio-verbier/prestations/"
+        }
+      ]
+    },
+    {
+      "id": "nirlab",
+      "name": "NIRLAB",
+      "url": "https://www.nirlab.com/",
+      "cover": "/experience/assets/nirlab-desktop.webp",
+      "categories": [
+        "Identité visuelle",
+        "Site web",
+        "Interfaces"
+      ],
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/"
+        },
+        {
+          "label": "Fieldlab",
+          "path": "/fieldlab/"
+        },
+        {
+          "label": "Applications",
+          "path": "/applications/"
         }
       ]
     }
