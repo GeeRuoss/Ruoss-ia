@@ -5,7 +5,7 @@ import { SITE, IMG } from '../data/site';
 ---
 
 <Layout
-  title="Contact | Graphisme, développement web & IA | Ruoss!"
+  title="Contact | Agence web à Verbier & graphisme | Ruoss!"
   description="Parlez de votre projet de graphisme, 3D, site ou application web, formation ou solution IA avec Guillermo Ruoss à Verbier. Contact par WhatsApp, téléphone ou e-mail."
   path="/contact"
 >
@@ -15,8 +15,9 @@ import { SITE, IMG } from '../data/site';
       <div class="contact-left">
         <h2 class="h-card contact-sub">Un projet en tête ?</h2>
         <p class="contact-text muted">
-          Écrivez-nous et parlons-en. Que ce soit pour concrétiser une idée ou simplement obtenir un conseil, nous vous
-          accompagnons avec plaisir et pragmatisme.
+          Un logo, un site ou un outil pour votre entreprise ? Échangez directement avec Guillermo sur votre projet à Verbier, dans le Val de Bagnes ou ailleurs en Valais.
+        </p>
+        <p class="contact-service"><a href="/services/creation-site-internet-valais/">Découvrir notre création de sites internet</a>
         </p>
         <div class="contact-founder">
           <img src={IMG.founder} alt="Guillermo Ruoss" width="46" height="46" loading="lazy" />
@@ -56,12 +57,14 @@ import { SITE, IMG } from '../data/site';
     margin-bottom: 8px;
   }
   .contact-text {
-    font-size: clamp(17px, 1.8vw, 24px);
+    font-size: clamp(20px, 1.8vw, 24px);
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.4;
     margin-bottom: 36px;
   }
+  .contact-service { margin-block:-12px 32px; font-size:20px; line-height:1.5; }
+  .contact-service a { display:inline-block; min-height:44px; text-decoration:underline; text-underline-offset:5px; }
   .contact-founder {
     display: flex;
     align-items: center;

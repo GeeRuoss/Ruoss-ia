@@ -31,6 +31,7 @@ const businessLd = {
   description:
     'Studio de graphisme et agence web à Verbier, en Valais : identité visuelle, 3D, sites et applications sur mesure, formations et solutions IA.',
   url: SITE.domain,
+  logo: SITE.domain + '/brand/logo-script-large.svg',
   telephone: '+41774506726',
   email: SITE.email,
   image: SITE.domain + IMG.ogDefault,
@@ -43,10 +44,21 @@ const businessLd = {
     addressRegion: 'Valais',
     addressCountry: 'CH',
   },
-  areaServed: { '@type': 'Place', name: 'Verbier, Val de Bagnes, Valais, Suisse' },
+  areaServed: [{ '@type': 'Place', name: 'Verbier' }, { '@type': 'AdministrativeArea', name: 'Val de Bagnes' }, { '@type': 'AdministrativeArea', name: 'Valais' }],
   knowsLanguage: ['fr', 'en', 'es'],
-  sameAs: [SITE.instagram, SITE.behance],
+  sameAs: [SITE.instagram, SITE.behance, SITE.maps],
+  hasMap: SITE.maps,
   makesOffer: SERVICES.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.title, url: SITE.domain + s.href } })),
+};
+const websiteLd = {
+  '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE.domain + '/#website',
+  url: SITE.domain + '/', name: SITE.name, alternateName: 'Ruoss Communication', inLanguage: 'fr-CH',
+  publisher: { '@id': SITE.domain + '/#studio' },
+};
+const pageLd = {
+  '@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical + '#webpage',
+  url: canonical, name: title, description, inLanguage: 'fr-CH',
+  isPartOf: { '@id': SITE.domain + '/#website' }, about: { '@id': SITE.domain + '/#studio' },
 };
 ---
 
@@ -77,6 +89,8 @@ const businessLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
     <script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+    {!noindex && <script type="application/ld+json" set:html={JSON.stringify(pageLd)} />}
     <slot name="head" />
     {clientRouter && <ClientRouter />}
     {structuredData.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}

@@ -1,4 +1,5 @@
 ---
+import { imageAttributes } from '../data/responsive-images';
 // Carte projet : barre blanche (nom / année ⋯) + visuel assombri avec logo centré.
 interface Props {
   name: string;
@@ -21,8 +22,8 @@ const Tag = href ? 'a' : 'div';
     </span>
   </div>
   <div class="pcard-media">
-    <img class="pcard-cover" src={cover} alt="" loading="lazy" />
-    <img class="pcard-logo" src={logo} alt={name} style={`width:${logoWidth}px`} loading="lazy" />
+    <img class="pcard-cover" {...imageAttributes(cover)} sizes="(max-width:639px) calc(100vw - 32px), 50vw" alt="" loading="lazy" />
+    <img class="pcard-logo" {...imageAttributes(logo)} sizes={`${logoWidth}px`} alt={name} style={`width:${logoWidth}px`} loading="lazy" />
   </div>
 </Tag>
 

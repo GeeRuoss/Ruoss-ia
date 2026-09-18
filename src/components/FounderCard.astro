@@ -1,9 +1,10 @@
 ---
+import { imageAttributes } from '../data/responsive-images';
 import { SITE, IMG } from '../data/site';
 ---
 
 <div class="founder-card">
-  <img src={IMG.founder} alt="Guillermo Ruoss, fondateur de Ruoss! Communication" width="213" height="319" loading="lazy" />
+  <img {...imageAttributes(IMG.founder)} sizes="88px" alt="Guillermo Ruoss, fondateur de Ruoss! Communication" width="213" height="319" loading="lazy" />
   <div class="founder-info">
     <p class="small muted">Fondateur</p>
     <p class="founder-name">{SITE.founder}</p>

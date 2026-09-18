@@ -9,7 +9,8 @@ export const SITE = {
   email: 'guillermo@ruosscommunication.com',
   instagram: 'https://www.instagram.com/ruoss_communication/',
   behance: 'https://www.behance.net/guillermoruoss1',
-  reviewLink: 'https://www.google.com/search?q=Ruoss!+Communication',
+  reviewLink: 'https://g.page/r/CWjVRYSfhKvoEBM/review',
+  maps: 'https://www.google.com/maps/place/Ruoss!+Communication/data=!4m2!3m1!1s0x0:0xe8ab849f8445d568',
   founder: 'Guillermo Ruoss',
 } as const;
 
@@ -79,7 +80,7 @@ export const SERVICES: Service[] = [
   {
     num: '(002)', title: 'Sites web & développement',
     href: '/services/creation-site-internet-valais/',
-    desc: 'Du site vitrine à l’application web : nous dessinons les interfaces et développons les fonctions dont vous avez besoin, jusqu’aux réservations et aux outils métier.',
+    desc: 'Création et refonte de sites internet à Verbier et en Valais : design sur mesure, référencement local, applications web et réservations, avec un interlocuteur pour tout le projet.',
     tagLabel: 'Services',
     tags: ['Sites sur mesure', 'Applications web', 'Réservations', 'Outils métier'],
     tiles: ['/img/M84O8r2oa0Cn7cFcuoQW0uhlxY.jpg', '/img/7aTjPHDEIHlVgn0dR4LMop9ReE.jpg'],

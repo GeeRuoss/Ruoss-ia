@@ -4,10 +4,10 @@ import { AI_TRAINING } from './ai';
 export const OFFERS = [
   {
     slug: 'creation-site-internet-valais', label: 'Sites web & développement',
-    title: 'Sites internet & développement web en Valais | Ruoss!',
-    description: 'Sites internet, applications web, réservations et outils métier sur mesure en Valais. Ruoss! à Verbier relie design, développement et référencement local.',
-    heading: 'Du site internet à votre prochaine application.',
-    intro: 'Depuis Verbier, Ruoss! Communication conçoit et développe des sites internet, des applications web et des outils sur mesure pour les entreprises du Valais. Nous prenons en charge le design, l’interface et le fonctionnement : présenter votre activité, gérer des réservations ou simplifier le travail de votre équipe.',
+    title: 'Création de site internet à Verbier et en Valais | Ruoss!',
+    description: 'Création et refonte de sites internet à Verbier et en Valais : design sur mesure, référencement local et outils de réservation. Découvrez les réalisations Ruoss!',
+    heading: 'Votre site internet à Verbier et en Valais.',
+    intro: 'Création ou refonte de site internet, application web ou outil de réservation : Ruoss! Communication accompagne les entreprises du Val de Bagnes et du Valais. Un design sur mesure, un site facile à utiliser et un contact direct avec Guillermo, de l’idée à la mise en ligne.',
     image: '/img/gPgftrAGsKYEwr63438RZIvsdoo.jpg', alt: 'Projet Bikeverbier, site web et identité visuelle réalisés par Ruoss!',
     sectionTitle: 'Du design au fonctionnement.',
     sections: [
@@ -21,14 +21,14 @@ export const OFFERS = [
       { title: 'Concevoir et construire', text: 'Nous dessinons les pages à la main et affinons leur composition avec vous. Nous construisons ensuite le site autour de ce design, avec les fonctions utiles et des contenus faciles à parcourir.' },
       { title: 'Vérifier et accompagner', text: 'Nous testons les parcours sur mobile et ordinateur, les formulaires, les droits d’accès et les intégrations concernés. L’hébergement, les sauvegardes, la maintenance et les évolutions sont définis selon le périmètre du projet.' },
     ],
-    proofTitle: 'Des sites qui ont leur propre caractère.',
-    proof: 'Des métiers différents, des univers dessinés sur mesure. Explorez nos sites et naviguez dans leurs pages, directement ici.',
+    proofTitle: 'Des sites de la région, à explorer.',
+    proof: 'Guides de montagne, artisans et entreprises : découvrez nos réalisations et naviguez dans leurs pages, directement ici.',
     projects: ['bikeverbier', 'nirlab'],
     faqs: [
       { q: 'Développez-vous aussi des applications et des systèmes de réservation ?', a: 'Oui. Nous pouvons concevoir une application web, un espace client, un système de réservation ou un outil métier. Le cadrage précise les utilisateurs, les fonctions, les données et les intégrations nécessaires. Le développement couvre l’interface et le fonctionnement côté serveur selon le projet.' },
       { q: 'Combien coûte la création d’un site internet en Valais ?', a: 'Le budget dépend du nombre de pages, des contenus à produire, des langues et des fonctionnalités. Nous préparons un devis adapté au périmètre, en distinguant la création, l’hébergement et les éventuelles évolutions. Envoyez-nous votre site actuel ou une description du projet pour lancer la discussion.' },
       { q: 'Pouvez-vous refaire mon site sans changer de domaine ?', a: 'Oui. Une refonte peut conserver votre nom de domaine et les adresses utiles. Nous examinons les pages existantes avant de modifier la structure ; lorsqu’une adresse change, une redirection vers la page correspondante est prévue.' },
-      { q: 'Travaillez-vous uniquement à Verbier ?', a: 'Le studio est basé à Verbier, dans le Val de Bagnes. Nous accompagnons aussi les entreprises et les indépendants ailleurs en Valais, notamment à Martigny, Sion et Sierre. L’organisation des échanges est adaptée au projet.' },
+      { q: 'Créez-vous aussi des sites au Châble et dans le Val de Bagnes ?', a: 'Oui. Nous accompagnons les entreprises, les commerces et les indépendants de Verbier, du Châble et des villages du Val de Bagnes, ainsi que dans le reste du Valais. Les échanges se font avec Guillermo, sur place ou à distance selon le projet.' },
       { q: 'Le site sera-t-il premier sur Google ?', a: 'Aucune agence ne peut garantir cette place. Notre travail pose des bases techniques et éditoriales solides, puis les données de recherche permettent de décider des améliorations suivantes. Les résultats dépendent aussi de la concurrence, de la pertinence de l’offre et de la notoriété de l’entreprise.' },
     ], cta: 'Parlons de votre site',
   },

@@ -228,12 +228,13 @@ textarea {
 }
 
 /* Balayage gauche→droite des gros titres (effet signature) */
+/* Le titre reste visible avant activation : un élément entièrement découpé
+   peut ne jamais intersecter le viewport et rester caché. */
 .wipe {
-  clip-path: inset(-0.2em 105% -0.2em 0);
-  transition: clip-path 1.1s var(--ease-out) var(--d, 0s);
+  clip-path: none;
 }
 .wipe.is-in {
-  clip-path: inset(-0.2em 0 -0.2em 0);
+  animation: wipe-in 1.1s var(--ease-out) var(--d, 0s) both;
 }
 
 /* Animations d'entrée (hero) */

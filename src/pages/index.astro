@@ -1,4 +1,5 @@
 ---
+import { imageAttributes } from '../data/responsive-images';
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
 import FounderCard from '../components/FounderCard.astro';
@@ -12,8 +13,8 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } 
 ---
 
 <Layout
-  title="Graphisme & agence web à Verbier, Valais | Ruoss!"
-  description="Studio de graphisme et agence web à Verbier en Valais. Identités visuelles, 3D, sites et applications sur mesure, formations et solutions IA avec Guillermo Ruoss."
+  title="Agence web à Verbier & studio graphique | Ruoss!"
+  description="Agence web et studio graphique pour Verbier et le Val de Bagnes. Sites internet sur mesure, référencement local, logos et 3D avec Guillermo Ruoss."
   path="/"
 >
   <!-- ============ HERO ============ -->
@@ -54,12 +55,12 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } 
     <div class="marquee reveal" aria-label="Logos de nos clients">
       <ul>
         {CLIENT_LOGOS.map((logo) => (
-          <li><img src={logo} alt="Logo client" loading="lazy" /></li>
+          <li><img {...imageAttributes(logo)} sizes="(max-width:1030px) 160px, 224px" alt="Logo client" loading="lazy" /></li>
         ))}
       </ul>
       <ul aria-hidden="true">
         {CLIENT_LOGOS.map((logo) => (
-          <li><img src={logo} alt="" loading="lazy" /></li>
+          <li><img {...imageAttributes(logo)} sizes="(max-width:1030px) 160px, 224px" alt="" loading="lazy" /></li>
         ))}
       </ul>
     </div>
@@ -98,16 +99,10 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } 
     <div class="approche">
       <div class="approche-mark reveal"><Logo width={54} /></div>
       <div class="approche-text reveal">
-        <p class="lead">
-          <span class="muted">Nous concevons chaque projet avec une vision artistique forte et essentielle.</span>
-          Notre approche est simple : Nous privilégions la simplicité, la couleur, la beauté et l'innovation, au service
-          d'un futur clair et fonctionnel.
-        </p>
-        <p class="approche-more small muted">
-          Nous ne survendons pas et n'utilisons pas de discours marketing tape-à-l'œil. Nous concevons simplement des
-          logos, des éléments visuels, des sites et des stratégies bien pensés, fonctionnels et durables, au service des
-          entreprises et particuliers.
-        </p>
+        <h2 class="display approche-title">Votre projet.<br />Notre terrain.</h2>
+        <p class="lead">Du premier croquis à la mise en ligne, Guillermo Ruoss relie identité visuelle et création de sites internet pour les entreprises de Verbier, du Val de Bagnes et du Valais.</p>
+        <p class="approche-more">Un guide de montagne, un artisan, un commerce : votre site doit montrer votre travail et faciliter le contact. Découvrez les sites de <a href="/projects/joshua-ruoss/">Joshua Ruoss</a>, de <a href="/projects/bikeverbier/">Bikeverbier</a> et de <a href="/projects/carron-deslarzes/">Carron + Deslarzes</a>.</p>
+        <a class="approche-link" href="/services/creation-site-internet-valais/">Création de sites internet à Verbier</a>
       </div>
     </div>
   </section>
@@ -138,7 +133,7 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } 
       {REVIEWS.map((r) => (
         <div class="avis-card reveal">
           <div class="avis-user">
-            <img src={r.avatar} alt={`${r.name} — ${r.company}`} width="46" height="46" loading="lazy" />
+            <img {...imageAttributes(r.avatar)} sizes="46px" alt={`${r.name} — ${r.company}`} width="46" height="46" loading="lazy" />
             <div>
               <p class="avis-name">{r.name}</p>
               <p class="small muted">{r.company}</p>
@@ -349,13 +344,20 @@ import { SITE, PROJECTS, OTHER_PROJECTS_CARD, CLIENT_LOGOS, REVIEWS, SERVICES } 
     margin-top: clamp(56px, 8vw, 120px);
     align-items: start;
   }
+  .approche-title { font-size:clamp(34px,4.2vw,60px); margin-bottom:24px; }
   .approche-text .lead {
+    font-size:clamp(20px,2.25vw,32px);
+    line-height:1.4;
     max-width: 780px;
   }
   .approche-more {
     margin-top: 24px;
-    max-width: 560px;
+    max-width: 700px;
+    font-size:20px;
+    line-height:1.55;
   }
+  .approche-more a { text-decoration:underline; text-underline-offset:4px; }
+  .approche-link { display:inline-flex; align-items:center; min-height:48px; margin-top:24px; font-size:clamp(21px,2.1vw,28px); text-decoration:underline; text-underline-offset:6px; }
 
   /* ---------- Avis ---------- */
   .avis-title {

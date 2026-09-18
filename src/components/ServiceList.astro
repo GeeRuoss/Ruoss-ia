@@ -1,4 +1,5 @@
 ---
+import { imageAttributes } from '../data/responsive-images';
 // Panneau sombre « Services. » : 3 lignes accordéon avec vignettes et pilules.
 import { SERVICES } from '../data/site';
 
@@ -26,7 +27,7 @@ const { withMedia = false } = Astro.props;
         <p class="service-num small">{s.num}</p>
         <div class="service-tiles" aria-hidden="true">
           {s.tiles.map((t) => (
-            <img src={t} alt="" loading="lazy" />
+            <img {...imageAttributes(t)} sizes="150px" alt="" loading="lazy" />
           ))}
         </div>
         <div class="service-main">
