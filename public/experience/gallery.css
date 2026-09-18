@@ -31,8 +31,17 @@
 .page-bar { display: flex; gap: 8px; padding: 0 20px 14px; overflow-x: auto; flex-shrink: 0; }
 .page-bar button { white-space: nowrap; }
 #frame-wrap { flex: 1; min-height: 0; display: flex; justify-content: center; padding: 0 14px 14px; }
-#live-site { width: 100%; height: 100%; border: 0; border-radius: var(--r-card); background: var(--white); transition: width .4s var(--ease-out); }
-#frame-wrap.phone #live-site { width: 390px; max-width: 100%; border: 7px solid var(--dark); border-radius: 32px; }
+#device-slot, #device-shell { width: 100%; height: 100%; min-width: 0; min-height: 0; }
+#device-slot { position: relative; }
+#live-site { width: 100%; height: 100%; border: 0; border-radius: var(--r-card); background: var(--white); }
+/* Keep a real 390 × 844 CSS-pixel viewport; scale the whole phone to fit. */
+#frame-wrap.phone { --phone-scale: 1; align-items: center; padding: 24px; margin: 0 14px 14px; border-radius: var(--r-card); background: radial-gradient(ellipse at 50% 25%, #fafafa, #e7e7e7); overflow: hidden; }
+#frame-wrap.phone #device-slot { flex: none; width: calc(414px * var(--phone-scale)); height: calc(868px * var(--phone-scale)); }
+#frame-wrap.phone #device-shell { position: absolute; top: 0; left: 0; width: 414px; height: 868px; padding: 12px; border-radius: 52px; background: linear-gradient(120deg, #484b4f, #121314 30%, #292b2e 80%, #67696c); box-shadow: inset 0 0 0 1px #9b9da0, inset 0 0 0 4px #232529, 0 20px 45px #0003, 0 4px 12px #0002; transform: scale(var(--phone-scale)); transform-origin: top left; }
+#frame-wrap.phone #device-shell::before, #frame-wrap.phone #device-shell::after { content: ''; position: absolute; width: 3px; background: #494b4e; border-radius: 2px; }
+#frame-wrap.phone #device-shell::before { left: -3px; top: 126px; height: 34px; box-shadow: 0 50px 0 #494b4e; }
+#frame-wrap.phone #device-shell::after { right: -3px; top: 154px; height: 68px; }
+#frame-wrap.phone #live-site { display: block; width: 390px; height: 844px; max-width: none; border-radius: 40px; box-shadow: 0 0 0 2px #090a0b; }
 body.visiting { overflow: hidden; }
 #project-picker { width: min(740px, calc(100vw - 32px)); max-height: 90dvh; padding: 34px; }
 .picker-head { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 22px; }
@@ -59,7 +68,10 @@ body.visiting { overflow: hidden; }
   .device-controls { display: none; }
   .page-bar { padding: 0 12px 12px; }
   #visitor { width: 100vw; height: 100dvh; border-radius: 0; }
-  #frame-wrap { padding: 0 7px 7px; }
+  #frame-wrap, #frame-wrap.phone { padding: 0; margin: 0; border-radius: 0; background: var(--white); overflow: hidden; }
+  #frame-wrap.phone #device-slot, #frame-wrap.phone #device-shell { position: relative; width: 100%; height: 100%; padding: 0; border-radius: 0; background: transparent; box-shadow: none; transform: none; }
+  #frame-wrap.phone #device-shell::before, #frame-wrap.phone #device-shell::after { display: none; }
+  #live-site, #frame-wrap.phone #live-site { width: 100%; height: 100%; max-width: 100%; border: 0; border-radius: 0; box-shadow: none; }
   #project-picker { padding: 22px; }
   .picker-head h2 { font-size: 30px; }
 }

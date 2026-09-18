@@ -22,3 +22,7 @@ Compilation de 21 pages et diff vérifiés. Aucun caractère de flèche ni ancie
 Les boutons et liens du site ont été corrigés dans leurs composants partagés. Une capture d’un site client dans un moniteur conserve naturellement le contenu propre à ce site.
 
 Page préparée pour publication sur `https://www.ruosscommunication.com/experience/`, avec un accès depuis Projets.
+
+## Aperçu téléphone
+
+Le mode Téléphone garde un écran de 390 × 844 pixels CSS à l’intérieur d’une coque proportionnée. La coque entière se réduit pour tenir dans la fenêtre ; la mise en page du site ne s’étire plus avec la hauteur du bureau. À 760 px et moins, le site visité occupe toute la largeur, sans seconde coque. Vérifié à 1280 × 800, 390 × 844 et 320 × 640, avec changement de page et retour au mode Ordinateur.
