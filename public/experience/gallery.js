@@ -26,8 +26,8 @@ function initGallery(){
   $('#pages').replaceChildren(...p.pages.map(page=>{const b=document.createElement('button');b.textContent=page.label;b.setAttribute('aria-pressed',String(page===initialPage));b.addEventListener('click',()=>loadPage(p,page,b));return b}));
   frame.title=path==='/materiel/'?'Fais ton sac de Joshua Ruoss':'Visite du site '+p.name;
   frame.src=url;device(false);dialog.showModal();document.body.classList.add('visiting');sceneVisible=false;$('#pages [aria-pressed=true]')?.scrollIntoView({block:'nearest',inline:'nearest'});
-  // The API checks headers only. Each site stays on its own domain.
-  try{const res=await fetch('/experience/api/site/'+p.id,{signal:controller.signal});if(res.ok){const check=await res.json();if(!disposed&&dialog.open&&frame.title.includes(p.name)&&check.embeddable===false){dialog.close();p.embeddable=false;select(selected);message('Ce site se visite dans un nouvel onglet.')}}}catch{/* The last known availability remains the fallback. */}
+  // Static status was checked during publication. Each site stays on its own domain.
+  try{const res=await fetch('/experience/api/site/'+p.id+'.json',{signal:controller.signal});if(res.ok){const check=await res.json();if(!disposed&&dialog.open&&frame.title.includes(p.name)&&check.embeddable===false){dialog.close();p.embeddable=false;select(selected);message('Ce site se visite dans un nouvel onglet.')}}}catch{/* The last known availability remains the fallback. */}
  }
  function loadPage(p,page,button){const url=new URL(page.path,p.url);if(url.origin!==new URL(p.url).origin)return;frame.src=url.href;$('#visit-external').href=url.href;all('#pages button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)))}
  on(dialog,'close',()=>{frame.removeAttribute('src');document.body.classList.remove('visiting');sceneVisible=true;restoreFocus?.focus()});

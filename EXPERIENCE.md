@@ -2,9 +2,9 @@
 
 La source active est `src/pages/experience.astro` dans ce dépôt. Elle utilise le layout, la navigation, le logo, la police Inter et les couleurs de Ruoss. Le prototype autonome initial est archivé et ne doit plus servir de source de style.
 
-Les six projets, leurs liens, leurs pages et leurs prestations sont dans `public/experience/api/projects.json`. Coppey Bois de feu et PhysioVerbier utilisent leurs aperçus publics GitHub Pages. La scène WebGL, ses captures et Three.js sont servis localement dans `public/experience/`.
+Les sept projets, leurs liens, leurs pages et leurs prestations sont dans `public/experience/api/projects.json`. Coppey Bois de feu et PhysioVerbier utilisent leurs aperçus publics GitHub Pages. La scène WebGL, ses captures et Three.js sont servis localement dans `public/experience/`.
 
-La fonction Netlify `netlify/functions/project-site.mjs` vérifie les en-têtes sur une liste fermée de domaines HTTPS. Le contenu des sites est chargé directement dans une iframe sandboxée, sans proxy. Bex refuse les iframes et s’ouvre dans un onglet.
+Le build vérifie les en-têtes sur une liste fermée de domaines HTTPS (`scripts/lib/project-status.mjs`) et génère des réponses JSON statiques dans `experience/api/site/`. La date de contrôle est incluse ; ce contrôle a lieu à chaque publication, pas à chaque visite. Le contenu des sites est chargé directement dans une iframe sandboxée, sans proxy. Bex refuse les iframes et s’ouvre dans un onglet.
 
 ## Aperçu du dépôt
 
@@ -13,7 +13,7 @@ npm run build
 node scripts/preview-site.mjs
 ```
 
-Ouvrir `http://127.0.0.1:4338/experience/`. Ce serveur local inclut la même vérification des sites que la fonction Netlify. La page est indexable et incluse dans le sitemap de production.
+Ouvrir `http://127.0.0.1:4338/experience/`. Ce serveur local sert les mêmes fichiers statiques que GitHub Pages. La page est indexable et incluse dans le sitemap de production.
 
 ## Vérifications du 18 septembre 2026
 

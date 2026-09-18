@@ -1,7 +1,7 @@
 # ruoss-communication (Ruoss-ia)
 
 Refonte du site du studio ruosscommunication.com : migration Framer → Astro, puis positionnement web, IA et design (septembre 2026).
-Le site vit sur main. Domaine canonique : https://www.ruosscommunication.com (hébergé sur Netlify).
+Le site vit sur main. Domaine canonique : https://www.ruosscommunication.com (migration vers GitHub Pages demandée le 18/09/2026).
 
 ## Stack
 - Astro statique, zéro framework JS. Inter Variable self-hostée (fontsource).
@@ -19,3 +19,6 @@ Le site vit sur main. Domaine canonique : https://www.ruosscommunication.com (h�
 - DESIGN.md : tokens et composants extraits du site live.
 - CONTENU.md : copy complet + coquilles à arbitrer.
 - SEO.md : meta, JSON-LD, llms.txt, robots IA.
+
+## Hébergement
+GitHub Pages est la cible autorisée. Les builds Netlify sont arrêtés pour préserver les crédits : ne pas les réactiver ni publier manuellement sur Netlify. Les réponses de contrôle de la galerie sont générées pendant le build, sans serveur à l’exécution.

@@ -31,20 +31,20 @@ Build de production : `npm run build` → `dist/`.
 ## Notes
 
 - Contact : formulaire local de préparation WhatsApp, envoi final par le visiteur. Aucun stockage de saisie, lien e-mail et téléphone en complément.
-- Hébergement : [Netlify](https://app.netlify.com/projects/ruoss-communication) (projet `ruoss-communication`),
-  déploiement automatique à chaque push sur `main` (`netlify.toml` : `npm run build`, dossier `dist`).
-  Domaine `www.ruosscommunication.com` + apex, HTTPS Let's Encrypt géré par Netlify.
-- DNS chez 1ahosting (zone 20i/StackCP) : A apex → `75.2.60.5`, `www` CNAME → `ruoss-communication.netlify.app`.
-  Mail (stackmail : MX, SPF, imap/smtp/pop3/mail) et ftp inchangés.
+- Hébergement cible : **GitHub Pages**, publication du build statique par `.github/workflows/deploy.yml` à chaque push sur `main`.
+- Domaine canonique : `www.ruosscommunication.com`, à définir dans les réglages Pages du dépôt (mode GitHub Actions).
+- DNS chez 1ahosting : `www` CNAME vers `geeruoss.github.io`, apex vers les quatre adresses `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`. La messagerie et les autres enregistrements restent chez le fournisseur existant.
+- Netlify : builds arrêtés le 18/09/2026 pour préserver le quota. Ne pas réactiver ni déployer par CLI. `netlify.toml` contient aussi une instruction d’annulation des builds.
+- Galerie : catalogue et réponses JSON statiques, actualisés pendant le build. Aucun appel à une fonction Netlify depuis le site.
 
 ## Évolution web et IA — 17 septembre 2026
 
 - Quatre pages métiers dans `src/data/offers.ts`, rendues par `src/pages/services/[slug].astro`.
 - Accueil : agence web à Verbier ; studio : agence de communication ; services : web, formation IA, solutions IA et graphisme.
-- URL canoniques avec slash final, conformes aux URL servies par Netlify. Ancien `/projects` redirigé vers `/projects-2/` dans `public/_redirects`.
+- URL canoniques avec slash final. Ancien `/projects/` conservé par une page HTML de compatibilité vers `/projects-2/` ; GitHub Pages ne permet pas de configurer cette redirection en HTTP 301.
 - Sitemap : 18 pages indexables ; `/merci/` et 404 exclus. La 404 est rendue par `src/pages/404.astro`.
 - JSON-LD de services et fils d’Ariane ; métadonnées et maillage des études de cas.
-- Le domaine, l’hébergement et les accès existants sont conservés.
+- Le domaine et les accès existants sont conservés ; la migration de l’hébergement est décrite ci-dessus.
 - Les données Search Console et le rapport d’audit restent dans le dossier privé de travail, hors dépôt.
 
 ## Réalisations web et galerie

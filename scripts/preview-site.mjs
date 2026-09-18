@@ -2,7 +2,6 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import inspectProject from '../netlify/functions/project-site.mjs';
 const root = process.env.RUOSS_PREVIEW_ROOT || fileURLToPath(new URL('../dist', import.meta.url));
 const types = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.css':'text/css; charset=utf-8', '.json':'application/json; charset=utf-8', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.svg':'image/svg+xml', '.webp':'image/webp', '.woff2':'font/woff2', '.mp4':'video/mp4', '.xml':'application/xml' };
 http.createServer(async (req, res) => {
@@ -11,12 +10,6 @@ http.createServer(async (req, res) => {
   let pathname;
   try { pathname = decodeURIComponent(new URL(req.url, 'http://127.0.0.1:4338').pathname); }
   catch { res.writeHead(400); res.end(); return; }
-  const match = /^\/experience\/api\/site\/([^/]+)$/.exec(pathname);
-  if (match) {
-    const response = await inspectProject(new Request('http://127.0.0.1:4338'+req.url,{method:req.method}), { params:{id:match[1]} });
-    res.writeHead(response.status, Object.fromEntries(response.headers));
-    res.end(await response.text()); return;
-  }
   if (!['GET','HEAD'].includes(req.method)) { res.writeHead(405); res.end(); return; }
   let file = path.resolve(root, '.'+pathname);
   if (!file.startsWith(root+path.sep) && file !== root) { res.writeHead(404); res.end(); return; }

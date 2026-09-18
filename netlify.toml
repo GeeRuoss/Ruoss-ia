@@ -1,6 +1,7 @@
-# Hébergement Netlify : build Astro à chaque push sur main, site servi depuis dist/.
-# Le domaine (www.ruosscommunication.com) se règle dans Netlify > Domain management.
+# Netlify est en pause : la publication se fait sur GitHub Pages.
+# Sécurité supplémentaire si les builds Netlify sont réactivés par erreur.
 [build]
+  ignore = "exit 0"
   command = "npm run build"
   publish = "dist"
 
