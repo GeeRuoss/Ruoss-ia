@@ -1,0 +1,66 @@
+/* Uses the Ruoss design system from src/styles/global.css. */
+.experience { padding-top: 12px; }
+.experience button, #project-picker button, #visitor button { font-family: var(--font); font-size: 20px; color: inherit; touch-action: manipulation; }
+.gallery-toolbar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.gallery-toolbar button { min-height: 52px; padding: 8px 0; font-weight: 500; letter-spacing: -.02em; }
+#scene { position: relative; height: clamp(410px, 57vh, 680px); overflow: hidden; border-radius: var(--r-sheet); touch-action: pan-y; cursor: grab; background: radial-gradient(ellipse at 50% 20%, #363636, var(--dark) 80%); isolation: isolate; }
+#scene:active { cursor: grabbing; }
+#scene canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+#fallback { position: absolute; left: 15%; top: 15%; width: 70%; height: 65%; object-fit: contain; filter: drop-shadow(0 24px 20px #0005); border-radius: var(--r-card); }
+.has-webgl #fallback { visibility: hidden; }
+.project-info { padding: 32px 4px 14px; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+#name { font-size: clamp(36px, 4.5vw, 68px); line-height: 1.04; margin: 0 0 18px; }
+#categories { font-size: 22px; line-height: 1.5; color: #555; margin: 0; }
+#enter { font-size: 22px; min-height: 64px; padding: 18px 32px; background: var(--ink); color: var(--white); white-space: nowrap; }
+#enter:disabled { opacity: .5; cursor: wait; }
+.browse { display: flex; justify-content: space-between; gap: 16px; margin: 16px 4px 30px; }
+.browse button { min-height: 56px; padding: 10px 0; color: #555; }
+.browse button:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
+.gallery-status { font-size: 20px; line-height: 1.5; margin: 20px 4px; }
+.gallery-status[hidden] { display: none; }
+#visitor, #project-picker { padding: 0; border: 0; border-radius: var(--r-sheet); color: var(--ink); background: var(--bg); box-shadow: 0 35px 150px #0006; margin: auto; }
+#visitor::backdrop, #project-picker::backdrop { background: #121212cc; backdrop-filter: blur(16px); }
+#visitor { width: calc(100vw - 40px); height: calc(100dvh - 40px); max-width: none; max-height: none; overflow: hidden; }
+#visitor[open] { display: flex; flex-direction: column; animation: visit-in .35s var(--ease-out); }
+.visitor-bar { padding: 16px 20px; display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+.visitor-bar strong { font-size: 20px; margin-right: auto; }
+#visitor .visitor-bar button, #visitor .page-bar button { font-size: 18px; background: #e4e4e4; border-radius: var(--r-pill); min-height: 52px; padding: 12px 20px; }
+.visitor-bar a { font-size: 18px; min-height: 52px; display: flex; align-items: center; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+.device-controls { display: flex; gap: 6px; }
+#visitor .device-controls [aria-pressed=true], #visitor .page-bar [aria-pressed=true] { background: var(--ink); color: var(--white); }
+.page-bar { display: flex; gap: 8px; padding: 0 20px 14px; overflow-x: auto; flex-shrink: 0; }
+.page-bar button { white-space: nowrap; }
+#frame-wrap { flex: 1; min-height: 0; display: flex; justify-content: center; padding: 0 14px 14px; }
+#live-site { width: 100%; height: 100%; border: 0; border-radius: var(--r-card); background: var(--white); transition: width .4s var(--ease-out); }
+#frame-wrap.phone #live-site { width: 390px; max-width: 100%; border: 7px solid var(--dark); border-radius: 32px; }
+body.visiting { overflow: hidden; }
+#project-picker { width: min(740px, calc(100vw - 32px)); max-height: 90dvh; padding: 34px; }
+.picker-head { display: flex; justify-content: space-between; gap: 24px; align-items: center; margin-bottom: 22px; }
+.picker-head h2 { font-size: 36px; margin: 0; }
+.picker-head button { min-height: 56px; }
+#project-list { display: grid; gap: 5px; }
+#project-list button { font-size: clamp(22px, 3vw, 32px); text-align: left; min-height: 72px; border-radius: var(--r-card); padding: 14px 20px; letter-spacing: -.035em; }
+#project-list button:hover, #project-list button[aria-pressed=true] { background: #e4e4e4; }
+@keyframes visit-in { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+@media(max-width:760px) {
+  .experience { padding-top: 0; }
+  .gallery-toolbar { margin-bottom: 8px; }
+  #scene { height: 350px; }
+  .project-info { padding: 26px 4px 10px; display: block; }
+  #name { font-size: 36px; margin-bottom: 14px; }
+  #categories { font-size: 20px; }
+  #enter { margin-top: 24px; width: 100%; justify-content: center; font-size: 22px; }
+  .browse { margin: 14px 4px 24px; }
+  .browse button { font-size: 18px; }
+  .visitor-bar { flex-wrap: wrap; gap: 8px 14px; padding: 12px; }
+  .visitor-bar strong { display: none; }
+  #visitor .visitor-bar button, #visitor .page-bar button { font-size: 18px; min-height: 50px; padding: 10px 14px; }
+  .visitor-bar a { margin-left: auto; padding: 0; }
+  .device-controls { display: none; }
+  .page-bar { padding: 0 12px 12px; }
+  #visitor { width: 100vw; height: 100dvh; border-radius: 0; }
+  #frame-wrap { padding: 0 7px 7px; }
+  #project-picker { padding: 22px; }
+  .picker-head h2 { font-size: 30px; }
+}
+@media(prefers-reduced-motion:reduce) { #visitor, #live-site { animation: none; transition: none; } }

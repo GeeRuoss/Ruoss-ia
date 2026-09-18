@@ -13,9 +13,11 @@ interface Props {
   path: string; // chemin canonique, ex. '/studio'
   ogImage?: string;
   noindex?: boolean;
+  showFooter?: boolean;
+  clientRouter?: boolean;
   structuredData?: Record<string, unknown>[];
 }
-const { title, description, path, ogImage = IMG.ogDefault, noindex = false, structuredData = [] } = Astro.props;
+const { title, description, path, ogImage = IMG.ogDefault, noindex = false, showFooter = true, clientRouter = true, structuredData = [] } = Astro.props;
 
 const canonical = SITE.domain + (path === '/' ? '/' : path.replace(/\/$/, '') + '/');
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : SITE.domain + ogImage;
@@ -75,7 +77,8 @@ const businessLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbs} />
     <script type="application/ld+json" set:html={JSON.stringify(businessLd)} />
-    <ClientRouter />
+    <slot name="head" />
+    {clientRouter && <ClientRouter />}
     {structuredData.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <noscript><style is:inline>.reveal{opacity:1;transform:none}.wipe{clip-path:none}</style></noscript>
   </head>
@@ -83,7 +86,7 @@ const businessLd = {
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <Nav />
     <main id="contenu"><slot /></main>
-    <Footer />
+    {showFooter && <Footer />}
     <script>
       // Réinitialisé à chaque navigation (ClientRouter).
       const init = () => {

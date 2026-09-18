@@ -29,9 +29,7 @@ const structuredData = [
       {offer.slug === 'solutions-ia-entreprise' ? <div class="ai-diagram" aria-label="Exemple de fonctionnement : vos informations, un assistant IA, votre validation">
         <p class="diagram-label">Un fonctionnement clair.</p>
         <div class="diagram-step"><span class="diagram-dot"></span><div><strong>Vos informations</strong><p>Les sources que vous choisissez.</p></div></div>
-        <span class="diagram-arrow" aria-hidden="true">↓</span>
         <div class="diagram-step diagram-step--ai"><span class="diagram-dot"></span><div><strong>Votre assistant IA</strong><p>Une tâche. Un périmètre précis.</p></div></div>
-        <span class="diagram-arrow" aria-hidden="true">↓</span>
         <div class="diagram-step"><span class="diagram-dot"></span><div><strong>Votre validation</strong><p>Vous gardez la décision.</p></div></div>
         <p class="diagram-note">Exemple de fonctionnement à adapter à votre entreprise.</p>
       </div> : <img class:list={['offer-image', { portrait: offer.slug === 'formation-ia-valais' }]} src={offer.image} alt={offer.alt} width="800" height="900" fetchpriority="high" />}
@@ -43,7 +41,7 @@ const structuredData = [
     </section>
     <section class="offer-section offer-proof">
       <div><h2 class="display">{offer.proofTitle}</h2><p>{offer.proof}</p></div>
-      {offer.slug === 'creation-site-internet-valais' ? <WebProjects /> : projects.length > 0 ? <div class="proof-grid">{projects.map((p) => <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />)}</div> : <a class="text-link" href="/studio/">Rencontrer le studio <span aria-hidden="true">↗</span></a>}
+      {offer.slug === 'creation-site-internet-valais' ? <WebProjects /> : projects.length > 0 ? <div class="proof-grid">{projects.map((p) => <ProjectCard name={p.name} year={p.year} logo={p.logo} cover={p.cover} logoWidth={p.logoWidth} href={`/projects/${p.slug}/`} />)}</div> : <a class="text-link" href="/studio/">Rencontrer le studio</a>}
     </section>
     <section class="offer-section">
       <h2 class="display">Comment on avance.</h2>
@@ -57,7 +55,7 @@ const structuredData = [
       <h2 class="display">Une idée ?<br />Parlons-en.</h2>
       <div><p>Un échange avec Guillermo pour préciser votre projet et la prochaine étape.</p><a class="btn btn--light" href="/contact/">{offer.cta}</a><a class="text-link" href={SITE.phoneHref}>{SITE.phoneDisplay}</a></div>
     </section>
-    <nav class="offer-related" aria-label="Autres services">{SERVICES.filter((o) => o.href !== path).map((o) => <a href={o.href}>{o.title} <span aria-hidden="true">↗</span></a>)}</nav>
+    <nav class="offer-related" aria-label="Autres services">{SERVICES.filter((o) => o.href !== path).map((o) => <a href={o.href}>{o.title}</a>)}</nav>
   </article>
 </Layout>
 <style>
@@ -78,7 +76,6 @@ const structuredData = [
   .diagram-step--ai { background: white; color: #121212; border-color: white; }
   .diagram-step--ai p { color: #555; }
   .diagram-dot { width: 10px; height: 10px; background: currentColor; border-radius: 50%; flex: none; }
-  .diagram-arrow { display: block; text-align: center; font-size: 2rem; padding-block: 8px; }
   .diagram-note { margin-top: 28px; }
   .offer-section { padding-block: clamp(48px, 7vw, 96px); border-bottom: 1px solid var(--line); }
   h2 { font-size: clamp(2.25rem, 4vw, 4rem); line-height: 1.1; max-width: 23ch; margin-bottom: 36px; }

@@ -54,3 +54,7 @@ Les cinq références web et leurs liens sont dans `src/data/web-projects.ts`. L
 ## Positionnement du studio
 
 Trois domaines : Graphisme & 3D (en premier), Sites web & développement (applications, réservations et outils métier), Intelligence artificielle (formations et solutions réunies). Les pages détaillées IA restent accessibles depuis leur page commune. Le Studio présente le portrait et l’approche de Guillermo.
+
+## Galerie de sites en 3D
+
+La page `/experience/` partage le layout et le design du site. Sources et vérifications dans [EXPERIENCE.md](EXPERIENCE.md). Les boutons et liens utilisent des libellés sans flèche.

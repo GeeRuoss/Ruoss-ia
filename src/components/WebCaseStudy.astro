@@ -14,7 +14,7 @@ const structuredData = [
     <nav class="case-breadcrumb" aria-label="Fil d’Ariane"><a href="/projects-2/">Projets</a><span aria-hidden="true">/</span><span aria-current="page">{project.name}</span></nav>
     <header class="case-head">
       <div><p class="case-category">{project.category}</p><h1 class="display">{project.name}</h1></div>
-      <div><p class="case-summary">{project.summary}</p><a class="btn btn--dark" href={project.url} aria-label={`Voir le site ${project.name} (nouvel onglet)`} target="_blank" rel="noopener noreferrer">Voir le site <span aria-hidden="true">↗</span></a></div>
+      <div><p class="case-summary">{project.summary}</p><a class="btn btn--dark" href={project.url} aria-label={`Voir le site ${project.name} (nouvel onglet)`} target="_blank" rel="noopener noreferrer">Voir le site</a></div>
     </header>
     <img class="case-cover" src={project.image} alt={project.alt} width="1200" height={project.slug === 'joshua-ruoss' ? '630' : '800'} fetchpriority="high" />
     <section class="case-intro"><h2 class="display">{project.heading}</h2><p>{project.intro}</p></section>
@@ -22,7 +22,7 @@ const structuredData = [
       {project.sections.map((s) => <div><h2>{s.title}</h2><p>{s.text}</p></div>)}
     </section>
     <section class="case-scope"><h2>Ce que nous avons conçu.</h2><ul>{project.details.map((detail) => <li>{detail}</li>)}</ul></section>
-    <section class="case-cta sheet"><h2 class="display">Votre site.<br />Votre caractère.</h2><div><p>Nous dessinons votre site à la main, autour de votre identité et de vos clients. Parlons de ce que vous souhaitez leur montrer.</p><a class="btn btn--light" href="/services/creation-site-internet-valais/">Découvrir notre approche web</a><a class="case-contact" href="/contact/">Parlons de votre projet →</a></div></section>
+    <section class="case-cta sheet"><h2 class="display">Votre site.<br />Votre caractère.</h2><div><p>Nous dessinons votre site à la main, autour de votre identité et de vos clients. Parlons de ce que vous souhaitez leur montrer.</p><a class="btn btn--light" href="/services/creation-site-internet-valais/">Découvrir notre approche web</a><a class="case-contact" href="/contact/">Parlons de votre projet</a></div></section>
     <section class="case-related"><h2 class="display">D’autres univers.</h2><WebProjects exclude={project.slug} limit={2} /></section>
   </article>
 </Layout>

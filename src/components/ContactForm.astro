@@ -10,7 +10,7 @@ const { compact = false } = Astro.props;
     <label>Votre besoin<select name="service"><option>Du graphisme ou de la 3D</option><option>Un site ou une application web</option><option>Une formation ou une solution IA</option><option>Un autre projet</option></select></label>
     <label>Votre idée <span class="optional">(facultatif)</span><textarea name="idea" rows="3" maxlength="2000" placeholder="Votre activité, vos objectifs, votre échéance…"></textarea></label>
     <div class="message-preview"><p>Votre message</p><output class="message-text"></output></div>
-    <button class="btn btn--dark" type="submit">Préparer dans WhatsApp <span aria-hidden="true">↗</span></button>
+    <button class="btn btn--dark" type="submit">Préparer dans WhatsApp</button>
     <p class="form-note">Vous relisez et envoyez le message dans WhatsApp. Rien n’est envoyé pendant la saisie.</p>
   </form>
   <p class="contact-fallback"><a href={SITE.whatsapp} target="_blank" rel="noopener">Écrire sur WhatsApp</a><span aria-hidden="true"> · </span><a href={`mailto:${SITE.email}`}>Écrire par e-mail</a></p>

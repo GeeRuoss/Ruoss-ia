@@ -16,7 +16,6 @@ const { withMedia = false } = Astro.props;
   )}
   <div class="services-head">
     <p class="eyebrow services-eyebrow">
-      <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--dark)" stroke-width="1.2" fill="none"/></svg>
       Qu'est ce qu'on fait ?
     </p>
     <h2 class="display services-title wipe">Services.<sup>({SERVICES.length})</sup></h2>
@@ -33,7 +32,7 @@ const { withMedia = false } = Astro.props;
         <div class="service-main">
           <h3 class="h-card"><a href={s.href}>{s.title}</a></h3>
           <p class="service-desc small" id={`service-${s.num}`}>{s.desc}</p>
-          <a class="service-link" href={s.href}>Découvrir {s.title} <span aria-hidden="true">↗</span></a>
+          <a class="service-link" href={s.href}>Découvrir {s.title}</a>
         </div>
         <div class="service-tags">
           <p class="small tags-label">{s.tagLabel}</p>

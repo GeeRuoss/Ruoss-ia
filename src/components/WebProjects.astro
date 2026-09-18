@@ -24,15 +24,14 @@ const Heading = filterable ? 'h2' : 'h3';
   {projects.map((project) => <article class="web-project" data-project-type={project.type} data-project-identity={project.identity}>
     <a class="web-project-image" href={`/projects/${project.slug}/`} aria-label={`Découvrir le projet ${project.name}`}>
       <img class:list={{ 'keep-artwork': project.slug === 'joshua-ruoss' }} src={project.image} alt={project.alt} width="1200" height="750" loading="lazy" />
-      <span class="project-open" aria-hidden="true">↗</span>
     </a>
     <div class="web-project-content">
       <p class="web-project-category">{project.category}</p>
       <Heading><a href={`/projects/${project.slug}/`}>{project.name}</a></Heading>
       <p>{project.summary}</p>
       <div class="web-project-actions">
-        <a class="web-project-detail" href={`/projects/${project.slug}/`}>Le projet <span aria-hidden="true">→</span></a>
-        {project.url && <a class="web-project-visit" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Voir le site ${project.name} (nouvel onglet)`}>Voir le site <span aria-hidden="true">↗</span></a>}
+        <a class="web-project-detail" href={`/projects/${project.slug}/`}>Le projet</a>
+        {project.url && <a class="web-project-visit" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Voir le site ${project.name} (nouvel onglet)`}>Voir le site</a>}
       </div>
     </div>
   </article>)}
@@ -67,30 +66,28 @@ const Heading = filterable ? 'h2' : 'h3';
 <style>
   .project-filters { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
   .project-filters[hidden], .web-project[hidden] { display:none; }
-  .project-filters button { min-height:44px; padding:12px 20px; border:1px solid #aaa; border-radius:999px; background:transparent; color:#121212; font:inherit; font-size:1rem; cursor:pointer; transition:background .2s,color .2s,transform .2s; }
+  .project-filters button { min-height:44px; padding:12px 20px; border:1px solid #aaa; border-radius:999px; background:transparent; color:#121212; font:inherit; font-size:1.125rem; cursor:pointer; transition:background .2s,color .2s,transform .2s; }
   .project-filters button[aria-pressed="true"] { background:#121212; border-color:#121212; color:#fff; }
   .project-filters button:hover { transform:translateY(-2px); }
-  .project-count { margin-left:auto; color:#555; font-size:1rem; }
+  .project-count { margin-left:auto; color:#555; font-size:1.125rem; }
   .web-projects { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px 28px; }
   .web-project { min-width:0; }
   .web-project-image { display:block; position:relative; border-radius:var(--r-card); overflow:hidden; background:#e5e5e5; }
   .web-project-image img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; transition:transform .4s var(--ease-out); }
   .web-project-image img.keep-artwork { object-fit:contain; background:#365887; }
-  .project-open { position:absolute; bottom:18px; right:18px; display:grid; place-items:center; width:48px; height:48px; background:#fff; color:#121212; border-radius:50%; font-size:1.8rem; transition:transform .35s var(--ease-out),background .25s,color .25s; box-shadow:0 2px 14px #0002; }
   @media(hover:hover) {
     .web-project-image:hover img, .web-project-image:focus-visible img { transform:scale(1.045) rotate(-.4deg); }
-    .web-project-image:hover .project-open, .web-project-image:focus-visible .project-open { transform:rotate(45deg); background:#121212; color:#fff; }
     h2 a:hover, h3 a:hover { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
   }
   .web-project-content { padding:22px 2px 0; }
-  .web-project-category { font-size:1rem; color:#555; margin-bottom:8px; }
+  .web-project-category { font-size:1.125rem; color:#555; margin-bottom:8px; }
   h2, h3 { font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.2; font-weight:600; letter-spacing:-.04em; margin-bottom:12px; }
   p { font-size:1.125rem; line-height:1.6; max-width:48ch; }
   .web-project-actions { display:flex; flex-wrap:wrap; align-items:center; gap:16px 24px; margin-top:18px; }
-  .web-project-actions a { min-height:44px; display:inline-flex; align-items:center; gap:12px; font-size:1rem; }
+  .web-project-actions a { min-height:44px; display:inline-flex; align-items:center; gap:12px; font-size:1.125rem; }
   .web-project-detail { text-decoration:underline; text-underline-offset:5px; }
   .web-project-visit { padding:10px 18px; border:1px solid #aaa; border-radius:999px; transition:background .2s,color .2s; }
   .web-project-visit:hover { background:#121212; color:#fff; border-color:#121212; }
   @media(max-width:600px) { .web-projects { grid-template-columns:1fr; gap:36px; } .project-count { flex-basis:100%; margin:6px 0 0; } }
-  @media(prefers-reduced-motion:reduce) { .web-project-image img, .project-open, .project-filters button { transition:none; transform:none; } .web-project-image:hover img, .web-project-image:focus-visible img, .web-project-image:hover .project-open, .web-project-image:focus-visible .project-open, .project-filters button:hover { transform:none; } }
+  @media(prefers-reduced-motion:reduce) { .web-project-image img, .project-filters button { transition:none; transform:none; } .web-project-image:hover img, .web-project-image:focus-visible img, .project-filters button:hover { transform:none; } }
 </style>

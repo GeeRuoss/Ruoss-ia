@@ -8,8 +8,7 @@ import { SITE, IMG } from '../data/site';
     <p class="small muted">Fondateur</p>
     <p class="founder-name">{SITE.founder}</p>
     <a class="btn btn--dark founder-btn" href={SITE.whatsapp} target="_blank" rel="noopener">
-      Whatsapp-moi !
-      <span class="pin pin--green"></span>
+      WhatsApp
     </a>
   </div>
 </div>
@@ -24,6 +23,7 @@ import { SITE, IMG } from '../data/site';
     border-radius: var(--r-card);
     padding: 10px;
     width: fit-content;
+    max-width: 100%;
   }
   .founder-card img {
     width: 88px;
@@ -48,6 +48,6 @@ import { SITE, IMG } from '../data/site';
   }
   .founder-btn {
     padding: 8px 14px;
-    font-size: 13px;
+    font-size: 18px;
   }
 </style>

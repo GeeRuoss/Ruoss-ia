@@ -1,0 +1,182 @@
+{
+  "updatedAt": "2026-09-18",
+  "projects": [
+    {
+      "id": "carron",
+      "name": "Carron + Deslarzes",
+      "sector": "Charpente & rénovation",
+      "location": "Valais",
+      "url": "https://carron-deslarzes.ch/",
+      "logo": "assets/carron.svg",
+      "cover": "assets/carron-desktop.png",
+      "color": "#c7d3ba",
+      "categories": [
+        "Logo",
+        "Photo",
+        "Site web",
+        "Référencement"
+      ],
+      "description": "Le savoir-faire artisanal, de l’identité à la présence en ligne.",
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/"
+        },
+        {
+          "label": "Réalisations",
+          "path": "/realisations"
+        },
+        {
+          "label": "Savoir-faire",
+          "path": "/savoir-faire"
+        }
+      ]
+    },
+    {
+      "id": "bike",
+      "name": "Bikeverbier",
+      "sector": "Guides VTT",
+      "location": "Verbier",
+      "url": "https://www.bikeverbier.ch/",
+      "logo": "assets/bike.svg",
+      "cover": "assets/bike-desktop.png",
+      "color": "#afd6c9",
+      "categories": [
+        "Identité visuelle",
+        "Site web"
+      ],
+      "description": "Un univers alpin qui donne envie de partir.",
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/"
+        },
+        {
+          "label": "Guide privé",
+          "path": "/guide/"
+        },
+        {
+          "label": "Cours VTT",
+          "path": "/cours-vtt-verbier/"
+        }
+      ]
+    },
+    {
+      "id": "josh",
+      "name": "Joshua Ruoss",
+      "sector": "Guide de montagne",
+      "location": "Verbier",
+      "url": "https://joshruoss.ch/",
+      "logo": "assets/josh.svg",
+      "cover": "assets/josh-desktop.png",
+      "color": "#b6c9e1",
+      "categories": [
+        "Site web",
+        "Référencement"
+      ],
+      "description": "La montagne avec le caractère de Josh.",
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/"
+        },
+        {
+          "label": "Hors-piste",
+          "path": "/hors-piste-verbier/"
+        },
+        {
+          "label": "Matériel",
+          "path": "/materiel/"
+        }
+      ]
+    },
+    {
+      "id": "bex",
+      "name": "Pontonniers de Bex",
+      "sector": "Club sportif",
+      "location": "Chablais",
+      "url": "https://www.pontonniersbex.ch/",
+      "logo": "assets/bex.svg",
+      "cover": "assets/bex-desktop.png",
+      "color": "#b2cef1",
+      "categories": [
+        "Site web"
+      ],
+      "description": "L’esprit du club, une invitation à rejoindre l’équipe.",
+      "embeddable": false,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/"
+        },
+        {
+          "label": "Société",
+          "path": "/societe"
+        },
+        {
+          "label": "Photos",
+          "path": "/photos"
+        }
+      ]
+    },
+    {
+      "id": "coppey",
+      "name": "Coppey Bois de feu",
+      "sector": "Bois de feu",
+      "location": "Valais",
+      "url": "https://geeruoss.github.io/coppey-bois-de-feu/",
+      "logo": "assets/coppey.svg",
+      "cover": "assets/coppey-desktop.png",
+      "color": "#cfbb9a",
+      "categories": [
+        "Site web"
+      ],
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/coppey-bois-de-feu/"
+        },
+        {
+          "label": "Le bois",
+          "path": "/coppey-bois-de-feu/bois-de-feu/"
+        },
+        {
+          "label": "Livraison",
+          "path": "/coppey-bois-de-feu/livraison/"
+        }
+      ]
+    },
+    {
+      "id": "physio",
+      "name": "PhysioVerbier",
+      "sector": "Physiothérapie",
+      "location": "Verbier",
+      "url": "https://geeruoss.github.io/physio-verbier/",
+      "logo": "assets/physio.png",
+      "cover": "assets/physio-desktop.png",
+      "color": "#b3c4ae",
+      "categories": [
+        "Site web"
+      ],
+      "embeddable": true,
+      "pages": [
+        {
+          "label": "Accueil",
+          "path": "/physio-verbier/"
+        },
+        {
+          "label": "L’équipe",
+          "path": "/physio-verbier/equipe/"
+        },
+        {
+          "label": "Les soins",
+          "path": "/physio-verbier/prestations/"
+        }
+      ]
+    }
+  ]
+}

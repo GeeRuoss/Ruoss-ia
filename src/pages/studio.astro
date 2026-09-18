@@ -28,9 +28,9 @@ import { IMG, STUDIO_PARTNERS, SITE } from '../data/site';
     </section>
 
     <section class="studio-domains" aria-label="Les trois domaines du studio">
-      <a href="/services/graphisme-branding-valais/"><h2>Graphisme &amp; 3D</h2><p>Le cœur créatif du studio : identités, images et direction artistique.</p><span aria-hidden="true">↗</span></a>
-      <a href="/services/creation-site-internet-valais/"><h2>Web &amp; développement</h2><p>Du design de votre site au fonctionnement de vos applications.</p><span aria-hidden="true">↗</span></a>
-      <a href="/services/intelligence-artificielle-valais/"><h2>Intelligence artificielle</h2><p>Des formations et des solutions adaptées à votre façon de travailler.</p><span aria-hidden="true">↗</span></a>
+      <a href="/services/graphisme-branding-valais/"><h2>Graphisme &amp; 3D</h2><p>Le cœur créatif du studio : identités, images et direction artistique.</p></a>
+      <a href="/services/creation-site-internet-valais/"><h2>Web &amp; développement</h2><p>Du design de votre site au fonctionnement de vos applications.</p></a>
+      <a href="/services/intelligence-artificielle-valais/"><h2>Intelligence artificielle</h2><p>Des formations et des solutions adaptées à votre façon de travailler.</p></a>
     </section>
 
     <img class="studio-hero reveal" src={IMG.studioParaglide} alt="Parapente au-dessus des montagnes de Verbier" loading="lazy" />
@@ -60,7 +60,6 @@ import { IMG, STUDIO_PARTNERS, SITE } from '../data/site';
     <div class="studio-partners section">
       <div class="studio-partners-head section-head rule">
         <p class="eyebrow">
-          <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
           Quelques partenaires
         </p>
         <p class="muted">(2021-26©)</p>
@@ -74,7 +73,6 @@ import { IMG, STUDIO_PARTNERS, SITE } from '../data/site';
 
     <div class="studio-inspi">
       <p class="eyebrow">
-        <svg class="dot-arrow" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="currentColor"/><path d="M5.5 10.5 10.5 5.5M7 5.5h3.5V9" stroke="var(--bg)" stroke-width="1.2" fill="none"/></svg>
         Nos inspirations
       </p>
       <div>
@@ -110,9 +108,6 @@ import { IMG, STUDIO_PARTNERS, SITE } from '../data/site';
   .studio-domains a { border-top:1px solid var(--line); padding-top:24px; }
   .studio-domains h2 { font-size:1.5rem; font-weight:600; letter-spacing:-.03em; line-height:1.2; margin-bottom:12px; }
   .studio-domains p { font-size:1.125rem; line-height:1.6; }
-  .studio-domains span { display:inline-block; font-size:1.75rem; margin-top:16px; transition:transform .25s; }
-  .studio-domains a:hover span { transform:translate(4px,-4px); }
-  @media(prefers-reduced-motion:reduce) { .studio-domains a:hover span { transform:none; } }
   .studio-hero {
     width: 100%;
     border-radius: var(--r-card);

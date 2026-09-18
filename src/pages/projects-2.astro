@@ -69,6 +69,7 @@ const GALLERY = [
       <h1 class="display">Projets.<br /><span>Du caractère.</span></h1>
       <p class="listing-desc">Des métiers différents, des univers singuliers. Chaque design est dessiné à la main, avec le soin des détails qui fait la différence.</p>
     </header>
+    <p class="gallery-3d-link"><a class="btn btn--dark" href="/experience/" data-astro-reload>Explorer les sites en 3D</a></p>
     <WebProjects filterable />
     <details class="creative-gallery">
       <summary><span>Encore un peu de création ?</span><span class="gallery-plus" aria-hidden="true">+</span></summary>
@@ -82,6 +83,7 @@ const GALLERY = [
 </Layout>
 
 <style>
+  .gallery-3d-link { margin-bottom: 32px; }
   .listing { max-width:1400px; padding-block:clamp(32px,5vw,72px); }
   .listing-head { display:grid; grid-template-columns:1.3fr 1fr; align-items:end; gap:40px; margin-bottom:clamp(40px,6vw,80px); }
   .listing-head h1 { font-size:clamp(2.75rem,7vw,6.5rem); line-height:1.02; }

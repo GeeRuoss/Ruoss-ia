@@ -36,7 +36,7 @@ Le « R! » script (logo) et les 5 étoiles des avis sont des SVG, pas de la typ
 - **Panneaux « sheet »** : sections sombres à coins arrondis (~20px) posées sur le fond clair, avec la **vidéo N/B des télésièges** (`public/video/hero.mp4`) + voile sombre. Hero, Services (page), « Prenons un verre. ».
 - **Cartes projets** : barre blanche (nom + /année + ⋯) au-dessus du visuel assombri avec logo blanc centré.
 - **Boutons pilule** : noir/blanc, `border-radius: 999px`. Variante avec pastille (verte WhatsApp, blanche submit).
-- **Eyebrow** : pastille noire avec flèche ↗ + libellé, systématique en tête de section.
+- **Liens et boutons** : libellés seuls, sans flèche, pastille fléchée ou icône de sortie. Correction du 18/09/2026. Texte utile agrandi ; les règles historiques de petite taille ci-dessus ne sont plus la cible.
 - **Croix « + »** : décorations grises aux articulations du layout (hero, footer, contact).
 - **Compteurs animés** : 112 clients / 5 ans / 50+ pays, comptés au scroll (IntersectionObserver).
 - **Fondateur** : carte blanche photo + « Fondateur / Guillermo Ruoss » + bouton WhatsApp, présente hero + contact.
@@ -46,3 +46,7 @@ Une seule vidéo (7.4 Mo, boucle N/B télésièges) partout : hero home, fond Se
 
 ## Responsive
 Breakpoints Framer : 1200px et 810px. Mobile : tout empilé, nav → burger overlay sombre.
+
+## Galerie 3D
+
+La page `/experience/` utilise `Layout.astro`, `Nav.astro`, le vrai logo et les tokens de `global.css`. La scène WebGL conserve six ordinateurs arrondis, sur un panneau sombre Ruoss. Aucun système visuel parallèle pour la galerie.
