@@ -1,3 +1,5 @@
+import { AI_TRAINING } from './ai';
+
 // Contenus métiers : périmètres proposés, sans résultats ni tarifs inventés.
 export const OFFERS = [
   {
@@ -33,40 +35,40 @@ export const OFFERS = [
   {
     slug: 'formation-ia-valais', label: 'Formation IA',
     title: 'Formation IA en Valais et à Verbier | Ruoss!',
-    description: 'Formation en intelligence artificielle pour entreprises et indépendants en Valais. Des ateliers pratiques sur vos tâches, avec Guillermo Ruoss à Verbier.',
+    description: 'Formation IA en entreprise à 1 700 CHF en Valais : guide complet d’utilisation des agents et une demi-journée en présentiel avec Guillermo Ruoss.',
     heading: 'L’IA, à la portée de votre équipe.',
-    intro: 'Vous souhaitez utiliser l’intelligence artificielle dans votre travail, mais vous manquez de méthode ? Ruoss! Communication propose des formations IA adaptées aux entreprises et aux indépendants de Verbier et du Valais, à partir de situations concrètes.',
+    intro: 'Apprenez à travailler avec les agents IA à partir de votre métier. Guillermo prépare un guide complet pour votre équipe, puis vous accompagne pendant une demi-journée dans votre entreprise, à Verbier ou ailleurs en Valais.',
     image: '/img/ZbRwx4kEaXsUTBjPn7KbT5YfXw.jpg', alt: 'Guillermo Ruoss, votre interlocuteur pour les formations IA',
     sectionTitle: 'Apprendre sur ce que vous faites déjà.',
     sections: [
-      { title: 'Mieux formuler, mieux vérifier', text: 'Nous travaillons la manière de donner du contexte, de décrire un objectif et de demander un résultat exploitable. Vous apprenez aussi à repérer une réponse approximative, à vérifier les informations et à garder votre jugement. Une réponse convaincante n’est pas nécessairement une réponse correcte.' },
+      { title: 'Un guide pour travailler avec les agents', text: 'Votre guide rassemble la méthode, les consignes, les exemples adaptés à votre activité et les points à vérifier. Il explique comment donner du contexte à un agent, lui confier une tâche, organiser les documents utiles et contrôler son résultat. Vous conservez ce support après la formation.' },
       { title: 'Des exercices proches de votre métier', text: 'Préparer un brouillon d’e-mail, structurer un document, reformuler une offre ou organiser des idées : les exercices sont choisis avec vous. Pour une équipe d’accueil, de communication ou de gestion, le programme se concentre sur les tâches qui reviennent et sur les difficultés rencontrées au quotidien.' },
       { title: 'Des habitudes pour travailler avec vos données', text: 'Avant d’utiliser un outil, nous distinguons les informations publiques, les contenus internes et les données confidentielles. Les exercices peuvent être réalisés sur des exemples fictifs ou anonymisés. L’objectif est de savoir quand l’IA est utile, quand une vérification est indispensable et quand il vaut mieux s’en passer.' },
     ],
     process: [
-      { title: 'Choisir vos cas d’usage', text: 'Nous échangeons sur vos tâches, le niveau des participants et les outils déjà disponibles dans votre organisation.' },
-      { title: 'Pratiquer ensemble', text: 'L’atelier alterne explications et essais. Nous comparons les résultats et améliorons les consignes à partir d’exemples pertinents pour votre métier.' },
-      { title: 'Repartir avec une méthode', text: 'Nous identifions les usages à retenir et les points de contrôle. Si un besoin demande une intégration technique, il fait l’objet d’un projet distinct.' },
+      { title: 'Préparer votre guide', text: 'Nous échangeons sur vos tâches, le niveau de l’équipe et vos outils, puis préparons le guide complet et les exercices adaptés à votre activité.' },
+      { title: 'Pratiquer sur place', text: 'Pendant une demi-journée dans votre entreprise, nous alternons prise en main, exercices et questions avec vos employés. Vous essayez les agents sur des tâches concrètes.' },
+      { title: 'Garder votre méthode', text: 'Le guide reste à votre disposition pour reprendre les exercices, retrouver les consignes et vérifier les résultats. Le développement d’une solution connectée à vos données fait l’objet d’un projet distinct.' },
     ],
     proofTitle: 'Un interlocuteur qui relie design, web et usages.',
     proof: 'Guillermo Ruoss dirige le studio à Verbier. La formation s’inscrit dans son accompagnement des entreprises : comprendre le besoin, simplifier les outils et rendre les équipes plus autonomes. Le programme est défini avec vous avant l’atelier.', projects: [],
     faqs: [
       { q: 'Faut-il déjà connaître l’intelligence artificielle ?', a: 'Non. Le point de départ est adapté au niveau des participants. Pour une équipe débutante, nous commençons par les principes, les premières consignes et la vérification des réponses avant de passer aux cas métier.' },
       { q: 'Quels outils sont abordés pendant la formation ?', a: 'Les outils sont choisis selon les usages, les comptes disponibles et les règles de votre entreprise. Le cadrage permet de décider si le travail porte sur un assistant conversationnel, la création de contenus ou la préparation d’un assistant personnalisé. Les éventuels abonnements sont précisés séparément.' },
-      { q: 'Quel est le format et le tarif d’une formation IA ?', a: 'La durée, le nombre de participants, le lieu et le tarif sont définis selon votre besoin. Il peut s’agir d’une première prise en main ou d’un atelier ciblé. Contactez-nous en indiquant votre activité, votre équipe et deux ou trois tâches que vous souhaitez améliorer.' },
-      { q: 'La formation comprend-elle la création d’un agent IA ?', a: 'La formation peut vous aider à définir un assistant et à comprendre son fonctionnement. Le développement, la connexion à vos outils et la maintenance d’une solution métier constituent un périmètre distinct, à cadrer dans un projet de solutions IA.' },
+      { q: 'Quel est le format et le tarif d’une formation IA ?', a: `Le forfait est de ${AI_TRAINING.priceLabel}. Il comprend une journée de travail au total : la création du guide complet d’utilisation des agents IA et une demi-journée en présentiel avec vos employés. La préparation du guide est incluse dans ce forfait.` },
+      { q: 'La formation comprend-elle la création d’un agent IA ?', a: 'Le guide et les exercices vous apprennent à utiliser les agents et à leur donner des consignes adaptées à votre activité. Le déploiement d’un assistant connecté à vos données, les intégrations et la maintenance sont proposés séparément dans un projet de solutions IA.' },
     ], cta: 'Préparons votre formation',
   },
   {
     slug: 'solutions-ia-entreprise', label: 'Solutions IA',
     title: 'Solutions IA pour entreprises en Valais | Ruoss! Verbier',
-    description: 'Assistants IA et automatisations sur mesure pour les entreprises du Valais. Ruoss! à Verbier vous aide à cadrer, tester et intégrer les usages utiles.',
+    description: 'Solutions IA pour les entreprises du Valais : modèle local sur votre serveur ou modèles de pointe avec ChatGPT et Claude, selon vos usages et vos données.',
     heading: 'Moins de tâches répétitives. Plus de temps pour votre métier.',
-    intro: 'Une solution IA doit répondre à un besoin précis. Depuis Verbier, Ruoss! Communication accompagne les entreprises du Valais pour identifier les tâches qui peuvent être simplifiées, tester une solution et l’intégrer dans leur façon de travailler.',
+    intro: 'Retrouver une information dans vos dossiers, préparer une réponse ou accompagner une tâche métier. Nous concevons votre solution avec un modèle local sur votre serveur ou des modèles de pointe comme ceux de ChatGPT et Claude, selon vos besoins et votre confidentialité.',
     image: '/img/M84O8r2oa0Cn7cFcuoQW0uhlxY.jpg', alt: 'Design d’interface issu du portfolio Ruoss! Communication',
     sectionTitle: 'Commencer par une tâche utile.',
     sections: [
-      { title: 'Un assistant adapté à vos contenus', text: 'Un assistant peut aider à retrouver une information dans une documentation sélectionnée, préparer une réponse ou structurer un brouillon. Nous définissons ce qu’il peut consulter, les questions auxquelles il doit répondre et les situations qui nécessitent l’intervention d’une personne.' },
+      { title: 'Un assistant qui retrouve vos sources', text: 'Nous organisons la recherche dans les documents que vous choisissez : dossiers de projets, procédures ou documentation interne. L’assistant peut retrouver les passages utiles, citer ses sources et préparer un brouillon. Les essais servent à vérifier la pertinence des réponses et le respect des accès avant une utilisation réelle.' },
       { title: 'Des automatisations avec des limites claires', text: 'Classer une demande, préparer un résumé ou organiser des contenus sont des pistes à évaluer. Nous examinons d’abord si une règle simple suffit. L’IA intervient là où elle apporte une utilité, avec une validation humaine pour les actions sensibles et un fonctionnement de repli en cas d’erreur.' },
       { title: 'Un projet que votre équipe peut comprendre', text: 'Le fonctionnement, les sources de données et les limites doivent rester lisibles. Le cadrage précise les outils utilisés, les droits d’accès nécessaires, les coûts récurrents éventuels et les responsabilités de maintenance. Vos équipes participent aux essais avant une utilisation réelle.' },
     ],
@@ -78,6 +80,8 @@ export const OFFERS = [
     proofTitle: 'Des exemples à étudier avec votre équipe.',
     proof: 'Préparer les réponses aux demandes d’un prestataire touristique, organiser les contenus d’un commerce ou structurer une documentation interne : ce sont des pistes de travail, à valider selon vos données et vos outils. Chaque projet commence par cette vérification, sans promesse de gain chiffré à l’avance.', projects: [],
     faqs: [
+      { q: 'Peut-on garder les données sur notre serveur ?', a: 'Oui, nous pouvons concevoir une solution où les documents, leur recherche et la génération des réponses sont traités dans votre infrastructure. Le matériel et l’ensemble des outils doivent être vérifiés. Un appel à ChatGPT, Claude ou une autre API externe transmet les informations nécessaires au fournisseur : cette option est définie avec vous, jamais confondue avec un traitement entièrement local.' },
+      { q: 'Comment choisir entre une IA locale et le cloud ?', a: 'Nous comparons vos usages, la qualité attendue, le matériel disponible, le budget et vos exigences de confidentialité. Le choix peut être local, cloud ou hybride. Pour un service cloud, nous vérifions le compte, les paramètres et les conditions applicables aux données avant de les utiliser.' },
       { q: 'Quelle différence entre une formation IA et une solution IA ?', a: 'La formation développe les compétences de votre équipe. Une solution IA vise une tâche ou un processus précis et peut nécessiter une configuration, du développement et des intégrations. Les deux approches peuvent se compléter.' },
       { q: 'Peut-on connecter l’IA à nos outils existants ?', a: 'Cela dépend des outils, de leurs possibilités d’intégration et des accès autorisés. Nous vérifions la faisabilité avant de proposer une connexion. Une démonstration ne garantit pas à elle seule qu’une intégration pourra être exploitée au quotidien.' },
       { q: 'Comment mesure-t-on l’intérêt d’une automatisation ?', a: 'Nous définissons un point de départ : temps passé, qualité attendue, fréquence des erreurs et nombre de reprises. Le prototype est comparé à cette situation. Si les gains ne justifient pas la complexité et les coûts, le projet peut rester plus simple.' },

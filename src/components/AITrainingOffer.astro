@@ -1,0 +1,36 @@
+---
+import { AI_TRAINING } from '../data/ai';
+interface Props { showDetails?: boolean; }
+const { showDetails = false } = Astro.props;
+---
+<section class="training-offer sheet" aria-labelledby="training-title">
+  <div class="training-heading">
+    <h2 class="display" id="training-title">Une formation IA,<br />dans votre entreprise.</h2>
+    <p class="training-price display">{AI_TRAINING.priceLabel}</p>
+  </div>
+  <p class="training-scope">{AI_TRAINING.scope}</p>
+  <div class="training-includes">
+    <div><h3>Votre guide complet.</h3><p>Un guide d’utilisation des agents IA adapté à votre activité : méthode, consignes, exemples et vérification des résultats. Votre équipe le garde pour la suite.</p></div>
+    <div><h3>Une demi-journée sur place.</h3><p>Avec Guillermo et vos employés : prise en main des outils, exercices sur vos tâches et réponses aux questions pour apprendre à travailler avec les agents.</p></div>
+  </div>
+  <div class="training-actions">
+    <a class="btn btn--light" href="/contact/">Préparons votre formation</a>
+    {showDetails && <a class="training-details" href="/services/formation-ia-valais/">Voir le programme</a>}
+  </div>
+</section>
+<style>
+  .training-offer { padding: clamp(28px, 5vw, 64px); margin-block: 24px 48px; }
+  .training-heading { display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; align-items: start; }
+  h2 { font-size: clamp(36px, 4.5vw, 62px); line-height: 1.06; }
+  .training-price { font-size: clamp(42px, 5.2vw, 76px); line-height: 1.05; text-align: right; white-space: nowrap; }
+  p { font-size: 20px; line-height: 1.6; }
+  .training-scope { max-width: 62ch; color: #ddd; margin-top: 28px; }
+  .training-includes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; padding-block: 36px; margin-top: 36px; border-top: 1px solid var(--line-light); }
+  h3 { font-size: 26px; font-weight: 500; letter-spacing: -.03em; line-height: 1.2; margin-bottom: 16px; }
+  .training-includes p { color: #ddd; }
+  .training-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 32px; }
+  .btn { font-size: 20px; min-height: 60px; padding: 16px 26px; }
+  .training-details { font-size: 20px; min-height: 48px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: 5px; }
+  @media (max-width: 800px) { .training-heading, .training-includes { grid-template-columns: 1fr; } .training-price { text-align: left; } }
+  @media (max-width: 420px) { .training-offer { padding: 28px 22px; } h2 { font-size: 34px; } .btn { width: 100%; justify-content: center; text-align: center; } }
+</style>

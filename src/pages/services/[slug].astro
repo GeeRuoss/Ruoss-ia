@@ -5,20 +5,25 @@ import { SITE, PROJECTS, SERVICES } from '../../data/site';
 import ProjectCard from '../../components/ProjectCard.astro';
 import SiteGallery from '../../components/SiteGallery.astro';
 import PackingFeature from '../../components/PackingFeature.astro';
+import AITrainingOffer from '../../components/AITrainingOffer.astro';
+import AIHostingOptions from '../../components/AIHostingOptions.astro';
+import { AI_TRAINING } from '../../data/ai';
 export function getStaticPaths() {
   return OFFERS.map((offer) => ({ params: { slug: offer.slug }, props: { offer } }));
 }
 const { offer } = Astro.props;
 const path = `/services/${offer.slug}/`;
 const isWeb = offer.slug === 'creation-site-internet-valais';
+const isTraining = offer.slug === 'formation-ia-valais';
+const isSolution = offer.slug === 'solutions-ia-entreprise';
 const isAI = ['formation-ia-valais', 'solutions-ia-entreprise'].includes(offer.slug);
 const projects = PROJECTS.filter((p) => offer.projects.includes(p.slug));
 const structuredData = [
-  { '@context': 'https://schema.org', '@type': 'Service', '@id': SITE.domain + path + '#service', name: offer.label, description: offer.description, url: SITE.domain + path, provider: { '@id': SITE.domain + '/#studio' }, areaServed: [{ '@type': 'AdministrativeArea', name: 'Valais' }, { '@type': 'Place', name: 'Verbier' }] },
+  { '@context': 'https://schema.org', '@type': 'Service', '@id': SITE.domain + path + '#service', name: offer.label, description: offer.description, ...(isTraining ? { offers: { '@type': 'Offer', price: AI_TRAINING.price, priceCurrency: AI_TRAINING.currency, description: AI_TRAINING.scope, url: SITE.domain + path } } : {}), url: SITE.domain + path, provider: { '@id': SITE.domain + '/#studio' }, areaServed: [{ '@type': 'AdministrativeArea', name: 'Valais' }, { '@type': 'Place', name: 'Verbier' }] },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: SITE.domain + '/' }, { '@type': 'ListItem', position: 2, name: 'Services', item: SITE.domain + '/services/' }, ...(isAI ? [{ '@type': 'ListItem', position: 3, name: 'Intelligence artificielle', item: SITE.domain + '/services/intelligence-artificielle-valais/' }] : []), { '@type': 'ListItem', position: isAI ? 4 : 3, name: offer.label, item: SITE.domain + path }] },
 ];
 ---
-<Layout title={offer.title} description={offer.description} path={path} structuredData={structuredData} ogImage={isWeb ? "/brand/og-web-v1.jpg" : undefined}>
+<Layout title={offer.title} description={offer.description} path={path} structuredData={structuredData} ogImage={isWeb ? "/brand/og-web-v1.jpg" : isTraining ? "/brand/og-ia-v1.jpg" : isSolution ? "/brand/og-ia-solutions-v1.jpg" : undefined}>
   {isWeb && <link slot="head" rel="stylesheet" href="/experience/gallery.css" />}
   <article class="page offer">
     <nav class="breadcrumbs" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><a href="/services/">Services</a><span aria-hidden="true">/</span>{isAI && <><a href="/services/intelligence-artificielle-valais/">IA</a><span aria-hidden="true">/</span></>}<span aria-current="page">{offer.label}</span></nav>
@@ -37,6 +42,8 @@ const structuredData = [
       </div> : <img class:list={['offer-image', { portrait: offer.slug === 'formation-ia-valais' }]} src={offer.image} alt={offer.alt} width="800" height="900" fetchpriority="high" />}
 
     </header>
+    {isTraining && <AITrainingOffer />}
+    {isSolution && <AIHostingOptions />}
     {isWeb && <section class="offer-section offer-proof web-showcase" id="nos-sites">
       <div><h2 class="display">{offer.proofTitle}</h2><p>{offer.proof}</p></div>
       <SiteGallery embedded />
